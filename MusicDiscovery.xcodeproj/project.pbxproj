@@ -13,10 +13,11 @@
 		2B1F0EDD1ACDA5FC00BBCBCA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EDB1ACDA5FC00BBCBCA /* LaunchScreen.xib */; };
 		2B1F0EE91ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0EE81ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift */; };
 		2B1F0EF31ACDA65D00BBCBCA /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */; };
-		2B1F0EF51ACDA67200BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0EF41ACDA67200BBCBCA /* LoginViewController.swift */; };
 		2B1F0EFB1ACDA6BA00BBCBCA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */; };
 		2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */; };
 		2B1F0F021ACE206900BBCBCA /* Spotify.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */; };
+		2B1F0F091ACE248E00BBCBCA /* Music-Discovery-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +54,10 @@
 		2B1F0EE71ACDA5FC00BBCBCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1F0EE81ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDiscoveryTests.swift; sourceTree = "<group>"; };
 		2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
-		2B1F0EF41ACDA67200BBCBCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
-		2B1F0EF61ACDA68700BBCBCA /* MusicDiscovery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicDiscovery-Bridging-Header.h"; sourceTree = "<group>"; };
 		2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2B1F0EFF1ACDA7B600BBCBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Music-Discovery-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +86,6 @@
 				2B1F0ECF1ACDA5FC00BBCBCA /* MusicDiscovery */,
 				2B1F0EE51ACDA5FC00BBCBCA /* MusicDiscoveryTests */,
 				2B1F0ECE1ACDA5FC00BBCBCA /* Products */,
-				2B1F0EF61ACDA68700BBCBCA /* MusicDiscovery-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,8 +101,9 @@
 		2B1F0ECF1ACDA5FC00BBCBCA /* MusicDiscovery */ = {
 			isa = PBXGroup;
 			children = (
-				2B1F0EF41ACDA67200BBCBCA /* LoginViewController.swift */,
 				2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */,
+				2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */,
+				2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */,
 				2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */,
 				2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */,
 				2B1F0ED41ACDA5FC00BBCBCA /* ViewController.swift */,
@@ -239,7 +240,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B1F0EF51ACDA67200BBCBCA /* LoginViewController.swift in Sources */,
+				2B1F0F091ACE248E00BBCBCA /* Music-Discovery-Bridging-Header.h in Sources */,
+				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,
 				2B1F0ED51ACDA5FC00BBCBCA /* ViewController.swift in Sources */,
 				2B1F0ED31ACDA5FC00BBCBCA /* AppDelegate.swift in Sources */,
 				2B1F0EFB1ACDA6BA00BBCBCA /* SettingsViewController.swift in Sources */,
@@ -374,7 +376,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MusicDiscovery-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicDiscovery/Music-Discovery-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -392,7 +394,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MusicDiscovery-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicDiscovery/Music-Discovery-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -449,6 +451,7 @@
 				2B1F0EEE1ACDA5FC00BBCBCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B1F0EEF1ACDA5FC00BBCBCA /* Build configuration list for PBXNativeTarget "MusicDiscoveryTests" */ = {
 			isa = XCConfigurationList;
@@ -457,6 +460,7 @@
 				2B1F0EF11ACDA5FC00BBCBCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
