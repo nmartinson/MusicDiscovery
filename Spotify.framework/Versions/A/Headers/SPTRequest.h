@@ -107,7 +107,7 @@ FOUNDATION_EXPORT NSString * const SPTMarketFromToken;
  `SPTAuthPlaylistReadScope` or `SPTAuthPlaylistReadPrivateScope` scope as necessary.
  @param block The block to be called when the operation is complete. The block will pass an `SPTPlaylistSnapshot` object on success, otherwise an error.
  */
-+(void)starredListForUserInSession:(SPTSession *)session callback:(SPTRequestCallback)block DEPRECATED_ATTRIBUTE ;
++(void)starredListForUserInSession:(SPTSession *)session callback:(SPTRequestCallback)block DEPRECATED_ATTRIBUTE;
 
 ///----------------------------
 /// @name User Information
