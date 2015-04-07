@@ -17,6 +17,7 @@
 		2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */; };
 		2B1F0F021ACE206900BBCBCA /* Spotify.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */; };
+		A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		2B1F0EFF1ACDA7B600BBCBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Music-Discovery-Bridging-Header.h"; sourceTree = "<group>"; };
+		A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				2B1F0ED91ACDA5FC00BBCBCA /* Images.xcassets */,
 				2B1F0EDB1ACDA5FC00BBCBCA /* LaunchScreen.xib */,
 				2B1F0ED01ACDA5FC00BBCBCA /* Supporting Files */,
+				A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */,
 			);
 			path = MusicDiscovery;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */,
 				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,
 				2B1F0ED51ACDA5FC00BBCBCA /* ViewController.swift in Sources */,
 				2B1F0ED31ACDA5FC00BBCBCA /* AppDelegate.swift in Sources */,
