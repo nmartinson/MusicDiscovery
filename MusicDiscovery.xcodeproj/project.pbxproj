@@ -15,7 +15,6 @@
 		2B1F0EF31ACDA65D00BBCBCA /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */; };
 		2B1F0EFB1ACDA6BA00BBCBCA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */; };
 		2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */; };
-		2B1F0F021ACE206900BBCBCA /* Spotify.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,19 +27,6 @@
 			remoteInfo = MusicDiscovery;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2B1F0F011ACE205D00BBCBCA /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2B1F0F021ACE206900BBCBCA /* Spotify.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2B1F0ECD1ACDA5FC00BBCBCA /* MusicDiscovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicDiscovery.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,7 +134,6 @@
 				2B1F0EC91ACDA5FC00BBCBCA /* Sources */,
 				2B1F0ECA1ACDA5FC00BBCBCA /* Frameworks */,
 				2B1F0ECB1ACDA5FC00BBCBCA /* Resources */,
-				2B1F0F011ACE205D00BBCBCA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -188,6 +173,7 @@
 				TargetAttributes = {
 					2B1F0ECC1ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = B782ML49FF;
 					};
 					2B1F0EE11ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
@@ -366,11 +352,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MusicDiscovery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -384,11 +372,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MusicDiscovery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
