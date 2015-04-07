@@ -89,7 +89,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
             let name = user.displayName
             let image = (user as SPTUser).largestImage
-            println("image \(image.imageURL)")
+//            println("image \(image.imageURL)")
             println(name)
         })
             

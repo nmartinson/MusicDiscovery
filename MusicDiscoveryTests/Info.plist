@@ -20,5 +20,9 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSLocationUsageDescription</key>
+	<string>I need location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Music Discovery must have location services enabled while in use to operate.</string>
 </dict>
 </plist>
