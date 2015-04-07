@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // Test for playing a random song from an album URI i found
-    func playUsingSession(session:SPTSession)
+    func playUsingSession(session:SPTSession, request: NSURL)
     {
         // if the player is nil, initialize it with the clientID
         if self.player == nil { self.player = SPTAudioStreamingController(clientId: kClientId) }
@@ -72,23 +72,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if error != nil { println("Playback error \(error)") }
             else
             {
-                SPTRequest.requestItemAtURI(NSURL(string: "spotify:album:3vGtqTr5he9uQfusQWJ0oC"), withSession: session, callback: { (error, album) -> Void in
-                    if error != nil
-                    {
-                        println("Album error")
-                    }
-                    else
-                    {
-                        var item = (album as SPTAlbum).firstTrackPage.items[0].playableUri()
-                        println(item)
-                        self.player?.playURIs([item], fromIndex: 0, callback: { (error) -> Void in
+                println("player login")
+//                SPTRequest.requestItemAtURI(request, withSession: session, callback: { (error, album) -> Void in
+//                    if error != nil
+//                    {
+//                        println("Album error")
+//                    }
+//                    else
+//                    {
+//                        var item = (album as SPTTrack).playableUri
+//                        println(item)
+                        self.player?.playURIs([request], fromIndex: 0, callback: { (error) -> Void in
                             if error != nil
                             {
                                 println("Playback error \(error)")
                             }
                         })
-                    }
-                })
+//                    }
+//                })
             }
         })
     }

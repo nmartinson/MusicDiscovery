@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="-275" y="570"/>
         </scene>
-        <!--Item 2-->
+        <!--Settings-->
         <scene sceneID="cjR-yE-pbe">
             <objects>
-                <viewController id="geI-OU-Hm3" sceneMemberID="viewController">
+                <viewController id="geI-OU-Hm3" customClass="SettingsViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5oP-Go-G7l"/>
                         <viewControllerLayoutGuide type="bottom" id="nfE-Fl-ssd"/>
@@ -49,15 +49,37 @@
                     <view key="view" contentMode="scaleToFill" id="Hgs-Vm-KOM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AG8-Z6-Ncz">
+                                <rect key="frame" x="122" y="52" width="384" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="geI-OU-Hm3" id="S2x-G6-Y2B"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQt-4c-YzW">
+                                <rect key="frame" x="220" y="95" width="101" height="30"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="geI-OU-Hm3" eventType="touchUpInside" id="fQt-m4-Q8j"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="a06-z3-IGT"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="a06-z3-IGT"/>
+                    <connections>
+                        <outlet property="searchField" destination="AG8-Z6-Ncz" id="txg-J0-HaQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Smn-f6-daY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1379" y="906"/>
         </scene>
-        <!--Item 1-->
+        <!--Discover-->
         <scene sceneID="jQp-ne-9z2">
             <objects>
                 <viewController id="x98-tG-UdJ" sceneMemberID="viewController">
@@ -70,7 +92,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="8xz-fH-bvt"/>
+                    <tabBarItem key="tabBarItem" title="Discover" id="8xz-fH-bvt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHr-ri-xMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
