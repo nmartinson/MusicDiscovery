@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController, SPTAuthViewDelegate
 {
-    let auth = SPTAuth.defaultInstance()
+    var session:SPTSession!
     
     override func viewDidLoad()
     {
@@ -30,34 +30,23 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
             // convert the stored session object back to SPTSession
             let sessionData = sessionObj as NSData
             let session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as SPTSession
-            println(session)
-            // check if the retrieved session is still valid and that we can refresh the token
-            if !session.isValid() && auth.hasTokenRefreshService
+            
+            // check if the retrieved session is still valid
+            if !session.isValid()
             {
                 // Renew the session
-                SPTAuth.defaultInstance().renewSession(auth.session, callback: { (error, newSession) -> Void in
+                SPTAuth.defaultInstance().renewSession(session, callback: { (error, session) -> Void in
                     if error != nil { println("Renew session error") }
                     else
                     {
-
                         // store the refreshed session in user defaults
-                        let sessionDataNew = NSKeyedArchiver.archivedDataWithRootObject(newSession)
+                        let sessionDataNew = NSKeyedArchiver.archivedDataWithRootObject(session)
                         NSUserDefaults.standardUserDefaults().setObject(sessionDataNew, forKey: "SpotifySession")
-                        AudioPlayer.sharedInstance.session = newSession
-                        AudioPlayer.sharedInstance.player?.loginWithSession(newSession, callback: { (error) -> Void in
-                            println("player login error \(error)")
-                        })
+                        self.session = session
                     }
                 })
             }
-            else if session.isValid()
-            {
-                AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in
-                    println("player login error \(error)")
-                    
-                })
-                performSegueWithIdentifier("LoggedInSegue", sender: self)
-            }
+            performSegueWithIdentifier("LoggedInSegue", sender: self)
         }
         
     }
@@ -94,6 +83,8 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!)
     {
+        
+//        self.session = session
         // request the current users information
         SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
             let name = user.displayName
@@ -105,7 +96,6 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         let defaults = NSUserDefaults.standardUserDefaults()
         let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session!)
         defaults.setObject(sessionData, forKey: "SpotifySession")
-        AudioPlayer.sharedInstance.session = session
         performSegueWithIdentifier("LoggedInSegue", sender: self)
     }
     

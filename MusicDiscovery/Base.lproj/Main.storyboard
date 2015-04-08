@@ -50,28 +50,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AG8-Z6-Ncz">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AG8-Z6-Ncz">
                                 <rect key="frame" x="122" y="52" width="384" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="384" id="pA6-Dy-aed"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="geI-OU-Hm3" id="S2x-G6-Y2B"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cg-ek-CZm">
-                                <rect key="frame" x="261" y="233" width="106" height="30"/>
-                                <state key="normal" title="Renew Session">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="renewSession:" destination="geI-OU-Hm3" eventType="touchUpInside" id="gTm-MK-Yvp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQt-4c-YzW">
-                                <rect key="frame" x="266" y="101" width="101" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQt-4c-YzW">
+                                <rect key="frame" x="220" y="95" width="101" height="30"/>
                                 <state key="normal" title="Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -81,14 +69,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="AG8-Z6-Ncz" firstAttribute="top" secondItem="5oP-Go-G7l" secondAttribute="bottom" constant="32" id="1ur-w4-6IM"/>
-                            <constraint firstAttribute="centerX" secondItem="rQt-4c-YzW" secondAttribute="centerX" id="92H-Yg-PEX"/>
-                            <constraint firstItem="2Cg-ek-CZm" firstAttribute="top" secondItem="rQt-4c-YzW" secondAttribute="bottom" constant="102" id="aAv-1G-sv4"/>
-                            <constraint firstItem="rQt-4c-YzW" firstAttribute="top" secondItem="AG8-Z6-Ncz" secondAttribute="bottom" constant="19" id="eRH-fe-HuS"/>
-                            <constraint firstAttribute="centerX" secondItem="AG8-Z6-Ncz" secondAttribute="centerX" id="lbU-ig-CEA"/>
-                            <constraint firstAttribute="centerX" secondItem="2Cg-ek-CZm" secondAttribute="centerX" id="yUf-hX-w5q"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="a06-z3-IGT"/>
                     <connections>
@@ -97,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Smn-f6-daY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384" y="912"/>
+            <point key="canvasLocation" x="1379" y="906"/>
         </scene>
         <!--Discover-->
         <scene sceneID="jQp-ne-9z2">

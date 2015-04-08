@@ -14,7 +14,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var searchField: UITextField!
     var request:NSURL?
     var session:SPTSession!
-    var audioPlayer = AudioPlayer.sharedInstance
     
     var appDelegate: AppDelegate!
 
@@ -74,22 +73,15 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         if searchField.text != nil
         {
             let text = searchField.text.stringByReplacingOccurrencesOfString(" ", withString: "-")
+            println("session \(session)")
 
             SPTRequest.performSearchWithQuery(text, queryType: SPTSearchQueryType.QueryTypeTrack, offset: 0, session: session) { (error, response) -> Void in
-                
-                // make sure results arent nil
                 if response != nil
                 {
-                    if let items = response.items as? [SPTPartialTrack]
-                    {
-                        if let item = items.first
-                        {
-                            self.request = item.playableUri
-                            println(item.artists.first!.name)
-                            println(item.name!)
-                        }
-                    }
-                    else { println("No results") }
+                    let items = response.items!
+                    let first = items[0] as SPTPartialTrack
+                    self.request = first.playableUri
+                    println(first)
                 }
             }
         }
@@ -97,26 +89,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         return true
     }
     
-    /*****************************************************************************************************
-    *   Using it for testing how to renew a spotify session. Need to setup the backend before it will work
-    *****************************************************************************************************/
-    @IBAction func renewSession(sender: UIButton)
-    {
-//        SPTAuth.defaultInstance().renewSession(session, callback: { (error, newSession) -> Void in
-//            if error != nil { println("Renew session error") }
-//            else
-//            {
-//                // store the refreshed session in user defaults
-//                let sessionDataNew = NSKeyedArchiver.archivedDataWithRootObject(newSession)
-//                NSUserDefaults.standardUserDefaults().setObject(sessionDataNew, forKey: "SpotifySession")
-//                AudioPlayer.sharedInstance.session = newSession
-//            }
-//        })
-    }
-    
     @IBAction func playButtonPressed(sender: UIButton)
     {
-        audioPlayer.playUsingSession(request!)
-        println("play")
+        println("request \(request)")
+        println("session \(session)")
+        AppDelegate().playUsingSession(session, request: request!)
     }
 }
