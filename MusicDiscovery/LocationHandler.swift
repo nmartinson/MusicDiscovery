@@ -97,7 +97,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
             println("authorizationSatus is .Restricted at initLocationManager()")
         case .Denied:
             println("authorizationSatus is .Denied at initLocationManager()")
-            var locServicesAlertController: UIAlertController = buildAuthAlwaysAlertController()
+            var locServicesAlertController: UIAlertController = buildTurnOnLocationAlertController()
             locationHandlerDelegate.getAndPushAlert(locServicesAlertController)
             //use protocol to push the alert
         case .AuthorizedAlways:
@@ -139,6 +139,29 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
     * Author: Dillon McCusker
     * Function returns an alertcontroller that may be pushed in a view controller.
     **********************************************************************************************/
+    func buildTurnOnLocationAlertController() -> UIAlertController {
+        
+        let alertController = UIAlertController(
+            title: "Turn On Location Services",
+            message: "You must turn on Location Services in Settings > Privacy > Location Services to use this app.",
+            preferredStyle: .Alert
+        )
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let openAction = UIAlertAction(title: "Open App Settings", style: .Default) { (action) in
+            if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+        alertController.addAction(openAction)
+        return alertController
+    }
+    
+    /*********************************************************************************************
+    * 4/7/2015
+    * Author: Dillon McCusker
+    * Function returns an alertcontroller that may be pushed in a view controller.
+    **********************************************************************************************/
     func buildAuthAlwaysAlertController() -> UIAlertController {
         
         let alertController = UIAlertController(
@@ -149,8 +172,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
-        
-        let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                let openAction = UIAlertAction(title: "Open App Settings", style: .Default) { (action) in
             if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
                 UIApplication.sharedApplication().openURL(url)
             }

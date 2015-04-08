@@ -16,59 +16,22 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     var session:SPTSession!
     var audioPlayer = AudioPlayer.sharedInstance
     
-    override func viewDidLoad()
-    {
-        // gets a hold of the session object
-    var appDelegate: AppDelegate!
-
-//    var locationManager: CLLocationManager!
-//    var seenError : Bool = false
-//    var locationFixAchieved : Bool = false
-//    var locationStatus : String = "Not Started"
-    
-    var locationHandler: LocationHandler!
-    
-    
-    override func viewDidAppear(animated: Bool) {
-        locationHandler = LocationHandler()
-    }
-    
     override func viewDidLoad() {
-        
-        
-        
         if let sessionObj:AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession")
         {
             // convert the stored session object back to SPTSession
             let sessionData = sessionObj as NSData
             session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as SPTSession
-            
-            appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate!
+//            appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate!
             
         }
-
-        
-        
-//        if appDelegate != nil {
-//            appDelegate.initLocationManager()
-//        }
-//        
-//        locationManager = CLLocationManager()
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//
-//        initLocationManager()
-        
-//        if CLLocationManager.authorizationStatus() == .NotDetermined {
-//            locationManager.requestWhenInUseAuthorization()
-//            //locationManager.requestAlwaysAuthorization()
-//        }
-//        
-//        if CLLocationManager.locationServicesEnabled() {
-//            println("location servies have already been enabled in viewDidLoad()")
-//            locationManager.startUpdatingLocation()
-//        }
     }
+//    
+//    override func viewDidAppear(animated: Bool) {
+//        locationHandler = LocationHandler()
+//    }
+    
+    
     
     /*****************************************************************************************************
     *   Gets called as characters are typed in the search text field

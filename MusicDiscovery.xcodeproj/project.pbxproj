@@ -13,7 +13,6 @@
 		2B1F0EDD1ACDA5FC00BBCBCA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EDB1ACDA5FC00BBCBCA /* LaunchScreen.xib */; };
 		2B1F0EE91ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0EE81ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift */; };
 		2B1F0EF31ACDA65D00BBCBCA /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */; };
-		2B1F0EFB1ACDA6BA00BBCBCA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */; };
 		2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */; };
 		2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */; };
 		2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */; };
@@ -39,6 +38,7 @@
 		A2E7BE0E1AD458120087094C /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0C1AD458120087094C /* GooglePlace.swift */; };
 		A2E7BE101AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
 		A2E7BE111AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
+		A2E7BE361AD4F0D50087094C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,6 @@
 		2B1F0EE71ACDA5FC00BBCBCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1F0EE81ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDiscoveryTests.swift; sourceTree = "<group>"; };
 		2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
-		2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = MusicDiscovery/SettingsViewController.swift; sourceTree = "<group>"; };
 		2B1F0EFF1ACDA7B600BBCBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = MusicDiscovery/LoginViewController.swift; sourceTree = "<group>"; };
 		2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Music-Discovery-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		A2E7BDFC1AD452A80087094C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A2E7BE0C1AD458120087094C /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		A2E7BE0F1AD458570087094C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = MusicDiscovery/MapViewController.swift; sourceTree = "<group>"; };
+		A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = MusicDiscovery/SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,11 +141,8 @@
 		2B1F0ECF1ACDA5FC00BBCBCA /* MusicDiscovery */ = {
 			isa = PBXGroup;
 			children = (
-				2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */,
-				2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */,
 				A2E7BDE91AD451080087094C /* Models */,
 				2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */,
-				2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */,
 				A2E7BE121AD458630087094C /* ViewControllers */,
 				2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */,
 				2B1F0ED91ACDA5FC00BBCBCA /* Images.xcassets */,
@@ -183,6 +180,8 @@
 		A2E7BDE91AD451080087094C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */,
+				2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */,
 				A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */,
 				A2E7BE0C1AD458120087094C /* GooglePlace.swift */,
 				A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */,
@@ -224,8 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				2B1F0ED41ACDA5FC00BBCBCA /* ViewController.swift */,
-				2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */,
 				2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */,
+				A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */,
 				A2E7BE0F1AD458570087094C /* MapViewController.swift */,
 			);
 			name = ViewControllers;
@@ -341,9 +340,9 @@
 				2B1F0ED51ACDA5FC00BBCBCA /* ViewController.swift in Sources */,
 				2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */,
 				2B1F0ED31ACDA5FC00BBCBCA /* AppDelegate.swift in Sources */,
-				2B1F0EFB1ACDA6BA00BBCBCA /* SettingsViewController.swift in Sources */,
 				A2E7BE0D1AD458120087094C /* GooglePlace.swift in Sources */,
 				A2E7BE101AD458570087094C /* MapViewController.swift in Sources */,
+				A2E7BE361AD4F0D50087094C /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
