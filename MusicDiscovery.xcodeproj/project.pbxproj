@@ -17,6 +17,27 @@
 		2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */; };
 		2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */; };
 		A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */; };
+		A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */; };
+		A2E7BDE81AD450FF0087094C /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */; };
+		A2E7BDEC1AD451E20087094C /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDEB1AD451E20087094C /* GoogleMaps.framework */; };
+		A2E7BDEF1AD4520A0087094C /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2E7BDEE1AD4520A0087094C /* GoogleMaps.bundle */; };
+		A2E7BDF01AD4520A0087094C /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2E7BDEE1AD4520A0087094C /* GoogleMaps.bundle */; };
+		A2E7BDFD1AD452A80087094C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF11AD452A80087094C /* AVFoundation.framework */; };
+		A2E7BDFE1AD452A80087094C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF21AD452A80087094C /* CoreData.framework */; };
+		A2E7BDFF1AD452A80087094C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF31AD452A80087094C /* CoreLocation.framework */; };
+		A2E7BE001AD452A80087094C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF41AD452A80087094C /* CoreText.framework */; };
+		A2E7BE011AD452A80087094C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF51AD452A80087094C /* GLKit.framework */; };
+		A2E7BE021AD452A80087094C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF61AD452A80087094C /* ImageIO.framework */; };
+		A2E7BE031AD452A80087094C /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF71AD452A80087094C /* libc++.dylib */; };
+		A2E7BE041AD452A80087094C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF81AD452A80087094C /* libicucore.dylib */; };
+		A2E7BE051AD452A80087094C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDF91AD452A80087094C /* libz.dylib */; };
+		A2E7BE061AD452A80087094C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDFA1AD452A80087094C /* OpenGLES.framework */; };
+		A2E7BE071AD452A80087094C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDFB1AD452A80087094C /* QuartzCore.framework */; };
+		A2E7BE081AD452A80087094C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDFC1AD452A80087094C /* SystemConfiguration.framework */; };
+		A2E7BE0D1AD458120087094C /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0C1AD458120087094C /* GooglePlace.swift */; };
+		A2E7BE0E1AD458120087094C /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0C1AD458120087094C /* GooglePlace.swift */; };
+		A2E7BE101AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
+		A2E7BE111AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,18 +54,35 @@
 		2B1F0ECD1ACDA5FC00BBCBCA /* MusicDiscovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicDiscovery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1F0ED11ACDA5FC00BBCBCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2B1F0ED41ACDA5FC00BBCBCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2B1F0ED41ACDA5FC00BBCBCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = MusicDiscovery/ViewController.swift; sourceTree = "<group>"; };
 		2B1F0ED91ACDA5FC00BBCBCA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2B1F0EDC1ACDA5FC00BBCBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2B1F0EE21ACDA5FC00BBCBCA /* MusicDiscoveryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicDiscoveryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1F0EE71ACDA5FC00BBCBCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1F0EE81ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDiscoveryTests.swift; sourceTree = "<group>"; };
 		2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
-		2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = MusicDiscovery/SettingsViewController.swift; sourceTree = "<group>"; };
 		2B1F0EFF1ACDA7B600BBCBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = MusicDiscovery/LoginViewController.swift; sourceTree = "<group>"; };
 		2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Music-Discovery-Bridging-Header.h"; sourceTree = "<group>"; };
 		A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
+		A2E7BDEB1AD451E20087094C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		A2E7BDEE1AD4520A0087094C /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		A2E7BDF11AD452A80087094C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A2E7BDF21AD452A80087094C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A2E7BDF31AD452A80087094C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A2E7BDF41AD452A80087094C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A2E7BDF51AD452A80087094C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		A2E7BDF61AD452A80087094C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A2E7BDF71AD452A80087094C /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		A2E7BDF81AD452A80087094C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		A2E7BDF91AD452A80087094C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A2E7BDFA1AD452A80087094C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A2E7BDFB1AD452A80087094C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A2E7BDFC1AD452A80087094C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A2E7BE0C1AD458120087094C /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		A2E7BE0F1AD458570087094C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = MusicDiscovery/MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +90,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E7BDFD1AD452A80087094C /* AVFoundation.framework in Frameworks */,
+				A2E7BDFE1AD452A80087094C /* CoreData.framework in Frameworks */,
+				A2E7BDFF1AD452A80087094C /* CoreLocation.framework in Frameworks */,
+				A2E7BE001AD452A80087094C /* CoreText.framework in Frameworks */,
+				A2E7BE011AD452A80087094C /* GLKit.framework in Frameworks */,
+				A2E7BE021AD452A80087094C /* ImageIO.framework in Frameworks */,
+				A2E7BE031AD452A80087094C /* libc++.dylib in Frameworks */,
+				A2E7BE041AD452A80087094C /* libicucore.dylib in Frameworks */,
+				A2E7BE051AD452A80087094C /* libz.dylib in Frameworks */,
+				A2E7BE061AD452A80087094C /* OpenGLES.framework in Frameworks */,
+				A2E7BE071AD452A80087094C /* QuartzCore.framework in Frameworks */,
+				A2E7BE081AD452A80087094C /* SystemConfiguration.framework in Frameworks */,
+				A2E7BDEC1AD451E20087094C /* GoogleMaps.framework in Frameworks */,
 				2B1F0EF31ACDA65D00BBCBCA /* Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,7 +120,7 @@
 		2B1F0EC41ACDA5FC00BBCBCA = {
 			isa = PBXGroup;
 			children = (
-				2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */,
+				A2E7BDEA1AD451740087094C /* FrameWorks */,
 				2B1F0ECF1ACDA5FC00BBCBCA /* MusicDiscovery */,
 				2B1F0EE51ACDA5FC00BBCBCA /* MusicDiscoveryTests */,
 				2B1F0ECE1ACDA5FC00BBCBCA /* Products */,
@@ -88,16 +139,14 @@
 		2B1F0ECF1ACDA5FC00BBCBCA /* MusicDiscovery */ = {
 			isa = PBXGroup;
 			children = (
-				2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */,
+				A2E7BDE91AD451080087094C /* Models */,
 				2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */,
-				2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */,
 				2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */,
+				A2E7BE121AD458630087094C /* ViewControllers */,
 				2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */,
-				2B1F0ED41ACDA5FC00BBCBCA /* ViewController.swift */,
 				2B1F0ED91ACDA5FC00BBCBCA /* Images.xcassets */,
 				2B1F0EDB1ACDA5FC00BBCBCA /* LaunchScreen.xib */,
 				2B1F0ED01ACDA5FC00BBCBCA /* Supporting Files */,
-				A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */,
 			);
 			path = MusicDiscovery;
 			sourceTree = "<group>";
@@ -125,6 +174,58 @@
 				2B1F0EE71ACDA5FC00BBCBCA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A2E7BDE91AD451080087094C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */,
+				A2E7BE0C1AD458120087094C /* GooglePlace.swift */,
+				A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A2E7BDEA1AD451740087094C /* FrameWorks */ = {
+			isa = PBXGroup;
+			children = (
+				A2E7BE091AD452D20087094C /* Google Maps */,
+				2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */,
+			);
+			name = FrameWorks;
+			sourceTree = "<group>";
+		};
+		A2E7BE091AD452D20087094C /* Google Maps */ = {
+			isa = PBXGroup;
+			children = (
+				A2E7BDF11AD452A80087094C /* AVFoundation.framework */,
+				A2E7BDF21AD452A80087094C /* CoreData.framework */,
+				A2E7BDF31AD452A80087094C /* CoreLocation.framework */,
+				A2E7BDF41AD452A80087094C /* CoreText.framework */,
+				A2E7BDF51AD452A80087094C /* GLKit.framework */,
+				A2E7BDF61AD452A80087094C /* ImageIO.framework */,
+				A2E7BDF71AD452A80087094C /* libc++.dylib */,
+				A2E7BDF81AD452A80087094C /* libicucore.dylib */,
+				A2E7BDF91AD452A80087094C /* libz.dylib */,
+				A2E7BDFA1AD452A80087094C /* OpenGLES.framework */,
+				A2E7BDFB1AD452A80087094C /* QuartzCore.framework */,
+				A2E7BDFC1AD452A80087094C /* SystemConfiguration.framework */,
+				A2E7BDEE1AD4520A0087094C /* GoogleMaps.bundle */,
+				A2E7BDEB1AD451E20087094C /* GoogleMaps.framework */,
+			);
+			name = "Google Maps";
+			sourceTree = "<group>";
+		};
+		A2E7BE121AD458630087094C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B1F0ED41ACDA5FC00BBCBCA /* ViewController.swift */,
+				2B1F0EFA1ACDA6BA00BBCBCA /* SettingsViewController.swift */,
+				2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */,
+				A2E7BE0F1AD458570087094C /* MapViewController.swift */,
+			);
+			name = ViewControllers;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +312,7 @@
 				2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */,
 				2B1F0EDD1ACDA5FC00BBCBCA /* LaunchScreen.xib in Resources */,
 				2B1F0EDA1ACDA5FC00BBCBCA /* Images.xcassets in Resources */,
+				A2E7BDEF1AD4520A0087094C /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E7BDF01AD4520A0087094C /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,10 +332,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */,
+				A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
 				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,
 				2B1F0ED51ACDA5FC00BBCBCA /* ViewController.swift in Sources */,
 				2B1F0ED31ACDA5FC00BBCBCA /* AppDelegate.swift in Sources */,
 				2B1F0EFB1ACDA6BA00BBCBCA /* SettingsViewController.swift in Sources */,
+				A2E7BE0D1AD458120087094C /* GooglePlace.swift in Sources */,
+				A2E7BE101AD458570087094C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +347,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1F0EE91ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift in Sources */,
+				A2E7BDE81AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
+				A2E7BE0E1AD458120087094C /* GooglePlace.swift in Sources */,
+				A2E7BE111AD458570087094C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +420,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -346,6 +456,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -397,6 +508,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -416,6 +528,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MusicDiscoveryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

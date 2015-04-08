@@ -7,3 +7,4 @@
 //
 
 #import <Spotify/Spotify.h>
+#import <GoogleMaps/GoogleMaps.h>
