@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         
         if searchField.text != nil
         {
-            let text = searchField.text.stringByReplacingOccurrencesOfString(" ", withString: "-")
+            let text = searchField.text
 
             SPTRequest.performSearchWithQuery(text, queryType: SPTSearchQueryType.QueryTypeTrack, offset: 0, session: session) { (error, response) -> Void in
                 
