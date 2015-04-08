@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
 
     let kClientId = "9267f34373fa4cb1bf9ea94246a45566"
     let kCallbackURL = "musicdiscoverylogin://callback"
-    var session:SPTSession?
-    var player:SPTAudioStreamingController?
+
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -36,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
         // configure the singleton default SPTAuth object with our clientId and callback URL
         SPTAuth.defaultInstance().clientID = kClientId
         SPTAuth.defaultInstance().redirectURL = NSURL(string: kCallbackURL)
+        SPTAuth.defaultInstance().hasTokenRefreshService
         
         return true
     }
@@ -81,30 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool
     {
-        println("OPEN URL")
-        // check if the url is a valid spotify url
-        if SPTAuth.defaultInstance().canHandleURL(url)
-        {
-            SPTAuth.defaultInstance().handleAuthCallbackWithTriggeredAuthURL(url, callback: { (error, session) -> Void in
-                if error != nil { println("error \(error)") }
-                else
-                {
-                    self.session = session
-                    // request the current users information
-                    SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
-                        let name = user.displayName
-                        println(name)
-                    })
-                }
-                
-                // store the session data in user defaults
-                let defaults = NSUserDefaults.standardUserDefaults()
-                let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session!)
-                defaults.setObject(sessionData, forKey: "SpotifySession")
-//                self.playUsingSession(session)
-            })
-        }
-        
         return false
     }
     

@@ -335,6 +335,7 @@
 				A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
 				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,
 				2B1F0ED51ACDA5FC00BBCBCA /* ViewController.swift in Sources */,
+				2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */,
 				2B1F0ED31ACDA5FC00BBCBCA /* AppDelegate.swift in Sources */,
 				2B1F0EFB1ACDA6BA00BBCBCA /* SettingsViewController.swift in Sources */,
 				A2E7BE0D1AD458120087094C /* GooglePlace.swift in Sources */,
