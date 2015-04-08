@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -62,12 +63,12 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cg-ek-CZm">
-                                <rect key="frame" x="261" y="233" width="106" height="30"/>
-                                <state key="normal" title="Renew Session">
+                                <rect key="frame" x="261" y="233" width="105" height="30"/>
+                                <state key="normal" title="View My Profile">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="renewSession:" destination="geI-OU-Hm3" eventType="touchUpInside" id="gTm-MK-Yvp"/>
+                                    <segue destination="Vkv-FI-Fs6" kind="presentation" id="ndF-2c-5mD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQt-4c-YzW">
@@ -98,6 +99,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Smn-f6-daY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1384" y="912"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="qGN-eq-rap">
+            <objects>
+                <viewController id="Vkv-FI-Fs6" customClass="ProfileViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ljw-tw-sXG"/>
+                        <viewControllerLayoutGuide type="bottom" id="YtG-PA-mIU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yt3-Lc-NXK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bi9-xF-BvX">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Profile" id="CXC-vX-zkk">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="3aG-oe-KfU">
+                                            <connections>
+                                                <action selector="doneButtonPressed:" destination="Vkv-FI-Fs6" id="56c-lo-867"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="upe-nD-vIc">
+                                <rect key="frame" x="220" y="78" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="Ugz-EA-8dR"/>
+                                    <constraint firstAttribute="width" constant="160" id="ahE-ic-RLb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKg-Oz-gYx">
+                                <rect key="frame" x="16" y="246" width="568" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ztt-32-151"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KKg-Oz-gYx" firstAttribute="trailing" secondItem="yt3-Lc-NXK" secondAttribute="trailingMargin" id="B2a-uB-1Js"/>
+                            <constraint firstItem="upe-nD-vIc" firstAttribute="top" secondItem="bi9-xF-BvX" secondAttribute="bottom" constant="14" id="Icg-th-j5t"/>
+                            <constraint firstItem="bi9-xF-BvX" firstAttribute="leading" secondItem="yt3-Lc-NXK" secondAttribute="leadingMargin" constant="-16" id="Vbf-yQ-pzf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bi9-xF-BvX" secondAttribute="trailing" constant="-16" id="YeQ-fi-NvT"/>
+                            <constraint firstItem="bi9-xF-BvX" firstAttribute="top" secondItem="ljw-tw-sXG" secondAttribute="bottom" id="aai-ZH-aZf"/>
+                            <constraint firstAttribute="centerX" secondItem="upe-nD-vIc" secondAttribute="centerX" id="d82-lE-bAP"/>
+                            <constraint firstItem="KKg-Oz-gYx" firstAttribute="top" secondItem="upe-nD-vIc" secondAttribute="bottom" constant="8" id="l7z-1z-Gl6"/>
+                            <constraint firstItem="KKg-Oz-gYx" firstAttribute="leading" secondItem="yt3-Lc-NXK" secondAttribute="leadingMargin" id="lvf-WR-blT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="KKg-Oz-gYx" id="VGU-2I-i2W"/>
+                        <outlet property="profilePicture" destination="upe-nD-vIc" id="RF3-pn-tku"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LjY-oB-DZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2127" y="912"/>
         </scene>
         <!--Discover-->
         <scene sceneID="jQp-ne-9z2">

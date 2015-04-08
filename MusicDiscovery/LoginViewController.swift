@@ -94,16 +94,6 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!)
     {
-        // request the current users information
-        SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
-            let name = user.displayName
-            let image = (user as SPTUser).largestImage
-            let test = (user as SPTUser)
-            println(test)
-            println("image \(image.imageURL)")
-            println(name)
-        })
-            
         let defaults = NSUserDefaults.standardUserDefaults()
         let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session!)
         defaults.setObject(sessionData, forKey: "SpotifySession")

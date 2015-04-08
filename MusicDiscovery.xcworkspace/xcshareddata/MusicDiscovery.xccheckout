@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CA08AC93-9CEB-440D-9C5D-BD4F005684D4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MusicDiscovery</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>53C8EE3478499A36CF02A73776D031C5F7AD7637</key>
+		<string>https://github.com/nmartinson/MusicDiscovery.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MusicDiscovery.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>53C8EE3478499A36CF02A73776D031C5F7AD7637</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nmartinson/MusicDiscovery.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>53C8EE3478499A36CF02A73776D031C5F7AD7637</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>53C8EE3478499A36CF02A73776D031C5F7AD7637</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MusicDiscovery</string>
+		</dict>
+	</array>
+</dict>
+</plist>
