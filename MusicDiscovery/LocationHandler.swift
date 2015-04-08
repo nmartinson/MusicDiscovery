@@ -98,13 +98,14 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
         case .Denied:
             println("authorizationSatus is .Denied at initLocationManager()")
             var locServicesAlertController: UIAlertController = buildAuthAlwaysAlertController()
+            locationHandlerDelegate.getAndPushAlert(locServicesAlertController)
             //use protocol to push the alert
         case .AuthorizedAlways:
             println("authorizationSatus is .AuthorizedAlways at initLocationManager()")
         case .AuthorizedWhenInUse:
             println("authorizationSatus is .AuthorizedWhenInUse at initLocationManager()")
             var locServicesAlertController: UIAlertController = buildAuthAlwaysAlertController()
-            //use protocol to push alert controller
+            locationHandlerDelegate.getAndPushAlert(locServicesAlertController)
         default:
             println("did not find a matching auth in switch statement")
         }

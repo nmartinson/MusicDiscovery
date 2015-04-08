@@ -41,9 +41,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
     }
     
     func getAndPushAlert (locAlertController: UIAlertController) -> Void /*Boolean*/ {
-        //self.navigationController!.pushViewController( locAlertController, animated: true)
+//        self.window?.rootViewController.pushViewController( locAlertController, animated: true)
+        var rootVC = self.window?.rootViewController as UIViewController!
+        var visibleVC = getVisibleViewController(rootVC)
+        visibleVC.presentViewController(locAlertController, animated: true, completion: nil)
     }
     
+    
+    func getVisibleViewController(rootVC: UIViewController) -> UIViewController {
+        
+        var visibleVC: UIViewController!
+        
+        if ( rootVC.isKindOfClass(UINavigationController) ) {
+            return ( getVisibleViewController( (rootVC as UINavigationController).visibleViewController ) )
+        } else if ( rootVC.isKindOfClass(UITabBarController) ) {
+            return ( getVisibleViewController( (rootVC as UITabBarController).presentedViewController! ) )
+        } else {
+            if ((rootVC.presentedViewController) != nil) {
+                //    return [UIWindow getVisibleViewControllerFrom:vc.presentedViewController];
+                return ( getVisibleViewController( (rootVC ).presentedViewController! ) )
+            } else {
+                return rootVC
+            }
+        }
+        
+        //    if ([vc isKindOfClass:[UINavigationController class]]) {
+        //    return [UIWindow getVisibleViewControllerFrom:[((UINavigationController *) vc) visibleViewController]];
+        //    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        //    return [UIWindow getVisibleViewControllerFrom:[((UITabBarController *) vc) selectedViewController]];
+        //    } else {
+        //    if (vc.presentedViewController) {
+        //    return [UIWindow getVisibleViewControllerFrom:vc.presentedViewController];
+        //    } else {
+        //    return vc;
+        //    }
+        //    }
+
+    }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool
     {
