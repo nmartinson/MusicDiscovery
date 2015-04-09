@@ -63,8 +63,8 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cg-ek-CZm">
-                                <rect key="frame" x="261" y="233" width="106" height="30"/>
-                                <state key="normal" title="Renew Session">
+                                <rect key="frame" x="261" y="233" width="105" height="30"/>
+                                <state key="normal" title="View My Profile">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

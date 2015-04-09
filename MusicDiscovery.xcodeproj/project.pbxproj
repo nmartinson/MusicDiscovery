@@ -40,6 +40,7 @@
 		A2E7BE101AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
 		A2E7BE111AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
 		A2E7BE361AD4F0D50087094C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */; };
+		CCC2525A04EF16443698DC13 /* Pods_MusicDiscovery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Music-Discovery-Bridging-Header.h"; sourceTree = "<group>"; };
 		2B85BF811AD6241D00F62893 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicDiscovery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 		A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		A2E7BDEB1AD451E20087094C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -87,6 +89,8 @@
 		A2E7BE0C1AD458120087094C /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		A2E7BE0F1AD458570087094C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = MusicDiscovery/MapViewController.swift; sourceTree = "<group>"; };
 		A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = MusicDiscovery/SettingsViewController.swift; sourceTree = "<group>"; };
+		C9A32B7E36868F0D16F791A2 /* Pods-MusicDiscovery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicDiscovery.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicDiscovery/Pods-MusicDiscovery.release.xcconfig"; sourceTree = "<group>"; };
+		E5E59609BB682B5F355BA057 /* Pods-MusicDiscovery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicDiscovery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicDiscovery/Pods-MusicDiscovery.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 				A2E7BE081AD452A80087094C /* SystemConfiguration.framework in Frameworks */,
 				A2E7BDEC1AD451E20087094C /* GoogleMaps.framework in Frameworks */,
 				2B1F0EF31ACDA65D00BBCBCA /* Spotify.framework in Frameworks */,
+				CCC2525A04EF16443698DC13 /* Pods_MusicDiscovery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +133,8 @@
 				2B1F0ECF1ACDA5FC00BBCBCA /* MusicDiscovery */,
 				2B1F0EE51ACDA5FC00BBCBCA /* MusicDiscoveryTests */,
 				2B1F0ECE1ACDA5FC00BBCBCA /* Products */,
+				2D351D4808CE636B1C2758E9 /* Pods */,
+				86B3AEDF0A006C15B64CAC48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,6 +184,23 @@
 				2B1F0EE71ACDA5FC00BBCBCA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D351D4808CE636B1C2758E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E5E59609BB682B5F355BA057 /* Pods-MusicDiscovery.debug.xcconfig */,
+				C9A32B7E36868F0D16F791A2 /* Pods-MusicDiscovery.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		86B3AEDF0A006C15B64CAC48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A2E7BDE91AD451080087094C /* Models */ = {
@@ -241,9 +265,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B1F0EEC1ACDA5FC00BBCBCA /* Build configuration list for PBXNativeTarget "MusicDiscovery" */;
 			buildPhases = (
+				26AAAF1291291BBC9900C785 /* Check Pods Manifest.lock */,
 				2B1F0EC91ACDA5FC00BBCBCA /* Sources */,
 				2B1F0ECA1ACDA5FC00BBCBCA /* Frameworks */,
 				2B1F0ECB1ACDA5FC00BBCBCA /* Resources */,
+				F3E419C239221C145989A5E0 /* Embed Pods Frameworks */,
+				A18588C064B68243A027DA92 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -331,6 +358,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26AAAF1291291BBC9900C785 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A18588C064B68243A027DA92 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicDiscovery/Pods-MusicDiscovery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3E419C239221C145989A5E0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicDiscovery/Pods-MusicDiscovery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2B1F0EC91ACDA5FC00BBCBCA /* Sources */ = {
@@ -472,6 +547,7 @@
 		};
 		2B1F0EED1ACDA5FC00BBCBCA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5E59609BB682B5F355BA057 /* Pods-MusicDiscovery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -492,6 +568,7 @@
 		};
 		2B1F0EEE1ACDA5FC00BBCBCA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9A32B7E36868F0D16F791A2 /* Pods-MusicDiscovery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
