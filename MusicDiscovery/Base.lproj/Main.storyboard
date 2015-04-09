@@ -2,6 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+<<<<<<< location_dillon
+=======
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+>>>>>>> local
     </dependencies>
     <scenes>
         <!--Login View Controller-->
