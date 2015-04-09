@@ -38,6 +38,10 @@ class AudioPlayer
             {
                 println("Playback error \(error)")
             }
+            else
+            {
+                println(self.player.isPlaying)
+            }
         })
     }
     
