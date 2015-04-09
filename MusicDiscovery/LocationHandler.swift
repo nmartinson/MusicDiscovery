@@ -75,7 +75,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         println("locations = \(locations)")
         
         var locationArray = locations as NSArray
-        var locationObj = locationArray.lastObject as CLLocation
+        var locationObj = locationArray.lastObject as! CLLocation
         var coord = locationObj.coordinate
         println(coord.latitude)
         println(coord.longitude)

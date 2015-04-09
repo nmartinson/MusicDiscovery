@@ -53,9 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
         var visibleVC: UIViewController!
         
         if ( rootVC.isKindOfClass(UINavigationController) ) {
-            return ( getVisibleViewController( (rootVC as UINavigationController).visibleViewController ) )
+            return ( getVisibleViewController( (rootVC as! UINavigationController).visibleViewController ) )
         } else if ( rootVC.isKindOfClass(UITabBarController) ) {
-            return ( getVisibleViewController( (rootVC as UITabBarController).presentedViewController! ) )
+            return ( getVisibleViewController( (rootVC as! UITabBarController).presentedViewController! ) )
         } else {
             if ((rootVC.presentedViewController) != nil) {
                 //    return [UIWindow getVisibleViewControllerFrom:vc.presentedViewController];

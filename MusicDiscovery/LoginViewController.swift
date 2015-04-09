@@ -28,8 +28,8 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         if let sessionObj:AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession")
         {
             // convert the stored session object back to SPTSession
-            let sessionData = sessionObj as NSData
-            let session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as SPTSession
+            let sessionData = sessionObj as! NSData
+            let session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as! SPTSession
             println(session)
             // check if the retrieved session is still valid and that we can refresh the token
             if !session.isValid() && auth.hasTokenRefreshService
@@ -97,8 +97,8 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         // request the current users information
         SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
             let name = user.displayName
-            let image = (user as SPTUser).largestImage
-            let test = (user as SPTUser)
+            let image = (user as! SPTUser).largestImage
+            let test = (user as! SPTUser)
             println(test)
             println("image \(image.imageURL)")
             println(name)
