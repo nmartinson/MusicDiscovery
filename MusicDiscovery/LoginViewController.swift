@@ -39,7 +39,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
                     if error != nil { println("Renew session error") }
                     else
                     {
-
+                        
                         // store the refreshed session in user defaults
                         let sessionDataNew = NSKeyedArchiver.archivedDataWithRootObject(newSession)
                         NSUserDefaults.standardUserDefaults().setObject(sessionDataNew, forKey: "SpotifySession")
@@ -61,7 +61,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         }
         
     }
-
+    
     /**********************************************************************************************************
     *   This creates the Spotify modal login view
     *********************************************************************************************************/
@@ -94,16 +94,6 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didLoginWithSession session: SPTSession!)
     {
-        // request the current users information
-        SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
-            let name = user.displayName
-            let image = (user as SPTUser).largestImage
-            let test = (user as SPTUser)
-            println(test)
-            println("image \(image.imageURL)")
-            println(name)
-        })
-            
         let defaults = NSUserDefaults.standardUserDefaults()
         let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session!)
         defaults.setObject(sessionData, forKey: "SpotifySession")

@@ -15,6 +15,7 @@
 		2B1F0EF31ACDA65D00BBCBCA /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */; };
 		2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */; };
 		2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */; };
+		2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85BF811AD6241D00F62893 /* ProfileViewController.swift */; };
 		2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */; };
 		A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */; };
 		A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */; };
@@ -65,6 +66,7 @@
 		2B1F0EFF1ACDA7B600BBCBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = MusicDiscovery/LoginViewController.swift; sourceTree = "<group>"; };
 		2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Music-Discovery-Bridging-Header.h"; sourceTree = "<group>"; };
+		2B85BF811AD6241D00F62893 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 		A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				2B1F0ED41ACDA5FC00BBCBCA /* ViewController.swift */,
+				2B85BF811AD6241D00F62893 /* ProfileViewController.swift */,
 				2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */,
 				A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */,
 				A2E7BE0F1AD458570087094C /* MapViewController.swift */,
@@ -336,6 +339,7 @@
 			files = (
 				A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */,
 				A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
+				2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */,
 				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,
 				2B1F0ED51ACDA5FC00BBCBCA /* ViewController.swift in Sources */,
 				2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */,
