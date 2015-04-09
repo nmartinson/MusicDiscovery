@@ -10,11 +10,17 @@ import Foundation
 import CoreLocation
 import UIKit
 
+private let _LocationHandlerSharedInstance = LocationHandler()
+
 protocol LocationAlertProtocol{
     func getAndPushAlert (UIAlertController) -> Void
 }
 
 class LocationHandler: NSObject, CLLocationManagerDelegate {
+
+    class var sharedInstance: LocationHandler {
+        return _LocationHandlerSharedInstance
+    }
     
     var locationHandlerDelegate: LocationAlertProtocol!
     
@@ -22,6 +28,8 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
     
     var latitude: String!
     var longitude: String!
+    
+    var location2D: CLLocationCoordinate2D!
     
     var gpsLocatationSet: Bool!
     
@@ -74,9 +82,17 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
         println(coord.latitude)
         println(coord.longitude)
         
+        self.location2D = coord
         self.latitude = "\(coord.latitude)"
         self.longitude = "\(coord.longitude)"
         gpsLocatationSet = true
+        
+//        MapHandler.sharedInstance.updateMap()
+        if MapViewController.sharedInstance.mapView != nil {
+            MapViewController.sharedInstance.updateMap()
+            locationManager.stopUpdatingLocation()
+        }
+
     }
     
     /*********************************************************************************************
