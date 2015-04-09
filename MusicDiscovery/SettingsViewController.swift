@@ -23,8 +23,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         if let sessionObj:AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession")
         {
             // convert the stored session object back to SPTSession
-            let sessionData = sessionObj as NSData
-            session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as SPTSession
+            let sessionData = sessionObj as! NSData
+            session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as! SPTSession
             //            appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate!
             
         }

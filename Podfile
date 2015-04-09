@@ -4,7 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'MusicDiscovery' do
-pod 'Alamofire', '~> 1.1'
+pod 'Alamofire', '~> 1.2'
 end
 
 target 'MusicDiscoveryTests' do

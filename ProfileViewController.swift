@@ -43,13 +43,13 @@ class ProfileViewController: UIViewController
     {
         // get the session object
         let sessionObj:AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession")!
-        let sessionData = sessionObj as NSData
-        let session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as SPTSession
+        let sessionData = sessionObj as! NSData
+        let session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as! SPTSession
         
         // request the current users information
         SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
             self.nameLabel.text = user.displayName
-            let image = (user as SPTUser).largestImage.imageURL
+            let image = (user as! SPTUser).largestImage.imageURL
             
             Alamofire.request(.GET, image, parameters: nil).responseImage({ (request, _, image, error) -> Void in
                 if error == nil && image != nil
