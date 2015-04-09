@@ -22,15 +22,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
             // convert the stored session object back to SPTSession
             let sessionData = sessionObj as NSData
             session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as SPTSession
-//            appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate!
             
         }
     }
-//    
-//    override func viewDidAppear(animated: Bool) {
-//        locationHandler = LocationHandler()
-//    }
-    
     
     
     /*****************************************************************************************************
