@@ -66,13 +66,13 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
     * TODO: Handle new coordinate data here.
     **********************************************************************************************/
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-        println("locations = \(locations)")
+//        println("locations = \(locations)")
         
         var locationArray = locations as NSArray
         var locationObj = locationArray.lastObject as CLLocation
         var coord = locationObj.coordinate
-        println(coord.latitude)
-        println(coord.longitude)
+//        println(coord.latitude)
+//        println(coord.longitude)
         
         self.latitude = "\(coord.latitude)"
         self.longitude = "\(coord.longitude)"
