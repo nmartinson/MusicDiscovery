@@ -17,6 +17,11 @@
 		2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */; };
 		2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85BF811AD6241D00F62893 /* ProfileViewController.swift */; };
 		2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */; };
+		A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */; };
+		A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */; };
+		A23B70D01AD66FE000833A6B /* SatteliteMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */; };
+		A23B70D21AD66FFF00833A6B /* NormalMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70D11AD66FFF00833A6B /* NormalMapView.xib */; };
+		A23B70D41AD6784600833A6B /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23B70D31AD6784600833A6B /* MapHandler.swift */; };
 		A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */; };
 		A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */; };
 		A2E7BDE81AD450FF0087094C /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */; };
@@ -38,7 +43,6 @@
 		A2E7BE0D1AD458120087094C /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0C1AD458120087094C /* GooglePlace.swift */; };
 		A2E7BE0E1AD458120087094C /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0C1AD458120087094C /* GooglePlace.swift */; };
 		A2E7BE101AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
-		A2E7BE111AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
 		A2E7BE361AD4F0D50087094C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */; };
 		CCC2525A04EF16443698DC13 /* Pods_MusicDiscovery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -150,8 +154,10 @@
 		2B1F0ECF1ACDA5FC00BBCBCA /* MusicDiscovery */ = {
 			isa = PBXGroup;
 			children = (
-				A2E7BDE91AD451080087094C /* Models */,
+				A23B70CC1AD66F9E00833A6B /* SubViews */,
 				2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */,
+				A23B70C71AD6670200833A6B /* StoryBoards */,
+				A2E7BDE91AD451080087094C /* Models */,
 				A2E7BE121AD458630087094C /* ViewControllers */,
 				2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */,
 				2B1F0ED91ACDA5FC00BBCBCA /* Images.xcassets */,
@@ -343,7 +349,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */,
+				A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */,
 				2B1F0EDD1ACDA5FC00BBCBCA /* LaunchScreen.xib in Resources */,
+				A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */,
+				A23B70D21AD66FFF00833A6B /* NormalMapView.xib in Resources */,
+				A23B70D01AD66FE000833A6B /* SatteliteMapView.xib in Resources */,
 				2B1F0EDA1ACDA5FC00BBCBCA /* Images.xcassets in Resources */,
 				A2E7BDEF1AD4520A0087094C /* GoogleMaps.bundle in Resources */,
 			);
@@ -413,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */,
+				A23B70D41AD6784600833A6B /* MapHandler.swift in Sources */,
 				A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
 				2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */,
 				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,
@@ -432,7 +443,6 @@
 				2B1F0EE91ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift in Sources */,
 				A2E7BDE81AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
 				A2E7BE0E1AD458120087094C /* GooglePlace.swift in Sources */,
-				A2E7BE111AD458570087094C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

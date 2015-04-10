@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="OGS-nL-MBW">
+            <objects>
+                <viewController id="y2u-Pr-CIr" customClass="MapViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5WT-zn-FOl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ch2-Rl-bsF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Awl-7Z-Hak">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDU-3A-Rb5" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36000572339999998" green="0.9542132217" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ch2-Rl-bsF" firstAttribute="top" secondItem="VDU-3A-Rb5" secondAttribute="bottom" id="AFg-aX-3aU"/>
+                            <constraint firstItem="VDU-3A-Rb5" firstAttribute="top" secondItem="Awl-7Z-Hak" secondAttribute="top" id="Q1g-Ni-zVJ"/>
+                            <constraint firstItem="VDU-3A-Rb5" firstAttribute="leading" secondItem="Awl-7Z-Hak" secondAttribute="leading" id="Vm5-E2-6TQ"/>
+                            <constraint firstAttribute="trailing" secondItem="VDU-3A-Rb5" secondAttribute="trailing" id="hux-51-ELq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zKU-or-xh1">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="dYJ-GY-V5p"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="VDU-3A-Rb5" id="egD-Qi-aAh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SOz-fx-ez1" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1045" y="1007"/>
+        </scene>
+    </scenes>
+</document>

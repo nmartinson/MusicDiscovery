@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
     
@@ -15,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
     
     var locHandler: LocationHandler!
     
-    let googleMapsAPIKey = "AIzaSyBWgFLP0UHLnJb1sHTN9U7q8bfri0rIQxY"
+    let googleMapsAPIKey = "AIzaSyDZSxaCMNiwww6VOWpFX-bpIWmeMIbi8Zo"
 
     let kClientId = "9267f34373fa4cb1bf9ea94246a45566"
     let kCallbackURL = "musicdiscoverylogin://callback"

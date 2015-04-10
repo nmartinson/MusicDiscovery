@@ -10,20 +10,44 @@ import Foundation
 import CoreLocation
 import UIKit
 
+private let _LocationHandlerSharedInstance = LocationHandler()
+
 protocol LocationAlertProtocol{
     func getAndPushAlert (UIAlertController) -> Void
 }
 
-class LocationHandler: NSObject, CLLocationManagerDelegate {
+protocol MapUpdateProtocol{
+    func setMapLocation (CLLocationCoordinate2D) -> Bool
+    func checkMapExistence() -> Bool
+}
+
+protocol LocationNotificationProtocol{
+    func notifyLocationHandler () -> Void
+}
+
+class LocationHandler: NSObject, CLLocationManagerDelegate{
+
+    class var sharedInstance: LocationHandler {
+        return _LocationHandlerSharedInstance
+    }
+    
+    var locNotificationDelegate: LocationNotificationProtocol!
+    
+    var mapUpdateDelgate: MapUpdateProtocol!
+    
+    var mapSetup: Bool = false
     
     var locationHandlerDelegate: LocationAlertProtocol!
-    
     var locationManager: CLLocationManager!
     
     var latitude: String!
     var longitude: String!
     
+    var location2D: CLLocationCoordinate2D!
+    
     var gpsLocatationSet: Bool!
+    
+    var mapViewExists: Bool = false
     
     var seenError = false
     
@@ -39,24 +63,6 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //The lines below needs more research.
-//        locationManager.pausesLocationUpdatesAutomatically = true
-//        locationManager.distanceFilter = //typealias CLLocationDistance = Double --> give it a Double value
-        
-//        if CLLocationManager.authorizationStatus() == .NotDetermined {
-//            println(".NotDetermined")
-//            locationManager.requestWhenInUseAuthorization()
-//        }
-        
-//        if CLLocationManager.locationServicesEnabled() {
-//            println("Location services enabled at init")
-//            locationManager.startUpdatingLocation()
-//        } else {
-//            println("Location disabled at init")
-//            var locServicesAlertController: UIAlertController = buildAuthAlwaysAlertController()
-//            //use protocol to push the alert
-//        }
-
     }
 
     /*********************************************************************************************
@@ -74,9 +80,16 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
 //        println(coord.latitude)
 //        println(coord.longitude)
         
+        self.location2D = coord
         self.latitude = "\(coord.latitude)"
         self.longitude = "\(coord.longitude)"
         gpsLocatationSet = true
+        
+        if !mapSetup && mapViewExists  {
+            if mapUpdateDelgate.setMapLocation(self.location2D) {
+                mapSetup = true
+            }
+        }
     }
     
     /*********************************************************************************************
@@ -91,7 +104,6 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
         switch status {
         case .NotDetermined:
             locationManager.requestWhenInUseAuthorization()
-            locationManager.requestAlwaysAuthorization()
             println("authorizationSatus is .NotDetermined at initLocationManager()")
         case .Restricted:
             println("authorizationSatus is .Restricted at initLocationManager()")
@@ -103,9 +115,9 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
         case .AuthorizedAlways:
             println("authorizationSatus is .AuthorizedAlways at initLocationManager()")
         case .AuthorizedWhenInUse:
-            println("authorizationSatus is .AuthorizedWhenInUse at initLocationManager()")
-            var locServicesAlertController: UIAlertController = buildAuthAlwaysAlertController()
-            locationHandlerDelegate.getAndPushAlert(locServicesAlertController)
+          println("authorizationSatus is .AuthorizedWhenInUse at initLocationManager()")
+//            var locServicesAlertController: UIAlertController = buildAuthAlwaysAlertController()
+//            locationHandlerDelegate.getAndPushAlert(locServicesAlertController)
         default:
             println("did not find a matching auth in switch statement")
         }
