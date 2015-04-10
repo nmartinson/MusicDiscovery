@@ -70,7 +70,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         // create the Spotify login modal view
         let authView = SPTAuthViewController.authenticationViewController()
         authView.delegate = self
-        authView.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+        authView.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         authView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.definesPresentationContext = true
         presentViewController(authView, animated: true, completion: nil)
@@ -98,6 +98,9 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session!)
         defaults.setObject(sessionData, forKey: "SpotifySession")
         AudioPlayer.sharedInstance.session = session
+        AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in
+            println("player login error \(error)")
+        })
         performSegueWithIdentifier("LoggedInSegue", sender: self)
     }
     
