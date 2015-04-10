@@ -74,6 +74,11 @@
 		2B85BF811AD6241D00F62893 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicDiscovery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapsTestStoryboard.storyboard; sourceTree = "<group>"; };
+		A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HybridMapView.xib; sourceTree = "<group>"; };
+		A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SatteliteMapView.xib; sourceTree = "<group>"; };
+		A23B70D11AD66FFF00833A6B /* NormalMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalMapView.xib; sourceTree = "<group>"; };
+		A23B70D31AD6784600833A6B /* MapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
 		A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 		A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		A2E7BDEB1AD451E20087094C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -159,7 +164,6 @@
 				A23B70C71AD6670200833A6B /* StoryBoards */,
 				A2E7BDE91AD451080087094C /* Models */,
 				A2E7BE121AD458630087094C /* ViewControllers */,
-				2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */,
 				2B1F0ED91ACDA5FC00BBCBCA /* Images.xcassets */,
 				2B1F0EDB1ACDA5FC00BBCBCA /* LaunchScreen.xib */,
 				2B1F0ED01ACDA5FC00BBCBCA /* Supporting Files */,
@@ -209,9 +213,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A23B70C71AD6670200833A6B /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */,
+				2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */,
+			);
+			name = StoryBoards;
+			sourceTree = "<group>";
+		};
+		A23B70CC1AD66F9E00833A6B /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */,
+				A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */,
+				A23B70D11AD66FFF00833A6B /* NormalMapView.xib */,
+			);
+			name = SubViews;
+			sourceTree = "<group>";
+		};
 		A2E7BDE91AD451080087094C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A23B70D31AD6784600833A6B /* MapHandler.swift */,
 				2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */,
 				2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */,
 				A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */,

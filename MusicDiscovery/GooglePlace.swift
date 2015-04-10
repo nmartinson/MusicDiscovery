@@ -33,8 +33,7 @@ class GooglePlace {
       let photo = photos.firstObject as! NSDictionary
       photoReference = photo["photo_reference"] as? String
     }
-    else
-    {
+    else {
         photoReference = ""
     }
     
