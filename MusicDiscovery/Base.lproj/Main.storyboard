@@ -236,6 +236,12 @@
                     <view key="view" contentMode="scaleToFill" id="1yY-Wa-J8f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-Hr-JIu" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" red="0.36000572339999998" green="0.9542132217" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" id="8xz-fH-bvt"/>
@@ -362,7 +368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qek-jn-6YX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-275" y="1419"/>
+            <point key="canvasLocation" x="2094" y="224"/>
         </scene>
         <!--Item-->
         <scene sceneID="Mfn-42-Rdf">
