@@ -8,16 +8,18 @@
 
 import Foundation
 
-class AudioPlayer
+class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
 {
     let kClientId = "9267f34373fa4cb1bf9ea94246a45566"
     var session:SPTSession?
     var player:SPTAudioStreamingController!
-    
-    init()
+
+    override init()
     {
         // if the player is nil, initialize it with the clientID
         player = SPTAudioStreamingController(clientId: kClientId)
+
+
     }
     
     // Makes this AudioPlayer class a singleton
@@ -33,6 +35,7 @@ class AudioPlayer
     *****************************************************************************************************/
     func playUsingSession(request: NSURL)
     {
+                player.playbackDelegate = self
         self.player?.playURIs([request], fromIndex: 0, callback: { (error) -> Void in
             if error != nil
             {
@@ -45,4 +48,13 @@ class AudioPlayer
         })
     }
     
+    
+    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!)
+    {
+        println("changed track to \(trackMetadata)")
+    }
+    
+    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: NSURL!) {
+        println("started playing \(trackUri)")
+    }
 }

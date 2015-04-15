@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'MusicDiscovery' do
 pod 'Alamofire', '~> 1.2'
+#pod 'SwiftyJSON', '2.2.0'
 end
 
 target 'MusicDiscoveryTests' do
