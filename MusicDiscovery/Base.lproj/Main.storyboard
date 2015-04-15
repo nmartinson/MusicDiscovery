@@ -206,6 +206,25 @@
             </objects>
             <point key="canvasLocation" x="2952" y="1724"/>
         </scene>
+        <!--Camera-->
+        <scene sceneID="dBM-F5-GfU">
+            <objects>
+                <viewController id="Ho9-ch-vPA" customClass="CameraViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MDq-EB-Qka"/>
+                        <viewControllerLayoutGuide type="bottom" id="97T-oa-tMB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2dp-om-XzE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Camera" id="saE-g2-nEx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1fM-aQ-loM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="-445"/>
+        </scene>
         <!--Discover-->
         <scene sceneID="jQp-ne-9z2">
             <objects>
@@ -239,6 +258,7 @@
                         <segue destination="x98-tG-UdJ" kind="relationship" relationship="viewControllers" id="35U-Hc-6Q8"/>
                         <segue destination="geI-OU-Hm3" kind="relationship" relationship="viewControllers" id="Qp2-Mz-H65"/>
                         <segue destination="hgX-cM-uC7" kind="relationship" relationship="viewControllers" id="Rkp-6B-2BE"/>
+                        <segue destination="Ho9-ch-vPA" kind="relationship" relationship="viewControllers" id="62G-h2-W14"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dt6-G9-hGe" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -40,10 +40,6 @@ class MusicPlayer:UIViewController, UITableViewDataSource, UITableViewDelegate
             else
             {
                 self.playlists = (playlists as? SPTPlaylistList)!
-                for(var i = 0; i < self.playlists.items.count; i++)
-                {
-                    println((self.playlists.items[i] as! SPTPartialPlaylist).name )
-                }
                 self.playlistCount = self.playlists.items.count
                 self.playlistTableView.reloadData()
             }

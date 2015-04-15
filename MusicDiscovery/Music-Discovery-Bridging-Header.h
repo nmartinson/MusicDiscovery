@@ -8,3 +8,4 @@
 
 #import <Spotify/Spotify.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <PanicARKit/PanicARKit.h>

@@ -35,7 +35,7 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     *****************************************************************************************************/
     func playUsingSession(request: NSURL)
     {
-                player.playbackDelegate = self
+        player.playbackDelegate = self
         self.player?.playURIs([request], fromIndex: 0, callback: { (error) -> Void in
             if error != nil
             {

@@ -1,10 +1,13 @@
 PODS:
   - Alamofire (1.2.0)
+  - PanicAR (2.1.2583)
 
 DEPENDENCIES:
   - Alamofire (~> 1.2)
+  - PanicAR
 
 SPEC CHECKSUMS:
   Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
+  PanicAR: 351a92eeae854547e94553cd9c81c3718d31746e
 
 COCOAPODS: 0.36.3
