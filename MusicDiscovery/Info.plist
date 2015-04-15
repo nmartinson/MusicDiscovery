@@ -39,6 +39,10 @@
 	<string>"This app must have location services enabled when in use!"</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>"This app must have location services enabled when in use!"</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
