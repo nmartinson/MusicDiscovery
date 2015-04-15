@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
         SPTAuth.defaultInstance().clientID = kClientId
         SPTAuth.defaultInstance().redirectURL = NSURL(string: kCallbackURL)
         SPTAuth.defaultInstance().hasTokenRefreshService
+        SPTAuth.defaultInstance().requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthUserReadPrivateScope]
         
         return true
     }
