@@ -228,7 +228,7 @@
         <!--Discover-->
         <scene sceneID="jQp-ne-9z2">
             <objects>
-                <viewController id="x98-tG-UdJ" sceneMemberID="viewController">
+                <viewController id="x98-tG-UdJ" customClass="MapViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bNc-d7-S9D"/>
                         <viewControllerLayoutGuide type="bottom" id="E8Z-gG-cFL"/>
@@ -245,6 +245,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" id="8xz-fH-bvt"/>
+                    <connections>
+                        <outlet property="mapView" destination="Rst-Hr-JIu" id="ky8-bc-aNX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHr-ri-xMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -362,13 +365,10 @@
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="1ak-lk-f1J"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="mapView" destination="a72-6C-mQf" id="1zQ-Gs-qdb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qek-jn-6YX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2094" y="224"/>
+            <point key="canvasLocation" x="566" y="-148"/>
         </scene>
         <!--Item-->
         <scene sceneID="Mfn-42-Rdf">
