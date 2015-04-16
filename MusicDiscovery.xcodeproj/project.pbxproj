@@ -20,6 +20,7 @@
 		2B4856D31ADFEFBA000F9FBF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */; };
 		2B4856D51ADFEFD6000F9FBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */; };
 		2B4856D71ADFF37C000F9FBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D61ADFF37C000F9FBF /* MapKit.framework */; };
+		2B4856E11AE0183F000F9FBF /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856E01AE0183F000F9FBF /* PanicARKit.framework */; };
 		2B57D37C1ADD6FA000AAE553 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */; };
 		2B57D37E1ADD776900AAE553 /* SpotifyWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */; };
 		2B676D1B1AD8256D0048E09C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B676D1A1AD8256D0048E09C /* User.swift */; };
@@ -85,6 +86,7 @@
 		2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2B4856D61ADFF37C000F9FBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2B4856E01AE0183F000F9FBF /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = ../Xcode/Libraries/PanicAR/Framework/PanicARKit.framework; sourceTree = "<group>"; };
 		2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyWebAPI.swift; sourceTree = "<group>"; };
 		2B676D1A1AD8256D0048E09C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B4856E11AE0183F000F9FBF /* PanicARKit.framework in Frameworks */,
 				2B4856D71ADFF37C000F9FBF /* MapKit.framework in Frameworks */,
 				2B4856D51ADFEFD6000F9FBF /* CoreGraphics.framework in Frameworks */,
 				2B4856D31ADFEFBA000F9FBF /* CoreMotion.framework in Frameworks */,
@@ -231,6 +234,7 @@
 		86B3AEDF0A006C15B64CAC48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B4856E01AE0183F000F9FBF /* PanicARKit.framework */,
 				2B4856D61ADFF37C000F9FBF /* MapKit.framework */,
 				2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */,
 				2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */,
@@ -625,6 +629,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/nickmartinson/Xcode/Libraries/PanicAR/Framework,
 				);
 				INFOPLIST_FILE = MusicDiscovery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -646,6 +651,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/nickmartinson/Xcode/Libraries/PanicAR/Framework,
 				);
 				INFOPLIST_FILE = MusicDiscovery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'MusicDiscovery' do
 pod 'Alamofire', '~> 1.2'
-pod 'PanicAR'#, :podspec => 'https://raw2.github.com/doPanic/PanicAR/beta/PanicAR.podspec'
+#pod 'PanicAR'#, :podspec => 'https://raw2.github.com/doPanic/PanicAR/beta/PanicAR.podspec'
 #pod 'SwiftyJSON', '2.2.0'
 end
 
