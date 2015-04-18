@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
     var window: UIWindow?
     
     var locHandler: LocationHandler!
+    var currentUser: User?
     
     let googleMapsAPIKey = "AIzaSyDZSxaCMNiwww6VOWpFX-bpIWmeMIbi8Zo"
 

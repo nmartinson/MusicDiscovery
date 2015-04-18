@@ -101,9 +101,9 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in
             println("player login error \(error)")
         })
-        println()
-        println(session.accessToken)
-        println()
+
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        appDelegate.currentUser = User(
         performSegueWithIdentifier("LoggedInSegue", sender: self)
     }
     
