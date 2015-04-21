@@ -40,11 +40,15 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, SPTAudioStr
             // convert the stored session object back to SPTSession
             let sessionData = sessionObj as! NSData
             session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as! SPTSession
-            
         }
-        println()
-        println(session.accessToken)
-        println()
+
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let id = appDelegate.currentUser?.getUserID()        
+        BluemixCommunication().getUserInfo(id!, completion: { (users) -> Void in
+            
+        })
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -53,12 +57,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, SPTAudioStr
         let nowPlaying = info.nowPlayingInfo
         println("Now playing \(nowPlaying)")
     }
-    
-    
-    //
-    //    override func viewDidAppear(animated: Bool) {
-    //        locationHandler = LocationHandler()
-    //    }
     
     
     func getNot(notification: NSNotification)
