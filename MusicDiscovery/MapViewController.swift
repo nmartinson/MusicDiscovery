@@ -1,9 +1,4 @@
-
-
-
 import UIKit
-
-
 
 class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificationProtocol, LocationAlertProtocol {
     
