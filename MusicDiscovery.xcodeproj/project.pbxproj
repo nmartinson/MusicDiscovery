@@ -17,6 +17,11 @@
 		2B1F0EF31ACDA65D00BBCBCA /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */; };
 		2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1F0EFE1ACDA7B600BBCBCA /* Main.storyboard */; };
 		2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */; };
+		2B4856D31ADFEFBA000F9FBF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */; };
+		2B4856D51ADFEFD6000F9FBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */; };
+		2B4856D71ADFF37C000F9FBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D61ADFF37C000F9FBF /* MapKit.framework */; };
+		2B4856E11AE0183F000F9FBF /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856E01AE0183F000F9FBF /* PanicARKit.framework */; };
+		2B4856E31AE0559A000F9FBF /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */; };
 		2B57D37C1ADD6FA000AAE553 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */; };
 		2B57D37E1ADD776900AAE553 /* SpotifyWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */; };
 		2B676D1B1AD8256D0048E09C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B676D1A1AD8256D0048E09C /* User.swift */; };
@@ -79,6 +84,11 @@
 		2B1F0EFF1ACDA7B600BBCBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = MusicDiscovery/LoginViewController.swift; sourceTree = "<group>"; };
 		2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Music-Discovery-Bridging-Header.h"; sourceTree = "<group>"; };
+		2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2B4856D61ADFF37C000F9FBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2B4856E01AE0183F000F9FBF /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = ../Xcode/Libraries/PanicAR/Framework/PanicARKit.framework; sourceTree = "<group>"; };
+		2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PanicARKitResources.bundle; sourceTree = "<group>"; };
 		2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyWebAPI.swift; sourceTree = "<group>"; };
 		2B676D1A1AD8256D0048E09C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -119,6 +129,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B4856E11AE0183F000F9FBF /* PanicARKit.framework in Frameworks */,
+				2B4856D71ADFF37C000F9FBF /* MapKit.framework in Frameworks */,
+				2B4856D51ADFEFD6000F9FBF /* CoreGraphics.framework in Frameworks */,
+				2B4856D31ADFEFBA000F9FBF /* CoreMotion.framework in Frameworks */,
 				A2E7BDFD1AD452A80087094C /* AVFoundation.framework in Frameworks */,
 				A2E7BDFE1AD452A80087094C /* CoreData.framework in Frameworks */,
 				A2E7BDFF1AD452A80087094C /* CoreLocation.framework in Frameworks */,
@@ -222,6 +236,11 @@
 		86B3AEDF0A006C15B64CAC48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */,
+				2B4856E01AE0183F000F9FBF /* PanicARKit.framework */,
+				2B4856D61ADFF37C000F9FBF /* MapKit.framework */,
+				2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */,
+				2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */,
 				9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */,
 			);
 			name = Frameworks;
@@ -392,6 +411,7 @@
 			files = (
 				2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */,
 				A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */,
+				2B4856E31AE0559A000F9FBF /* PanicARKitResources.bundle in Resources */,
 				2B1F0EDD1ACDA5FC00BBCBCA /* LaunchScreen.xib in Resources */,
 				A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */,
 				A23B70D21AD66FFF00833A6B /* NormalMapView.xib in Resources */,
@@ -613,6 +633,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/nickmartinson/Xcode/Libraries/PanicAR/Framework,
 				);
 				INFOPLIST_FILE = MusicDiscovery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -634,6 +655,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/nickmartinson/Xcode/Libraries/PanicAR/Framework,
 				);
 				INFOPLIST_FILE = MusicDiscovery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

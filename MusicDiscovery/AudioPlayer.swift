@@ -18,11 +18,11 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     {
         // if the player is nil, initialize it with the clientID
         player = SPTAudioStreamingController(clientId: kClientId)
-
-
     }
     
-    // Makes this AudioPlayer class a singleton
+    /**********************************************************************************************************
+    *   Makes this AudioPlayer class a singleton
+    *********************************************************************************************************/
     public class var sharedInstance: AudioPlayer{
         struct SharedInstance {
             static let instance = AudioPlayer()
@@ -48,13 +48,24 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
         })
     }
     
-    
+    /**********************************************************************************************************
+    *   Gets called when the track changes
+    *********************************************************************************************************/
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!)
     {
+        let artist = trackMetadata["SPTAudioStreamingMetadataArtistName"] as! String
+        let track = trackMetadata["SPTAudioStreamingMetadataTrackName"] as! String
+        let trackURI = trackMetadata["SPTAudioStreamingMetadataTrackURI"] as! String
         println("changed track to \(trackMetadata)")
+        
+        // Update the users current song in the database
     }
     
-    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: NSURL!) {
+    /**********************************************************************************************************
+    *   Gets called when a track starts
+    *********************************************************************************************************/
+    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: NSURL!)
+    {
         println("started playing \(trackUri)")
     }
 }

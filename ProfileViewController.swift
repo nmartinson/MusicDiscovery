@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController
         // request the current users information
         SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
             self.nameLabel.text = user.displayName
-            
+            println("ID \(user.canonicalUserName)")
             if let image = (user as! SPTUser).largestImage
             {
                 Alamofire.request(.GET, image.imageURL, parameters: nil).responseImage({ (request, _, image, error) -> Void in

@@ -214,7 +214,7 @@
                         <viewControllerLayoutGuide type="top" id="MDq-EB-Qka"/>
                         <viewControllerLayoutGuide type="bottom" id="97T-oa-tMB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2dp-om-XzE">
+                    <view key="view" contentMode="scaleToFill" id="2dp-om-XzE" customClass="PARView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
