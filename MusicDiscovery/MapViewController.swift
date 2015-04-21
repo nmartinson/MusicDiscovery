@@ -100,6 +100,9 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
                 if locHandler.bearing != nil {
                     initBearing = locHandler.bearing.magneticHeading
                 }
+                var mapInsets = UIEdgeInsetsMake(450.0, 0.0, 0.0, 0.0)
+                mapView.padding = mapInsets
+                
                 mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 15.5, bearing: initBearing, viewingAngle: 0)
                 mapView.mapType = currentMapType
                 mapView.settings.scrollGestures = false
