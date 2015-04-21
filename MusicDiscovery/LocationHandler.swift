@@ -20,7 +20,7 @@ protocol MapUpdateProtocol{
     func setMapLocation () -> Void
     func updateMapViewToCamera () -> Void
     func updateMapViewToBearing() -> Void
-    func updateMapViewTarget () -> Void
+//    func updateMapViewTarget () -> Void
     func checkMapExistence() -> Bool
     var  mapSetup: Bool {get}
 }

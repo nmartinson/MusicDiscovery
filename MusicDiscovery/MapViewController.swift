@@ -69,6 +69,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
             var magneticBearing = locHandler.bearing.magneticHeading
             var location2D = locHandler.location2D
             var mapZoom = self.mapView.camera.zoom
+            println("Zoom: \(mapZoom)")
             mapView.camera = GMSCameraPosition(target: location2D, zoom: mapZoom, bearing: magneticBearing, viewingAngle: 0)
 //                mapView.mapType = currentMapType
             drawCone()
@@ -86,18 +87,23 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     }
     
     func updateMapViewTarget() -> Void {
-        var cameraTargetUpdate = GMSCameraUpdate.setTarget(locHandler.location2D)
-        self.mapView.animateWithCameraUpdate(cameraTargetUpdate)
-        drawCone()
+//        var cameraTargetUpdate = GMSCameraUpdate.setTarget(locHandler.location2D)
+//        self.mapView.animateWithCameraUpdate(cameraTargetUpdate)
+//        drawCone()
     }
     
     func setMapLocation () -> Void {
         
         if mapView != nil {
             if locHandler.location2D != nil {
-                mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 50, bearing: 0, viewingAngle: 0)
+                var initBearing:CLLocationDirection = 0
+                if locHandler.bearing != nil {
+                    initBearing = locHandler.bearing.magneticHeading
+                }
+                mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 15.5, bearing: initBearing, viewingAngle: 0)
                 mapView.mapType = currentMapType
                 mapView.settings.scrollGestures = false
+                
     //            drawPolygon()
     //            calculator.calculatePoint()
                 //stop the timer now that the map is setup
@@ -115,12 +121,12 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         
         var points2D:[CLLocationCoordinate2D] = calculator.calculateForwardPoints()
         
-        println(points2D)
+//        println(points2D)
         
         var conicPath = GMSMutablePath()
         for point in points2D {
-            println(point.latitude)
-            println(point.longitude)
+//            println(point.latitude)
+//            println(point.longitude)
             conicPath.addCoordinate(point)
         }
         

@@ -13,7 +13,7 @@ class MapCalculator {
     let toDegrees:Double = (180/M_PI)
     let toRadians:Double = (M_PI/180)
     
-    let numPoints:Int = 10
+    let numPoints:Int = 20
     let sweepAngle:Double = 90.0
     
     var closeAngle:Double = 45.0
