@@ -23,6 +23,7 @@
 		2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85BF811AD6241D00F62893 /* ProfileViewController.swift */; };
 		2BC5881B1ADD66C000F82C76 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5881A1ADD66C000F82C76 /* MusicPlayer.swift */; };
 		2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */; };
+		A213765E1ADF6DA300DCD745 /* MapCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A213765D1ADF6DA300DCD745 /* MapCalculator.swift */; };
 		A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */; };
 		A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */; };
 		A23B70D01AD66FE000833A6B /* SatteliteMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */; };
@@ -86,6 +87,7 @@
 		2BC5881A1ADD66C000F82C76 /* MusicPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicDiscovery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A213765D1ADF6DA300DCD745 /* MapCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCalculator.swift; sourceTree = "<group>"; };
 		A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapsTestStoryboard.storyboard; sourceTree = "<group>"; };
 		A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HybridMapView.xib; sourceTree = "<group>"; };
 		A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SatteliteMapView.xib; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */,
 				A2E7BE0C1AD458120087094C /* GooglePlace.swift */,
 				A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */,
+				A213765D1ADF6DA300DCD745 /* MapCalculator.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -358,7 +361,7 @@
 				TargetAttributes = {
 					2B1F0ECC1ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = B782ML49FF;
+						DevelopmentTeam = 625732G463;
 					};
 					2B1F0EE11ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
@@ -472,6 +475,7 @@
 				2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */,
 				2B57D37C1ADD6FA000AAE553 /* SwiftyJSON.swift in Sources */,
 				2B19580A1ADD7F6800F55C77 /* PlaylistSongViewController.swift in Sources */,
+				A213765E1ADF6DA300DCD745 /* MapCalculator.swift in Sources */,
 				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,
 				2B1F0ED51ACDA5FC00BBCBCA /* ViewController.swift in Sources */,
 				2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */,
@@ -558,7 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -595,7 +599,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -621,6 +625,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MusicDiscovery/Music-Discovery-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -641,6 +646,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MusicDiscovery/Music-Discovery-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

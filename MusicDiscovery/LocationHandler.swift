@@ -17,8 +17,12 @@ protocol LocationAlertProtocol{
 }
 
 protocol MapUpdateProtocol{
-    func setMapLocation (CLLocationCoordinate2D) -> Bool
+    func setMapLocation () -> Void
+    func updateMapViewToCamera () -> Void
+    func updateMapViewToBearing() -> Void
+    func updateMapViewTarget () -> Void
     func checkMapExistence() -> Bool
+    var  mapSetup: Bool {get}
 }
 
 protocol LocationNotificationProtocol{
@@ -35,15 +39,18 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     
     var mapUpdateDelgate: MapUpdateProtocol!
     
-    var mapSetup: Bool = false
+//    var mapSetup: Bool = false
     
     var locationHandlerDelegate: LocationAlertProtocol!
+    
     var locationManager: CLLocationManager!
     
     var latitude: String!
     var longitude: String!
-    
     var location2D: CLLocationCoordinate2D!
+    
+    //This variable holds the direction to which the device is pointed in degrees
+    var bearing: CLHeading!
     
     var gpsLocatationSet: Bool!
     
@@ -58,11 +65,54 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     **********************************************************************************************/
     override init() {
         super.init()
-        println("location handler init")
+//        println("location handler init")
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func compassInit() -> Void {
+        if CLLocationManager.headingAvailable() == false {
+            //need alertController for this
+            println("This device does not have the ability to measure magnetic fields.")
+        } else {
+            //            locationManager.headingFilter = ? //The default value of this property is 1 degree
+            //            locationManager.headingOrientation = ? // https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instp/CLLocationManager/headingOrientation
+            locationManager.startUpdatingHeading()
+        }
+    }
+    
+    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
+        return true
+    }
+
+    /*********************************************************************************************
+    * 4/15/2015
+    * Author: Dillon McCusker
+    * function: locationManager
+    * Input(s): 
+    *    1) CLLocationManager
+    *    2) CLHeading <<<
+    * Outputs: Void <<<
+    * Description:
+    *   >>> This function is called when the CLHeading is updated, meaning magnetnic direction has
+    *     > likely changed. <<<
+    **********************************************************************************************/
+    func locationManager(manager: CLLocationManager!,
+        didUpdateHeading newHeading: CLHeading!) {
+        
+        self.bearing = newHeading
+    
+//        println("Udated Heading")
+//        println("\t\(newHeading)")
+            
+        if mapViewExists  == true {
+            if mapUpdateDelgate.mapSetup == true {
+                println("Should be updating map view from locationhandler")
+                mapUpdateDelgate.updateMapViewToBearing()
+            }
+        }
     }
 
     /*********************************************************************************************
@@ -72,12 +122,13 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     * TODO: Handle new coordinate data here.
     **********************************************************************************************/
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-//        println("locations = \(locations)")
+        //println("locations = \(locations)")
         
         var locationArray = locations as NSArray
         var locationObj = locationArray.lastObject as! CLLocation
         var coord = locationObj.coordinate
-//        println(coord.latitude)
+//        self.bearing = locationObj.course as CLLocationDirection
+        //        println(coord.latitude)
 //        println(coord.longitude)
         
         self.location2D = coord
@@ -85,9 +136,17 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         self.longitude = "\(coord.longitude)"
         gpsLocatationSet = true
         
-        if !mapSetup && mapViewExists  {
-            if mapUpdateDelgate.setMapLocation(self.location2D) {
-                mapSetup = true
+        //setup the mapview and cameraposition for the first time
+        if mapViewExists == true {
+            if mapUpdateDelgate.mapSetup  == false {
+                mapUpdateDelgate.setMapLocation()
+            }
+        }
+        //update the map's camera position
+        if mapViewExists == true {
+            if mapUpdateDelgate.mapSetup == true {
+//                mapUpdateDelgate.updateMapViewTarget()
+                mapUpdateDelgate.updateMapViewToCamera()
             }
         }
     }
@@ -100,18 +159,18 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     func locationManager(manager: CLLocationManager!,
         didChangeAuthorizationStatus status: CLAuthorizationStatus)
     {
-//        var status = CLLocationManager.authorizationStatus()
         switch status {
         case .NotDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
+//            locationManager.requestWhenInUseAuthorization()
             println("authorizationSatus is .NotDetermined at initLocationManager()")
         case .Restricted:
             println("authorizationSatus is .Restricted at initLocationManager()")
         case .Denied:
             println("authorizationSatus is .Denied at initLocationManager()")
+            ////Use function in protocol to push the alert about location settings
             var locServicesAlertController: UIAlertController = buildTurnOnLocationAlertController()
             locationHandlerDelegate.getAndPushAlert(locServicesAlertController)
-            //use protocol to push the alert
         case .AuthorizedAlways:
             println("authorizationSatus is .AuthorizedAlways at initLocationManager()")
         case .AuthorizedWhenInUse:
@@ -122,7 +181,10 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
             println("did not find a matching auth in switch statement")
         }
         
+
         if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+            //Start up dating location and magnetic heading
+            self.compassInit()
             locationManager.startUpdatingLocation()
         } else {
             gpsLocatationSet = false
@@ -137,7 +199,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     * Function stops location updates and prints an error, one time.
     **********************************************************************************************/
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        locationManager.stopUpdatingLocation()
+//        locationManager.stopUpdatingLocation()
         if ((error) != nil) {
             if (seenError == false) {
                 seenError = true
@@ -149,7 +211,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     /*********************************************************************************************
     * 4/7/2015
     * Author: Dillon McCusker
-    * Function returns an alertcontroller that may be pushed in a view controller.
+    * Function returns an alertController that may be pushed in a view controller.
     **********************************************************************************************/
     func buildTurnOnLocationAlertController() -> UIAlertController {
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -228,7 +228,7 @@
         <!--Discover-->
         <scene sceneID="jQp-ne-9z2">
             <objects>
-                <viewController id="x98-tG-UdJ" sceneMemberID="viewController">
+                <viewController id="x98-tG-UdJ" customClass="MapViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bNc-d7-S9D"/>
                         <viewControllerLayoutGuide type="bottom" id="E8Z-gG-cFL"/>
@@ -236,9 +236,24 @@
                     <view key="view" contentMode="scaleToFill" id="1yY-Wa-J8f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-Hr-JIu" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" red="0.36000572339999998" green="0.9542132217" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Rst-Hr-JIu" secondAttribute="trailing" id="XnU-fe-0eE"/>
+                            <constraint firstItem="Rst-Hr-JIu" firstAttribute="leading" secondItem="1yY-Wa-J8f" secondAttribute="leading" id="aYd-7f-6n8"/>
+                            <constraint firstAttribute="bottom" secondItem="Rst-Hr-JIu" secondAttribute="bottom" constant="49" id="ehP-AH-DQa"/>
+                            <constraint firstItem="Rst-Hr-JIu" firstAttribute="top" secondItem="1yY-Wa-J8f" secondAttribute="top" id="uPu-qW-gvg"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" id="8xz-fH-bvt"/>
+                    <connections>
+                        <outlet property="mapView" destination="Rst-Hr-JIu" id="ky8-bc-aNX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHr-ri-xMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -326,43 +341,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4F-Rs-Lof" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2127" y="912"/>
-        </scene>
-        <!--Map View Controller-->
-        <scene sceneID="yeQ-zN-7vT">
-            <objects>
-                <viewController id="96N-B8-WZe" customClass="MapViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eMr-ya-pnk"/>
-                        <viewControllerLayoutGuide type="bottom" id="wwv-QX-BeE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vq8-2j-P92">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a72-6C-mQf" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.36000572339999998" green="0.9542132217" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="a72-6C-mQf" secondAttribute="trailing" id="4um-JG-75f"/>
-                            <constraint firstItem="wwv-QX-BeE" firstAttribute="top" secondItem="a72-6C-mQf" secondAttribute="bottom" id="Mgq-MF-8kL"/>
-                            <constraint firstItem="a72-6C-mQf" firstAttribute="top" secondItem="vq8-2j-P92" secondAttribute="top" id="beg-jl-J1w"/>
-                            <constraint firstItem="a72-6C-mQf" firstAttribute="leading" secondItem="vq8-2j-P92" secondAttribute="leading" id="zEY-iX-m1C"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="nl7-dT-JzM">
-                        <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="1ak-lk-f1J"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="mapView" destination="a72-6C-mQf" id="1zQ-Gs-qdb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qek-jn-6YX" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-275" y="1419"/>
         </scene>
         <!--Item-->
         <scene sceneID="Mfn-42-Rdf">
