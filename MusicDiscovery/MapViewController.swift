@@ -13,6 +13,8 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     
     let calculator: MapCalculator! = MapCalculator()
     
+    var currentMapType: GMSMapViewType = kGMSTypeNormal
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.myLocationEnabled = true
@@ -38,15 +40,24 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         return false
     }
     
-    func setMapLocation (CLLocationCoordinate2D) -> Bool {
+    func updateMapView () -> Void {
+        if locHandler.bearing != nil {
+            var magneticBearing = locHandler.bearing.magneticHeading
+            if mapView != nil {
+                
+                mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 30, bearing: magneticBearing, viewingAngle: 0)
+                mapView.mapType = currentMapType
+            }
+        }
+    }
+    
+    func setMapLocation () -> Bool {
         
         if mapView != nil {
             mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 30, bearing: 0, viewingAngle: 0)
-            mapView.mapType = kGMSTypeNormal
-            
-            drawPolygon()
-            
-            calculator.calculatePoint()
+            mapView.mapType = currentMapType
+//            drawPolygon()
+//            calculator.calculatePoint()
             
             return true
         }
@@ -57,6 +68,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         self.presentViewController(locationAlert, animated: true, completion: nil)
     }
     
+    //This is only a test function
     func drawPolygon () -> Void {
         // Create a rectangular path
         var rect = GMSMutablePath()
@@ -76,9 +88,9 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     
 
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
-  }
+    }
 
 }
 

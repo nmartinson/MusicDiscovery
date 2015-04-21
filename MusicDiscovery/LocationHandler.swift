@@ -17,7 +17,8 @@ protocol LocationAlertProtocol{
 }
 
 protocol MapUpdateProtocol{
-    func setMapLocation (CLLocationCoordinate2D) -> Bool
+    func setMapLocation () -> Bool
+    func updateMapView () -> Void
     func checkMapExistence() -> Bool
 }
 
@@ -45,7 +46,8 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     var longitude: String!
     var location2D: CLLocationCoordinate2D!
     
-    var bearing: CLLocationDirection!
+    //This variable holds the direction to which the device is pointed in degrees
+    var bearing: CLHeading!
     
     var gpsLocatationSet: Bool!
     
@@ -67,11 +69,29 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    
+
+    /*********************************************************************************************
+    * 4/15/2015
+    * Author: Dillon McCusker
+    * function: locationManager
+    * Input(s): 
+    *    1) CLLocationManager
+    *    2) CLHeading <<<
+    * Outputs: Void <<<
+    * Description:
+    *   >>> This function is called when the CLHeading is updated, meaning magnetnic direction has
+    *     > likely changed. <<<
+    **********************************************************************************************/
     func locationManager(manager: CLLocationManager!,
         didUpdateHeading newHeading: CLHeading!) {
         
-        println("\(newHeading)")
+        println("Udated Heading")
+        println("\t\(newHeading)")
+            
+        if mapSetup && mapViewExists {
+            mapUpdateDelgate.updateMapView()
+        }
+
     }
 
     /*********************************************************************************************
@@ -86,7 +106,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         var locationArray = locations as NSArray
         var locationObj = locationArray.lastObject as! CLLocation
         var coord = locationObj.coordinate
-        self.bearing = locationObj.course as CLLocationDirection
+//        self.bearing = locationObj.course as CLLocationDirection
         //        println(coord.latitude)
 //        println(coord.longitude)
         
@@ -95,10 +115,15 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         self.longitude = "\(coord.longitude)"
         gpsLocatationSet = true
         
+        //setup the mapview and cameraposition for the first time
         if !mapSetup && mapViewExists  {
-            if mapUpdateDelgate.setMapLocation(self.location2D) {
+            if mapUpdateDelgate.setMapLocation() {
                 mapSetup = true
             }
+        }
+        //update the map's camera position
+        if mapSetup && mapViewExists {
+            mapUpdateDelgate.updateMapView()
         }
     }
     

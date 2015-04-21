@@ -36,9 +36,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>&quot;MusicDiscovery must have permission to use location services while in the background to operate. Please update your settings.&quot;</string>
+	<string>"MusicDiscovery must have permission to use location services while in the background to operate. Please update your settings."</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;This app must have location services enabled when in use!&quot;</string>
+	<string>"This app must have location services enabled when in use!"</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -54,8 +54,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

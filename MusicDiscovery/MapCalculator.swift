@@ -19,7 +19,8 @@ class MapCalculator {
         var loc2D = locHandler.location2D
         
         var distance: Double = 500//500 meters
-        var bearing: Double = locHandler.bearing as Double
+        var rawBearing: CLHeading = locHandler.bearing
+        var bearing: Double = rawBearing.magneticHeading as Double
         var startLat: Double  = loc2D.latitude
         var startLong: Double = loc2D.longitude
         
