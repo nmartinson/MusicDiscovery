@@ -11,7 +11,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     
     @IBOutlet weak var mapView: GMSMapView!
     
-
+    let calculator: MapCalculator! = MapCalculator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,11 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         if mapView != nil {
             mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 30, bearing: 0, viewingAngle: 0)
             mapView.mapType = kGMSTypeNormal
+            
+            drawPolygon()
+            
+            calculator.calculatePoint()
+            
             return true
         }
         return false
@@ -52,12 +57,24 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         self.presentViewController(locationAlert, animated: true, completion: nil)
     }
     
-//    func updateMap() {
-//        println("Updating map")
-//        
-//        mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 30, bearing: 0, viewingAngle: 0)
-//        mapView.mapType = kGMSTypeNormal
-//    }
+    func drawPolygon () -> Void {
+        // Create a rectangular path
+        var rect = GMSMutablePath()
+        rect.addCoordinate(CLLocationCoordinate2DMake(37.36, -122.0))
+        rect.addCoordinate(CLLocationCoordinate2DMake(37.45, -122.0))
+        rect.addCoordinate(CLLocationCoordinate2DMake(37.45, -122.2))
+        rect.addCoordinate(CLLocationCoordinate2DMake(37.36, -122.2))
+        
+        // Create the polygon, and assign it to the map.
+        var polygon = GMSPolygon(path: rect)
+        polygon.fillColor = UIColor(red:0.25, green:0, blue:0, alpha:0.05)
+        polygon.strokeColor = UIColor.blackColor()
+        polygon.strokeWidth = 2
+        polygon.map = mapView
+
+    }
+    
+
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 

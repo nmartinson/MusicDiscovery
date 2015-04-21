@@ -237,12 +237,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-Hr-JIu" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-Hr-JIu" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" red="0.36000572339999998" green="0.9542132217" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Rst-Hr-JIu" secondAttribute="trailing" id="XnU-fe-0eE"/>
+                            <constraint firstItem="Rst-Hr-JIu" firstAttribute="leading" secondItem="1yY-Wa-J8f" secondAttribute="leading" id="aYd-7f-6n8"/>
+                            <constraint firstAttribute="bottom" secondItem="Rst-Hr-JIu" secondAttribute="bottom" constant="49" id="ehP-AH-DQa"/>
+                            <constraint firstItem="Rst-Hr-JIu" firstAttribute="top" secondItem="1yY-Wa-J8f" secondAttribute="top" id="uPu-qW-gvg"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" id="8xz-fH-bvt"/>
                     <connections>

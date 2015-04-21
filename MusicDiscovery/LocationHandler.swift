@@ -38,12 +38,14 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     var mapSetup: Bool = false
     
     var locationHandlerDelegate: LocationAlertProtocol!
+    
     var locationManager: CLLocationManager!
     
     var latitude: String!
     var longitude: String!
-    
     var location2D: CLLocationCoordinate2D!
+    
+    var bearing: CLLocationDirection!
     
     var gpsLocatationSet: Bool!
     
@@ -64,6 +66,13 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
+    
+    
+    func locationManager(manager: CLLocationManager!,
+        didUpdateHeading newHeading: CLHeading!) {
+        
+        println("\(newHeading)")
+    }
 
     /*********************************************************************************************
     * 4/6/2015
@@ -72,12 +81,13 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     * TODO: Handle new coordinate data here.
     **********************************************************************************************/
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-//        println("locations = \(locations)")
+        //println("locations = \(locations)")
         
         var locationArray = locations as NSArray
         var locationObj = locationArray.lastObject as! CLLocation
         var coord = locationObj.coordinate
-//        println(coord.latitude)
+        self.bearing = locationObj.course as CLLocationDirection
+        //        println(coord.latitude)
 //        println(coord.longitude)
         
         self.location2D = coord
@@ -91,6 +101,50 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
             }
         }
     }
+    
+    func compassInit() -> Void {
+       
+        locationManager.startUpdatingHeading()
+        
+        
+        if CLLocationManager.headingAvailable() == false {
+            //need alertController for this
+            println("This device does not have the ability to measure magnetic fields.")
+        } else {
+            //            locationManager.headingFilter = ? //The default value of this property is 1 degree
+            //            locationManager.headingOrientation = ? // https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instp/CLLocationManager/headingOrientation
+            locationManager.startUpdatingHeading()
+        }
+        
+//        if locationManager.headingAvailable {
+//            
+//        }
+        
+        
+        //    // check if the hardware has a compass
+        //    if ([CLLocationManager headingAvailable] == NO) {
+        //    // No compass is available. This application cannot function without a compass,
+        //    // so a dialog will be displayed and no magnetic data will be measured.
+        //    self.locationManager = nil;
+        //    UIAlertView *noCompassAlert = [[UIAlertView alloc] initWithTitle:@"No Compass!"
+        //    message:@"This device does not have the ability to measure magnetic fields."
+        //    delegate:nil
+        //    cancelButtonTitle:@"OK"
+        //    otherButtonTitles:nil];
+        //    [noCompassAlert show];
+        //    } else {
+        //    // heading service configuration
+        //    self.locationManager.headingFilter = kCLHeadingFilterNone;
+        //
+        //    // setup delegate callbacks
+        //    self.locationManager.delegate = self;
+        //    
+        //    // start the compass
+        //    [self.locationManager startUpdatingHeading];
+        //    }
+    }
+    
+    
     
     /*********************************************************************************************
     * 4/6/2015
@@ -122,7 +176,10 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
             println("did not find a matching auth in switch statement")
         }
         
+
         if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+            //Start up dating location and magnetic heading
+            self.compassInit()
             locationManager.startUpdatingLocation()
         } else {
             gpsLocatationSet = false
@@ -137,7 +194,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     * Function stops location updates and prints an error, one time.
     **********************************************************************************************/
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        locationManager.stopUpdatingLocation()
+//        locationManager.stopUpdatingLocation()
         if ((error) != nil) {
             if (seenError == false) {
                 seenError = true
@@ -149,7 +206,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     /*********************************************************************************************
     * 4/7/2015
     * Author: Dillon McCusker
-    * Function returns an alertcontroller that may be pushed in a view controller.
+    * Function returns an alertController that may be pushed in a view controller.
     **********************************************************************************************/
     func buildTurnOnLocationAlertController() -> UIAlertController {
         

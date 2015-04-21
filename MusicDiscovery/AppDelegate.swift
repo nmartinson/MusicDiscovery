@@ -23,13 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         
+        //instantiate location handler, all other classes may now acces its sharedInstance
         locHandler = LocationHandler()
+        //Set locationHandlerDelegate variable in LocationHandler so that it may call methods in the LocationAlertProtocol
         locHandler.locationHandlerDelegate = self
         
-        //Google maps API
-        //[GMSServices provideAPIKey:@"API_KEY"];
+        //Google maps API Key setup
         GMSServices.provideAPIKey(googleMapsAPIKey)
         
         // configure the singleton default SPTAuth object with our clientId and callback URL
@@ -40,14 +40,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
         return true
     }
     
+    
+    /*******************************************************************************************************
+    * 4/6/2015
+    * Author: Dillon McCusker
+    * Function: getAndPushAlert
+    * Input(s): 1) locAlertController: UIAlertController <<<
+    * Outputs(s): Void <<<
+    * Description:
+    *   >>> This function takes a UIAlertController as an input parameter. The function then calls 
+    *     > getVisibleViewController(...) and passes the current rootViewController at execution as an argument 
+    *     > in order to determine the visible view controller.
+    *     > The alert controller is then pushed to the currently visible view controller                <<<
+    *******************************************************************************************************/
     func getAndPushAlert (locAlertController: UIAlertController) -> Void /*Boolean*/ {
-//        self.window?.rootViewController.pushViewController( locAlertController, animated: true)
         var rootVC = self.window?.rootViewController as UIViewController!
         var visibleVC = getVisibleViewController(rootVC)
         visibleVC.presentViewController(locAlertController, animated: true, completion: nil)
     }
     
-    
+    /*******************************************************************************************************
+    * 4/6/2015
+    * Author: Dillon McCusker
+    * Function: getVisibleViewController
+    * Input(s): 1) rootVC: UIViewController
+    * Outputs(s): 1) UIViewController
+    * Description: 
+    *   >>> This function takes a UIViewController as an input argument and recursively passes that view
+    *     > controller back into this function until the view controller that is taken as an argument
+    *     > is the view controller that is currently visible in the app. It's purpose is to allow an
+    *     > an alert controller to be pushed to the current view controller from anywhere within the app. <<<
+    *******************************************************************************************************/
     func getVisibleViewController(rootVC: UIViewController) -> UIViewController {
         
         var visibleVC: UIViewController!
@@ -64,19 +87,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
                 return rootVC
             }
         }
-        
-        //    if ([vc isKindOfClass:[UINavigationController class]]) {
-        //    return [UIWindow getVisibleViewControllerFrom:[((UINavigationController *) vc) visibleViewController]];
-        //    } else if ([vc isKindOfClass:[UITabBarController class]]) {
-        //    return [UIWindow getVisibleViewControllerFrom:[((UITabBarController *) vc) selectedViewController]];
-        //    } else {
-        //    if (vc.presentedViewController) {
-        //    return [UIWindow getVisibleViewControllerFrom:vc.presentedViewController];
-        //    } else {
-        //    return vc;
-        //    }
-        //    }
-
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool
