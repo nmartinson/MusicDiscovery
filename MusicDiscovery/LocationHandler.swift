@@ -17,9 +17,12 @@ protocol LocationAlertProtocol{
 }
 
 protocol MapUpdateProtocol{
-    func setMapLocation () -> Bool
-    func updateMapView () -> Void
+    func setMapLocation () -> Void
+    func updateMapViewToCamera () -> Void
+    func updateMapViewToBearing() -> Void
+    func updateMapViewTarget () -> Void
     func checkMapExistence() -> Bool
+    var  mapSetup: Bool {get}
 }
 
 protocol LocationNotificationProtocol{
@@ -36,7 +39,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     
     var mapUpdateDelgate: MapUpdateProtocol!
     
-    var mapSetup: Bool = false
+//    var mapSetup: Bool = false
     
     var locationHandlerDelegate: LocationAlertProtocol!
     
@@ -62,13 +65,27 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     **********************************************************************************************/
     override init() {
         super.init()
-        println("location handler init")
+//        println("location handler init")
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
+    func compassInit() -> Void {
+        if CLLocationManager.headingAvailable() == false {
+            //need alertController for this
+            println("This device does not have the ability to measure magnetic fields.")
+        } else {
+            //            locationManager.headingFilter = ? //The default value of this property is 1 degree
+            //            locationManager.headingOrientation = ? // https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instp/CLLocationManager/headingOrientation
+            locationManager.startUpdatingHeading()
+        }
+    }
+    
+    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
+        return true
+    }
 
     /*********************************************************************************************
     * 4/15/2015
@@ -85,13 +102,17 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     func locationManager(manager: CLLocationManager!,
         didUpdateHeading newHeading: CLHeading!) {
         
-        println("Udated Heading")
-        println("\t\(newHeading)")
+        self.bearing = newHeading
+    
+//        println("Udated Heading")
+//        println("\t\(newHeading)")
             
-        if mapSetup && mapViewExists {
-            mapUpdateDelgate.updateMapView()
+        if mapViewExists  == true {
+            if mapUpdateDelgate.mapSetup == true {
+                println("Should be updating map view from locationhandler")
+                mapUpdateDelgate.updateMapViewToBearing()
+            }
         }
-
     }
 
     /*********************************************************************************************
@@ -116,60 +137,19 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         gpsLocatationSet = true
         
         //setup the mapview and cameraposition for the first time
-        if !mapSetup && mapViewExists  {
-            if mapUpdateDelgate.setMapLocation() {
-                mapSetup = true
+        if mapViewExists == true {
+            if mapUpdateDelgate.mapSetup  == false {
+                mapUpdateDelgate.setMapLocation()
             }
         }
         //update the map's camera position
-        if mapSetup && mapViewExists {
-            mapUpdateDelgate.updateMapView()
+        if mapViewExists == true {
+            if mapUpdateDelgate.mapSetup == true {
+//                mapUpdateDelgate.updateMapViewTarget()
+                mapUpdateDelgate.updateMapViewToCamera()
+            }
         }
     }
-    
-    func compassInit() -> Void {
-       
-        locationManager.startUpdatingHeading()
-        
-        
-        if CLLocationManager.headingAvailable() == false {
-            //need alertController for this
-            println("This device does not have the ability to measure magnetic fields.")
-        } else {
-            //            locationManager.headingFilter = ? //The default value of this property is 1 degree
-            //            locationManager.headingOrientation = ? // https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instp/CLLocationManager/headingOrientation
-            locationManager.startUpdatingHeading()
-        }
-        
-//        if locationManager.headingAvailable {
-//            
-//        }
-        
-        
-        //    // check if the hardware has a compass
-        //    if ([CLLocationManager headingAvailable] == NO) {
-        //    // No compass is available. This application cannot function without a compass,
-        //    // so a dialog will be displayed and no magnetic data will be measured.
-        //    self.locationManager = nil;
-        //    UIAlertView *noCompassAlert = [[UIAlertView alloc] initWithTitle:@"No Compass!"
-        //    message:@"This device does not have the ability to measure magnetic fields."
-        //    delegate:nil
-        //    cancelButtonTitle:@"OK"
-        //    otherButtonTitles:nil];
-        //    [noCompassAlert show];
-        //    } else {
-        //    // heading service configuration
-        //    self.locationManager.headingFilter = kCLHeadingFilterNone;
-        //
-        //    // setup delegate callbacks
-        //    self.locationManager.delegate = self;
-        //    
-        //    // start the compass
-        //    [self.locationManager startUpdatingHeading];
-        //    }
-    }
-    
-    
     
     /*********************************************************************************************
     * 4/6/2015
