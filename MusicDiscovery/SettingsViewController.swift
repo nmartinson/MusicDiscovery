@@ -18,10 +18,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, SPTAudioStr
     var audioPlayer = AudioPlayer.sharedInstance
     let musicPlayer = MPMusicPlayerController.systemMusicPlayer()
     
-    
-    
-    
-    
     override func viewDidLoad()
     {
         let info = MPNowPlayingInfoCenter.defaultCenter()

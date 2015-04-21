@@ -119,6 +119,8 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         
         var conicPath = GMSMutablePath()
         for point in points2D {
+            println(point.latitude)
+            println(point.longitude)
             conicPath.addCoordinate(point)
         }
         
@@ -157,7 +159,6 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         polygon.strokeColor = UIColor.blackColor()
         polygon.strokeWidth = 2
         polygon.map = mapView
-
     }
     
 
