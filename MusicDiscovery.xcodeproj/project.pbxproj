@@ -20,8 +20,9 @@
 		2B4856D31ADFEFBA000F9FBF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */; };
 		2B4856D51ADFEFD6000F9FBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */; };
 		2B4856D71ADFF37C000F9FBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D61ADFF37C000F9FBF /* MapKit.framework */; };
-		2B4856E11AE0183F000F9FBF /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856E01AE0183F000F9FBF /* PanicARKit.framework */; };
-		2B4856E31AE0559A000F9FBF /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */; };
+		2B55041E1AE6B3B700C7257E /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */; };
+		2B5504201AE6B40700C7257E /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55041F1AE6B40700C7257E /* PanicARKit.framework */; };
+		2B5504231AE6B46600C7257E /* PanicARKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2B55041F1AE6B40700C7257E /* PanicARKit.framework */; };
 		2B57D37C1ADD6FA000AAE553 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */; };
 		2B57D37E1ADD776900AAE553 /* SpotifyWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */; };
 		2B676D1B1AD8256D0048E09C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B676D1A1AD8256D0048E09C /* User.swift */; };
@@ -69,6 +70,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2B5504181AE6B22100C7257E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2B1958091ADD7F6800F55C77 /* PlaylistSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistSongViewController.swift; sourceTree = "<group>"; };
 		2B19580B1ADEEC9400F55C77 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -88,8 +102,8 @@
 		2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2B4856D61ADFF37C000F9FBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		2B4856E01AE0183F000F9FBF /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = ../Xcode/Libraries/PanicAR/Framework/PanicARKit.framework; sourceTree = "<group>"; };
-		2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PanicARKitResources.bundle; sourceTree = "<group>"; };
+		2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PanicARKitResources.bundle; sourceTree = "<group>"; };
+		2B55041F1AE6B40700C7257E /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PanicARKit.framework; sourceTree = "<group>"; };
 		2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyWebAPI.swift; sourceTree = "<group>"; };
 		2B676D1A1AD8256D0048E09C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -131,8 +145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B4856E11AE0183F000F9FBF /* PanicARKit.framework in Frameworks */,
 				2B4856D71ADFF37C000F9FBF /* MapKit.framework in Frameworks */,
+				2B5504201AE6B40700C7257E /* PanicARKit.framework in Frameworks */,
 				2B4856D51ADFEFD6000F9FBF /* CoreGraphics.framework in Frameworks */,
 				2B4856D31ADFEFBA000F9FBF /* CoreMotion.framework in Frameworks */,
 				A2E7BDFD1AD452A80087094C /* AVFoundation.framework in Frameworks */,
@@ -238,8 +252,6 @@
 		86B3AEDF0A006C15B64CAC48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */,
-				2B4856E01AE0183F000F9FBF /* PanicARKit.framework */,
 				2B4856D61ADFF37C000F9FBF /* MapKit.framework */,
 				2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */,
 				2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */,
@@ -285,6 +297,8 @@
 		A2E7BDEA1AD451740087094C /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				2B55041F1AE6B40700C7257E /* PanicARKit.framework */,
+				2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */,
 				A2E7BE091AD452D20087094C /* Google Maps */,
 				2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */,
 			);
@@ -341,6 +355,7 @@
 				2B1F0ECB1ACDA5FC00BBCBCA /* Resources */,
 				F3E419C239221C145989A5E0 /* Embed Pods Frameworks */,
 				A18588C064B68243A027DA92 /* Copy Pods Resources */,
+				2B5504181AE6B22100C7257E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -412,9 +427,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B5504231AE6B46600C7257E /* PanicARKit.framework in Resources */,
 				2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */,
 				A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */,
-				2B4856E31AE0559A000F9FBF /* PanicARKitResources.bundle in Resources */,
+				2B55041E1AE6B3B700C7257E /* PanicARKitResources.bundle in Resources */,
 				2B1F0EDD1ACDA5FC00BBCBCA /* LaunchScreen.xib in Resources */,
 				A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */,
 				A23B70D21AD66FFF00833A6B /* NormalMapView.xib in Resources */,
