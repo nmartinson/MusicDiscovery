@@ -35,9 +35,12 @@ class PlaylistSongController: UIViewController, UITableViewDelegate, UITableView
             else
             {
                 let listpage = (playlist as! SPTPlaylistSnapshot).firstTrackPage
-                self.songList = listpage.items as! [SPTPlaylistTrack]
+                if listpage.items != nil
+                {
+                    self.songList = listpage.items as! [SPTPlaylistTrack]
+                    self.songTableView.reloadData()
+                }
             }
-            self.songTableView.reloadData()
         })
     }
     
