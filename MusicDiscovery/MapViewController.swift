@@ -126,7 +126,8 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         
         conicPolygon.map = nil
         conicPolygon = GMSPolygon(path: conicPath)
-        conicPolygon.fillColor = UIColor(red:0.25, green:0, blue:0, alpha:0.05)
+//        conicPolygon.fillColor = UIColor(red:0.25, green:0, blue:0, alpha:0.05)
+        conicPolygon.fillColor = UIColor(red: 0.235, green: 0.0, blue: 0.255, alpha:0.30)
         conicPolygon.strokeColor = UIColor.blackColor()
         conicPolygon.strokeWidth = 2
         conicPolygon.map = mapView
