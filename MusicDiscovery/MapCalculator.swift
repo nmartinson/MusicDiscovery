@@ -41,45 +41,7 @@ class MapCalculator {
         startLong = loc2D.longitude * toRadians as Double
     }
     
-//    func initCloseLeftRadianValues() {
-//        loc2D = locHandler.location2D
-//        
-//        distance = 750
-//        rawBearing = locHandler.bearing
-//        bearing = rawBearing.magneticHeading * toRadians as Double
-//        startLat  = loc2D.latitude * toRadians as Double
-//        startLong = loc2D.longitude * toRadians as Double
-//    }
-//
-//    func initCloseRightRadianValues() {
-//        loc2D = locHandler.location2D
-//        
-//        distance = 750
-//        rawBearing = locHandler.bearing
-//        bearing = rawBearing.magneticHeading * toRadians as Double
-//        startLat  = loc2D.latitude * toRadians as Double
-//        startLong = loc2D.longitude * toRadians as Double
-//    }
-//    
-//    func initFarLeftRadianValues() {
-//        loc2D = locHandler.location2D
-//        
-//        distance = 1000
-//        rawBearing = locHandler.bearing
-//        bearing = rawBearing.magneticHeading * toRadians as Double
-//        startLat  = loc2D.latitude * toRadians as Double
-//        startLong = loc2D.longitude * toRadians as Double
-//    }
-//    
-//    func initFarRightRadianValues() {
-//        loc2D = locHandler.location2D
-//        
-//        distance = 1000
-//        rawBearing = locHandler.bearing
-//        bearing = rawBearing.magneticHeading * toRadians as Double
-//        startLat  = loc2D.latitude * toRadians as Double
-//        startLong = loc2D.longitude * toRadians as Double
-//    }
+
     
     
     func calculateForwardPoints () -> [CLLocationCoordinate2D] {
@@ -91,7 +53,7 @@ class MapCalculator {
         
         var totalPoints = Double(numPoints)
         
-        for pointNum in 0..<numPoints {
+        for pointNum in 0...numPoints {
             var angleNum = Double(pointNum)
             var pointBearing = bearing - sweepAngle/2 * toRadians
             
@@ -125,5 +87,7 @@ class MapCalculator {
 //        pointArr2D.append(loc2D)
         return pointArr2D
     }
+    
+//  GPS equation reference:
 //    http://www.movable-type.co.uk/scripts/latlong.html
 }
