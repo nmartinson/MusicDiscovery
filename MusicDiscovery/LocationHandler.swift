@@ -154,18 +154,18 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     func locationManager(manager: CLLocationManager!,
         didChangeAuthorizationStatus status: CLAuthorizationStatus)
     {
-//        var status = CLLocationManager.authorizationStatus()
         switch status {
         case .NotDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
+//            locationManager.requestWhenInUseAuthorization()
             println("authorizationSatus is .NotDetermined at initLocationManager()")
         case .Restricted:
             println("authorizationSatus is .Restricted at initLocationManager()")
         case .Denied:
             println("authorizationSatus is .Denied at initLocationManager()")
+            ////Use function in protocol to push the alert about location settings
             var locServicesAlertController: UIAlertController = buildTurnOnLocationAlertController()
             locationHandlerDelegate.getAndPushAlert(locServicesAlertController)
-            //use protocol to push the alert
         case .AuthorizedAlways:
             println("authorizationSatus is .AuthorizedAlways at initLocationManager()")
         case .AuthorizedWhenInUse:
