@@ -79,4 +79,9 @@ class User
     {
         return artistName
     }
+    
+    func getImageURL() -> String?
+    {
+        return imageURL
+    }
 }

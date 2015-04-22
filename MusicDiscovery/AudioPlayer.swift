@@ -46,6 +46,7 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
                 println(self.player.isPlaying)
             }
         })
+
     }
     
     /**********************************************************************************************************

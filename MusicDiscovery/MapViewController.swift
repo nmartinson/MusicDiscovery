@@ -63,9 +63,9 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     }
     
     func updateMapViewToCamera () -> Void {
-        println("Updating map view")
+//        println("Updating map view")
         if locHandler.location2D != nil && locHandler.bearing != nil {
-            println("************Bearing is not nil***************")
+//            println("************Bearing is not nil***************")
             var magneticBearing = locHandler.bearing.magneticHeading
             var location2D = locHandler.location2D
             var mapZoom = self.mapView.camera.zoom
@@ -76,9 +76,9 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     }
     
     func updateMapViewToBearing () -> Void {
-        println("Updating map view")
+//        println("Updating map view")
         if locHandler.bearing != nil {
-            println("************Bearing is not nil***************")
+//            println("************Bearing is not nil***************")
             var magneticBearing = locHandler.bearing.magneticHeading
             self.mapView.animateToBearing(magneticBearing)
             drawCone()
@@ -115,7 +115,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         
         var points2D:[CLLocationCoordinate2D] = calculator.calculateForwardPoints()
         
-        println(points2D)
+//        println(points2D)
         
         var conicPath = GMSMutablePath()
         for point in points2D {
