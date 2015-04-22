@@ -23,7 +23,6 @@ class PoiSongLabel: PARPoiLabel
         {
             println("awake")
             poiTemplate = NSBundle.mainBundle().loadNibNamed("PoiLabelSong", owner: self, options: nil).first as? PoiSongLabelTemplate
-            poiTemplate!.songLabel.text = "HEEEEEY"
             super.labelView = poiTemplate
         }
 }
