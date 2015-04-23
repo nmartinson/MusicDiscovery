@@ -66,11 +66,12 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         println("Updating map view")
         if locHandler.location2D != nil && locHandler.bearing != nil {
             println("************Bearing is not nil***************")
-            var magneticBearing = locHandler.bearing.magneticHeading
+//            var updateBearing = locHandler.bearing.magneticHeading
+            var updateBearing = locHandler.bearing.trueHeading
             var location2D = locHandler.location2D
             var mapZoom = self.mapView.camera.zoom
             println("Zoom: \(mapZoom)")
-            mapView.camera = GMSCameraPosition(target: location2D, zoom: mapZoom, bearing: magneticBearing, viewingAngle: 0)
+            mapView.camera = GMSCameraPosition(target: location2D, zoom: mapZoom, bearing: updateBearing, viewingAngle: 0)
 //                mapView.mapType = currentMapType
             drawCone()
         }
@@ -80,8 +81,9 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         println("Updating map view")
         if locHandler.bearing != nil {
             println("************Bearing is not nil***************")
-            var magneticBearing = locHandler.bearing.magneticHeading
-            self.mapView.animateToBearing(magneticBearing)
+//            var updateBearing = locHandler.bearing.magneticHeading
+            var updateBearing = locHandler.bearing.trueHeading
+            self.mapView.animateToBearing(updateBearing)
             drawCone()
         }
     }
@@ -98,8 +100,12 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
             if locHandler.location2D != nil {
                 var initBearing:CLLocationDirection = 0
                 if locHandler.bearing != nil {
-                    initBearing = locHandler.bearing.magneticHeading
+//                    initBearing = locHandler.bearing.magneticHeading
+                    initBearing = locHandler.bearing.trueHeading
                 }
+                var mapInsets = UIEdgeInsetsMake(450.0, 0.0, 0.0, 0.0)
+                mapView.padding = mapInsets
+                
                 mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 15.5, bearing: initBearing, viewingAngle: 0)
                 mapView.mapType = currentMapType
                 mapView.settings.scrollGestures = false

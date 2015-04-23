@@ -36,7 +36,8 @@ class MapCalculator {
     
         distance = 1000
         rawBearing = locHandler.bearing
-        bearing = rawBearing.magneticHeading * toRadians as Double
+//        bearing = rawBearing.magneticHeading * toRadians as Double
+        bearing = rawBearing.trueHeading * toRadians as Double
         startLat  = loc2D.latitude * toRadians as Double
         startLong = loc2D.longitude * toRadians as Double
     }
