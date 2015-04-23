@@ -109,7 +109,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
             
         if mapViewExists  == true {
             if mapUpdateDelgate.mapSetup == true {
-                println("Should be updating map view from locationhandler")
+                //println("Should be updating map view from locationhandler")
                 mapUpdateDelgate.updateMapViewToBearing()
             }
         }
