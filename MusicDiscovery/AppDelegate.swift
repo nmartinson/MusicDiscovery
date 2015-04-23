@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
         SPTAuth.defaultInstance().hasTokenRefreshService
         SPTAuth.defaultInstance().requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthUserReadPrivateScope]
 
-        
         return true
     }
     
