@@ -35,6 +35,7 @@
 		2BE7DFDE1AE6CCA10089CF6A /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */; };
 		2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */; };
 		A213765E1ADF6DA300DCD745 /* MapCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A213765D1ADF6DA300DCD745 /* MapCalculator.swift */; };
+		A22D03BC1AE87CA800DE5A73 /* HTTP_Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D03BB1AE87CA800DE5A73 /* HTTP_Delegate.swift */; };
 		A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */; };
 		A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */; };
 		A23B70D01AD66FE000833A6B /* SatteliteMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */; };
@@ -122,6 +123,7 @@
 		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = MusicDiscovery/AudioPlayer.swift; sourceTree = "<group>"; };
 		9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicDiscovery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A213765D1ADF6DA300DCD745 /* MapCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCalculator.swift; sourceTree = "<group>"; };
+		A22D03BB1AE87CA800DE5A73 /* HTTP_Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP_Delegate.swift; sourceTree = "<group>"; };
 		A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapsTestStoryboard.storyboard; sourceTree = "<group>"; };
 		A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HybridMapView.xib; sourceTree = "<group>"; };
 		A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SatteliteMapView.xib; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				A2E7BE0C1AD458120087094C /* GooglePlace.swift */,
 				A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */,
 				A213765D1ADF6DA300DCD745 /* MapCalculator.swift */,
+				A22D03BB1AE87CA800DE5A73 /* HTTP_Delegate.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 			files = (
 				2BC5881B1ADD66C000F82C76 /* MusicPlayer.swift in Sources */,
 				A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */,
+				A22D03BC1AE87CA800DE5A73 /* HTTP_Delegate.swift in Sources */,
 				A23B70D41AD6784600833A6B /* MapHandler.swift in Sources */,
 				2B5504251AE6BC2200C7257E /* BluemixCommunication.swift in Sources */,
 				2B19580C1ADEEC9400F55C77 /* CameraViewController.swift in Sources */,

@@ -16,6 +16,8 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     
     var conicPolygon = GMSPolygon()
     
+    var httpDelegate:HTTP_Delegate = HTTP_Delegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,6 +32,12 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         notifyLocationHandler()
         
         mapTimerInit()
+        
+        httpDelegate.getUsersInProximity("nil", radius: "1000") {
+            (results: String) in
+                println("results: \(results)")
+//                self.jsonCommander.parseJsonString(results)
+        }
     }
     
     func notifyLocationHandler () -> Void {
@@ -65,12 +73,12 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     func updateMapViewToCamera () -> Void {
 //        println("Updating map view")
         if locHandler.location2D != nil && locHandler.bearing != nil {
-            println("************Bearing is not nil***************")
+            //println("************Bearing is not nil***************")
 //            var updateBearing = locHandler.bearing.magneticHeading
             var updateBearing = locHandler.bearing.trueHeading
             var location2D = locHandler.location2D
             var mapZoom = self.mapView.camera.zoom
-            println("Zoom: \(mapZoom)")
+            //println("Zoom: \(mapZoom)")
             mapView.camera = GMSCameraPosition(target: location2D, zoom: mapZoom, bearing: updateBearing, viewingAngle: 0)
 //                mapView.mapType = currentMapType
             drawCone()
@@ -80,7 +88,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     func updateMapViewToBearing () -> Void {
 //        println("Updating map view")
         if locHandler.bearing != nil {
-            println("************Bearing is not nil***************")
+            //println("************Bearing is not nil***************")
 //            var updateBearing = locHandler.bearing.magneticHeading
             var updateBearing = locHandler.bearing.trueHeading
             self.mapView.animateToBearing(updateBearing)
