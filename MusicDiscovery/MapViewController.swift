@@ -63,7 +63,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     }
     
     func updateMapViewToCamera () -> Void {
-        println("Updating map view")
+//        println("Updating map view")
         if locHandler.location2D != nil && locHandler.bearing != nil {
             println("************Bearing is not nil***************")
 //            var updateBearing = locHandler.bearing.magneticHeading
@@ -78,7 +78,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     }
     
     func updateMapViewToBearing () -> Void {
-        println("Updating map view")
+//        println("Updating map view")
         if locHandler.bearing != nil {
             println("************Bearing is not nil***************")
 //            var updateBearing = locHandler.bearing.magneticHeading

@@ -16,18 +16,27 @@ class User
     private var userID:String!
     private var songName:String?
     private var artistName:String?
+    private var imageURL:String?
     
-    init(realName:String, userID:String, profilePicture: UIImage, currentSongURL: NSURL)
+    init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL)
     {
         self.realName = realName
         self.userID = userID
-        self.profilePicture = profilePicture
+        self.imageURL = profilePicture
         self.currentSongURL = currentSongURL
     }
     
-    init(realName:String, currentSongURL: NSURL)
+    init(realName:String, userID:String, profilePicture: String)
     {
         self.realName = realName
+        self.userID = userID
+        self.imageURL = profilePicture
+    }
+    
+    init(realName:String, userID:String, currentSongURL: NSURL)
+    {
+        self.realName = realName
+        self.userID = userID
         self.currentSongURL = currentSongURL
     }
     
@@ -69,5 +78,10 @@ class User
     func getArtistName() -> String?
     {
         return artistName
+    }
+    
+    func getImageURL() -> String?
+    {
+        return imageURL
     }
 }

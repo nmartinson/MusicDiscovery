@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class CameraViewController: PARViewController, PARControllerDelegate
 {
@@ -116,9 +117,45 @@ class CameraViewController: PARViewController, PARControllerDelegate
     *********************************************************************************************************/
     func createARPoiObjects()
     {
-        let newPoi = PARPoi()
         let poiLabel = PARPoiLabel(title: "Dom", theDescription: "Regensburger Dom", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelWithImage", atLocation: CLLocation(latitude: 49.019512, longitude:  12.097709))
+        poiLabel.image = UIImage(named: "machu")
+        
+        
+        
+        let user = (UIApplication.sharedApplication().delegate as! AppDelegate).currentUser
+        let poiSong = PoiSongLabel(title: "Test", theDescription: "hello", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelSong", atLocation: CLLocation(latitude: 41.661100, longitude:  -91.536104))
+        poiSong.poiTemplate?.userName.text = user?.getRealName()
+        
+        if AudioPlayer.sharedInstance.player.currentTrackURI != nil
+        {
+            SpotifyCommunication().getSongInfo(AudioPlayer.sharedInstance.player.currentTrackURI)
+            {
+                (album: SPTPartialAlbum) in
+                Alamofire.request(.GET, album.largestCover.imageURL, parameters: nil).responseImage { (_, _, image, error) -> Void in
+                    if error == nil
+                    {
+                        poiSong.poiTemplate?.image.image = image
+                    }
+                }
+            }
+        }
+        
+        if user?.getImageURL() != nil
+        {
+            Alamofire.request(.GET, user!.getImageURL()!, parameters: nil).responseImage { (_, _, image, error) -> Void in
+                if error == nil
+                {
+                    poiSong.poiTemplate?.profilePic.image = image
+                }
+            }
+        }
+        
+        
+        
+         
+        
         PARController.sharedARController().addObject(poiLabel)
+        PARController.sharedARController().addObject(poiSong)
     }
     
     

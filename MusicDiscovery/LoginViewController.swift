@@ -30,7 +30,6 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
             // convert the stored session object back to SPTSession
             let sessionData = sessionObj as! NSData
             let session = NSKeyedUnarchiver.unarchiveObjectWithData(sessionData) as! SPTSession
-            println(session)
             // check if the retrieved session is still valid and that we can refresh the token
             if !session.isValid() && auth.hasTokenRefreshService
             {
@@ -56,6 +55,16 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
                     println("player login error \(error)")
                     
                 })
+                
+                SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
+                    if error == nil
+                    {
+                        let loggedUser = user as! SPTUser
+                        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                        appDelegate.currentUser = User(realName: loggedUser.displayName , userID: loggedUser.canonicalUserName, profilePicture: "\(loggedUser.largestImage.imageURL)")
+                    }
+                })
+
                 performSegueWithIdentifier("LoggedInSegue", sender: self)
             }
         }
@@ -103,8 +112,31 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         })
 
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        appDelegate.currentUser = User(
-        performSegueWithIdentifier("LoggedInSegue", sender: self)
+        let lat = LocationHandler.sharedInstance.latitude
+        let lon = LocationHandler.sharedInstance.longitude
+        
+        SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
+            if error == nil
+            {
+                let loggedUser = user as! SPTUser
+                let profilePic = "\(loggedUser.largestImage.imageURL)"
+                let realName = loggedUser.displayName
+                let userID = loggedUser.canonicalUserName
+                println(profilePic)
+                println(realName)
+                println(userID)
+                println(lat)
+                println(lon)
+                
+                appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
+                BluemixCommunication().createNewUser(userID, name: realName, lat: "", lon: "", profilePicture: profilePic, completion: { (users) -> Void in
+
+                })
+            }
+        })
+        
+        self.performSegueWithIdentifier("LoggedInSegue", sender: self)
+
     }
     
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!)

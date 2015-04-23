@@ -20,13 +20,19 @@
 		2B4856D31ADFEFBA000F9FBF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */; };
 		2B4856D51ADFEFD6000F9FBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */; };
 		2B4856D71ADFF37C000F9FBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856D61ADFF37C000F9FBF /* MapKit.framework */; };
-		2B4856E11AE0183F000F9FBF /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4856E01AE0183F000F9FBF /* PanicARKit.framework */; };
-		2B4856E31AE0559A000F9FBF /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */; };
+		2B4A88761AE71D410010F2D4 /* PoiSongLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A88751AE71D410010F2D4 /* PoiSongLabel.swift */; };
+		2B4A887A1AE71DA90010F2D4 /* PoiLabelSong.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B4A88791AE71DA90010F2D4 /* PoiLabelSong.xib */; };
+		2B4A887C1AE723FA0010F2D4 /* PoiSongLabelTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A887B1AE723FA0010F2D4 /* PoiSongLabelTemplate.swift */; };
+		2B4A88831AE735D90010F2D4 /* SpotifyCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4A88821AE735D90010F2D4 /* SpotifyCommunication.swift */; };
+		2B5504201AE6B40700C7257E /* PanicARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B55041F1AE6B40700C7257E /* PanicARKit.framework */; };
+		2B5504251AE6BC2200C7257E /* BluemixCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5504241AE6BC2200C7257E /* BluemixCommunication.swift */; };
 		2B57D37C1ADD6FA000AAE553 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */; };
 		2B57D37E1ADD776900AAE553 /* SpotifyWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */; };
 		2B676D1B1AD8256D0048E09C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B676D1A1AD8256D0048E09C /* User.swift */; };
 		2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85BF811AD6241D00F62893 /* ProfileViewController.swift */; };
 		2BC5881B1ADD66C000F82C76 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5881A1ADD66C000F82C76 /* MusicPlayer.swift */; };
+		2BE7DFDD1AE6CCA10089CF6A /* PanicARKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2B55041F1AE6B40700C7257E /* PanicARKit.framework */; };
+		2BE7DFDE1AE6CCA10089CF6A /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */; };
 		2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */; };
 		A213765E1ADF6DA300DCD745 /* MapCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A213765D1ADF6DA300DCD745 /* MapCalculator.swift */; };
 		A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */; };
@@ -69,6 +75,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2B5504181AE6B22100C7257E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2B1958091ADD7F6800F55C77 /* PlaylistSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistSongViewController.swift; sourceTree = "<group>"; };
 		2B19580B1ADEEC9400F55C77 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -88,14 +107,19 @@
 		2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2B4856D61ADFF37C000F9FBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		2B4856E01AE0183F000F9FBF /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanicARKit.framework; path = ../Xcode/Libraries/PanicAR/Framework/PanicARKit.framework; sourceTree = "<group>"; };
-		2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PanicARKitResources.bundle; sourceTree = "<group>"; };
+		2B4A88751AE71D410010F2D4 /* PoiSongLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoiSongLabel.swift; sourceTree = "<group>"; };
+		2B4A88791AE71DA90010F2D4 /* PoiLabelSong.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoiLabelSong.xib; sourceTree = "<group>"; };
+		2B4A887B1AE723FA0010F2D4 /* PoiSongLabelTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoiSongLabelTemplate.swift; sourceTree = "<group>"; };
+		2B4A88821AE735D90010F2D4 /* SpotifyCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyCommunication.swift; sourceTree = "<group>"; };
+		2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PanicARKitResources.bundle; sourceTree = "<group>"; };
+		2B55041F1AE6B40700C7257E /* PanicARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PanicARKit.framework; sourceTree = "<group>"; };
+		2B5504241AE6BC2200C7257E /* BluemixCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluemixCommunication.swift; sourceTree = "<group>"; };
 		2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyWebAPI.swift; sourceTree = "<group>"; };
 		2B676D1A1AD8256D0048E09C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2B85BF811AD6241D00F62893 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2BC5881A1ADD66C000F82C76 /* MusicPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
-		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = MusicDiscovery/AudioPlayer.swift; sourceTree = "<group>"; };
 		9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicDiscovery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A213765D1ADF6DA300DCD745 /* MapCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCalculator.swift; sourceTree = "<group>"; };
 		A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapsTestStoryboard.storyboard; sourceTree = "<group>"; };
@@ -131,8 +155,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B4856E11AE0183F000F9FBF /* PanicARKit.framework in Frameworks */,
 				2B4856D71ADFF37C000F9FBF /* MapKit.framework in Frameworks */,
+				2B5504201AE6B40700C7257E /* PanicARKit.framework in Frameworks */,
 				2B4856D51ADFEFD6000F9FBF /* CoreGraphics.framework in Frameworks */,
 				2B4856D31ADFEFBA000F9FBF /* CoreMotion.framework in Frameworks */,
 				A2E7BDFD1AD452A80087094C /* AVFoundation.framework in Frameworks */,
@@ -192,11 +216,14 @@
 				A23B70C71AD6670200833A6B /* StoryBoards */,
 				A2E7BDE91AD451080087094C /* Models */,
 				A2E7BE121AD458630087094C /* ViewControllers */,
+				2B4A88811AE735590010F2D4 /* MusicControllers */,
+				2B4A88801AE7353F0010F2D4 /* PoiSongLabel */,
 				2B1F0ED91ACDA5FC00BBCBCA /* Images.xcassets */,
 				2B1F0EDB1ACDA5FC00BBCBCA /* LaunchScreen.xib */,
 				2B1F0ED01ACDA5FC00BBCBCA /* Supporting Files */,
 				2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */,
 				2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */,
+				2B5504241AE6BC2200C7257E /* BluemixCommunication.swift */,
 			);
 			path = MusicDiscovery;
 			sourceTree = "<group>";
@@ -226,6 +253,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2B4A88801AE7353F0010F2D4 /* PoiSongLabel */ = {
+			isa = PBXGroup;
+			children = (
+				2B4A88751AE71D410010F2D4 /* PoiSongLabel.swift */,
+				2B4A887B1AE723FA0010F2D4 /* PoiSongLabelTemplate.swift */,
+				2B4A88791AE71DA90010F2D4 /* PoiLabelSong.xib */,
+			);
+			name = PoiSongLabel;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		2B4A88811AE735590010F2D4 /* MusicControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */,
+				2B1958091ADD7F6800F55C77 /* PlaylistSongViewController.swift */,
+				2BC5881A1ADD66C000F82C76 /* MusicPlayer.swift */,
+				2B4A88821AE735D90010F2D4 /* SpotifyCommunication.swift */,
+			);
+			name = MusicControllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		2D351D4808CE636B1C2758E9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,8 +288,6 @@
 		86B3AEDF0A006C15B64CAC48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B4856E21AE0559A000F9FBF /* PanicARKitResources.bundle */,
-				2B4856E01AE0183F000F9FBF /* PanicARKit.framework */,
 				2B4856D61ADFF37C000F9FBF /* MapKit.framework */,
 				2B4856D41ADFEFD6000F9FBF /* CoreGraphics.framework */,
 				2B4856D21ADFEFBA000F9FBF /* CoreMotion.framework */,
@@ -272,7 +320,6 @@
 			children = (
 				A23B70D31AD6784600833A6B /* MapHandler.swift */,
 				2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */,
-				2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */,
 				2B676D1A1AD8256D0048E09C /* User.swift */,
 				A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */,
 				A2E7BE0C1AD458120087094C /* GooglePlace.swift */,
@@ -285,6 +332,8 @@
 		A2E7BDEA1AD451740087094C /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				2B55041F1AE6B40700C7257E /* PanicARKit.framework */,
+				2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */,
 				A2E7BE091AD452D20087094C /* Google Maps */,
 				2B1F0EF21ACDA65D00BBCBCA /* Spotify.framework */,
 			);
@@ -316,8 +365,6 @@
 			isa = PBXGroup;
 			children = (
 				2B1F0ED41ACDA5FC00BBCBCA /* ViewController.swift */,
-				2B1958091ADD7F6800F55C77 /* PlaylistSongViewController.swift */,
-				2BC5881A1ADD66C000F82C76 /* MusicPlayer.swift */,
 				2B85BF811AD6241D00F62893 /* ProfileViewController.swift */,
 				2B1F0F031ACE23B900BBCBCA /* LoginViewController.swift */,
 				A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */,
@@ -341,6 +388,7 @@
 				2B1F0ECB1ACDA5FC00BBCBCA /* Resources */,
 				F3E419C239221C145989A5E0 /* Embed Pods Frameworks */,
 				A18588C064B68243A027DA92 /* Copy Pods Resources */,
+				2B5504181AE6B22100C7257E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -412,9 +460,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE7DFDD1AE6CCA10089CF6A /* PanicARKit.framework in Resources */,
+				2BE7DFDE1AE6CCA10089CF6A /* PanicARKitResources.bundle in Resources */,
 				2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */,
 				A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */,
-				2B4856E31AE0559A000F9FBF /* PanicARKitResources.bundle in Resources */,
+				2B4A887A1AE71DA90010F2D4 /* PoiLabelSong.xib in Resources */,
 				2B1F0EDD1ACDA5FC00BBCBCA /* LaunchScreen.xib in Resources */,
 				A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */,
 				A23B70D21AD66FFF00833A6B /* NormalMapView.xib in Resources */,
@@ -490,17 +540,21 @@
 				2BC5881B1ADD66C000F82C76 /* MusicPlayer.swift in Sources */,
 				A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */,
 				A23B70D41AD6784600833A6B /* MapHandler.swift in Sources */,
+				2B5504251AE6BC2200C7257E /* BluemixCommunication.swift in Sources */,
 				2B19580C1ADEEC9400F55C77 /* CameraViewController.swift in Sources */,
 				A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
 				2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */,
 				2B57D37C1ADD6FA000AAE553 /* SwiftyJSON.swift in Sources */,
+				2B4A887C1AE723FA0010F2D4 /* PoiSongLabelTemplate.swift in Sources */,
 				2B19580A1ADD7F6800F55C77 /* PlaylistSongViewController.swift in Sources */,
 				A213765E1ADF6DA300DCD745 /* MapCalculator.swift in Sources */,
 				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,
 				2B1F0ED51ACDA5FC00BBCBCA /* ViewController.swift in Sources */,
+				2B4A88761AE71D410010F2D4 /* PoiSongLabel.swift in Sources */,
 				2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */,
 				2B57D37E1ADD776900AAE553 /* SpotifyWebAPI.swift in Sources */,
 				2B1F0ED31ACDA5FC00BBCBCA /* AppDelegate.swift in Sources */,
+				2B4A88831AE735D90010F2D4 /* SpotifyCommunication.swift in Sources */,
 				2B676D1B1AD8256D0048E09C /* User.swift in Sources */,
 				A2E7BE0D1AD458120087094C /* GooglePlace.swift in Sources */,
 				A2E7BE101AD458570087094C /* MapViewController.swift in Sources */,
