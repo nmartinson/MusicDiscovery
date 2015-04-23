@@ -16,6 +16,8 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     
     var conicPolygon = GMSPolygon()
     
+    var httpDelegate:HTTP_Delegate = HTTP_Delegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,6 +32,12 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         notifyLocationHandler()
         
         mapTimerInit()
+        
+        httpDelegate.getUsersInProximity("nil", radius: "1000") {
+            (results: String) in
+                println("results: \(results)")
+//                self.jsonCommander.parseJsonString(results)
+        }
     }
     
     func notifyLocationHandler () -> Void {
@@ -65,11 +73,13 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     func updateMapViewToCamera () -> Void {
 //        println("Updating map view")
         if locHandler.location2D != nil && locHandler.bearing != nil {
-//            println("************Bearing is not nil***************")
-            var magneticBearing = locHandler.bearing.magneticHeading
+            //println("************Bearing is not nil***************")
+//            var updateBearing = locHandler.bearing.magneticHeading
+            var updateBearing = locHandler.bearing.trueHeading
             var location2D = locHandler.location2D
             var mapZoom = self.mapView.camera.zoom
-            mapView.camera = GMSCameraPosition(target: location2D, zoom: mapZoom, bearing: magneticBearing, viewingAngle: 0)
+            //println("Zoom: \(mapZoom)")
+            mapView.camera = GMSCameraPosition(target: location2D, zoom: mapZoom, bearing: updateBearing, viewingAngle: 0)
 //                mapView.mapType = currentMapType
             drawCone()
         }
@@ -78,26 +88,36 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     func updateMapViewToBearing () -> Void {
 //        println("Updating map view")
         if locHandler.bearing != nil {
-//            println("************Bearing is not nil***************")
-            var magneticBearing = locHandler.bearing.magneticHeading
-            self.mapView.animateToBearing(magneticBearing)
+            //println("************Bearing is not nil***************")
+//            var updateBearing = locHandler.bearing.magneticHeading
+            var updateBearing = locHandler.bearing.trueHeading
+            self.mapView.animateToBearing(updateBearing)
             drawCone()
         }
     }
     
     func updateMapViewTarget() -> Void {
-        var cameraTargetUpdate = GMSCameraUpdate.setTarget(locHandler.location2D)
-        self.mapView.animateWithCameraUpdate(cameraTargetUpdate)
-        drawCone()
+//        var cameraTargetUpdate = GMSCameraUpdate.setTarget(locHandler.location2D)
+//        self.mapView.animateWithCameraUpdate(cameraTargetUpdate)
+//        drawCone()
     }
     
     func setMapLocation () -> Void {
         
         if mapView != nil {
             if locHandler.location2D != nil {
-                mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 50, bearing: 0, viewingAngle: 0)
+                var initBearing:CLLocationDirection = 0
+                if locHandler.bearing != nil {
+//                    initBearing = locHandler.bearing.magneticHeading
+                    initBearing = locHandler.bearing.trueHeading
+                }
+                var mapInsets = UIEdgeInsetsMake(450.0, 0.0, 0.0, 0.0)
+                mapView.padding = mapInsets
+                
+                mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 15.5, bearing: initBearing, viewingAngle: 0)
                 mapView.mapType = currentMapType
                 mapView.settings.scrollGestures = false
+                
     //            drawPolygon()
     //            calculator.calculatePoint()
                 //stop the timer now that the map is setup
@@ -119,12 +139,15 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         
         var conicPath = GMSMutablePath()
         for point in points2D {
+//            println(point.latitude)
+//            println(point.longitude)
             conicPath.addCoordinate(point)
         }
         
         conicPolygon.map = nil
         conicPolygon = GMSPolygon(path: conicPath)
-        conicPolygon.fillColor = UIColor(red:0.25, green:0, blue:0, alpha:0.05)
+//        conicPolygon.fillColor = UIColor(red:0.25, green:0, blue:0, alpha:0.05)
+        conicPolygon.fillColor = UIColor(red: 0.235, green: 0.0, blue: 0.255, alpha:0.30)
         conicPolygon.strokeColor = UIColor.blackColor()
         conicPolygon.strokeWidth = 2
         conicPolygon.map = mapView
@@ -157,7 +180,6 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         polygon.strokeColor = UIColor.blackColor()
         polygon.strokeWidth = 2
         polygon.map = mapView
-
     }
     
 

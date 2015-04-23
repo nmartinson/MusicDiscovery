@@ -10,10 +10,10 @@ import Foundation
 import Darwin
 
 class MapCalculator {
-    let toDegrees = (180/M_PI)
-    let toRadians = (M_PI/180)
+    let toDegrees:Double = (180/M_PI)
+    let toRadians:Double = (M_PI/180)
     
-    let numPoints:Int = 10
+    let numPoints:Int = 20
     let sweepAngle:Double = 90.0
     
     var closeAngle:Double = 45.0
@@ -34,52 +34,15 @@ class MapCalculator {
     func initRadianValues() {
         loc2D = locHandler.location2D
     
-        distance = 500
+        distance = 1000
         rawBearing = locHandler.bearing
-        bearing = rawBearing.magneticHeading * toRadians as Double
+//        bearing = rawBearing.magneticHeading * toRadians as Double
+        bearing = rawBearing.trueHeading * toRadians as Double
         startLat  = loc2D.latitude * toRadians as Double
         startLong = loc2D.longitude * toRadians as Double
     }
     
-//    func initCloseLeftRadianValues() {
-//        loc2D = locHandler.location2D
-//        
-//        distance = 750
-//        rawBearing = locHandler.bearing
-//        bearing = rawBearing.magneticHeading * toRadians as Double
-//        startLat  = loc2D.latitude * toRadians as Double
-//        startLong = loc2D.longitude * toRadians as Double
-//    }
-//
-//    func initCloseRightRadianValues() {
-//        loc2D = locHandler.location2D
-//        
-//        distance = 750
-//        rawBearing = locHandler.bearing
-//        bearing = rawBearing.magneticHeading * toRadians as Double
-//        startLat  = loc2D.latitude * toRadians as Double
-//        startLong = loc2D.longitude * toRadians as Double
-//    }
-//    
-//    func initFarLeftRadianValues() {
-//        loc2D = locHandler.location2D
-//        
-//        distance = 1000
-//        rawBearing = locHandler.bearing
-//        bearing = rawBearing.magneticHeading * toRadians as Double
-//        startLat  = loc2D.latitude * toRadians as Double
-//        startLong = loc2D.longitude * toRadians as Double
-//    }
-//    
-//    func initFarRightRadianValues() {
-//        loc2D = locHandler.location2D
-//        
-//        distance = 1000
-//        rawBearing = locHandler.bearing
-//        bearing = rawBearing.magneticHeading * toRadians as Double
-//        startLat  = loc2D.latitude * toRadians as Double
-//        startLong = loc2D.longitude * toRadians as Double
-//    }
+
     
     
     func calculateForwardPoints () -> [CLLocationCoordinate2D] {
@@ -91,9 +54,9 @@ class MapCalculator {
         
         var totalPoints = Double(numPoints)
         
-        for pointNum in 0..<numPoints {
+        for pointNum in 0...numPoints {
             var angleNum = Double(pointNum)
-            bearing = bearing - sweepAngle/2 * toRadians
+            var pointBearing = bearing - sweepAngle/2 * toRadians
             
 //            println(bearing)
 //            println(angleNum)
@@ -101,29 +64,31 @@ class MapCalculator {
 //            println(toRadians)
 //            println(angleNum * (sweepAngle/angleNum) * toRadians)
             
-            bearing = bearing + angleNum * (sweepAngle/totalPoints) * toRadians
-//            println(bearing)
-            var endLat = asin( sin(startLat)*cos((distance/earthRad)) +  cos(startLat)*sin(distance/earthRad)*cos(bearing) )
-            var endLong = startLong + atan2(sin(bearing)*sin(distance/earthRad)*cos(startLat)
+            pointBearing = pointBearing + angleNum * (sweepAngle/totalPoints) * toRadians
+//            println(pointBearing)
+            var endLat = asin( sin(startLat)*cos((distance/earthRad)) +  cos(startLat)*sin(distance/earthRad)*cos(pointBearing) )
+            var endLong = startLong + atan2(sin(pointBearing)*sin(distance/earthRad)*cos(startLat)
                 , cos(distance/earthRad)-sin(startLat)*sin(endLat) )
             
 //            println("COMPUTED FORWARD POINT")
-//            println(bearing)
+//            println(pointBearing)
 //            println(startLat)
 //            println(startLong)
 //            println(endLat)
 //            println(endLong)
 //            
-//            println(bearing*toDegrees)
+//            println(pointBearing*toDegrees)
 //            println(startLat*toDegrees)
 //            println(startLong*toDegrees)
 //            println(endLat*toDegrees)
 //            println(endLong*toDegrees)
             
-            pointArr2D.append( CLLocationCoordinate2D(latitude: endLat * toDegrees, longitude: endLong * toDegrees) )
+            pointArr2D.append( CLLocationCoordinate2DMake(endLat * toDegrees, endLong * toDegrees) )
         }
 //        pointArr2D.append(loc2D)
         return pointArr2D
     }
+    
+//  GPS equation reference:
 //    http://www.movable-type.co.uk/scripts/latlong.html
 }
