@@ -42,7 +42,10 @@ class MusicPlayer:UIViewController, UITableViewDataSource, UITableViewDelegate
                 if playlists != nil
                 {
                     self.playlists = (playlists as? SPTPlaylistList)!
-                    self.playlistCount = self.playlists.items.count
+                    println(self.playlists.items)
+                    if self.playlists.items != nil {
+                        self.playlistCount = self.playlists.items.count
+                    }
                     self.playlistTableView.reloadData()
                 }
             }

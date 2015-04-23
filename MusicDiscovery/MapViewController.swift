@@ -3,7 +3,7 @@ import UIKit
 class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificationProtocol, LocationAlertProtocol {
     
     let locHandler = LocationHandler.sharedInstance
-    
+
     @IBOutlet weak var mapView: GMSMapView!
     
     var mapSetup: Bool = false
@@ -16,15 +16,21 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     
     var conicPolygon = GMSPolygon()
     
-    var httpDelegate:HTTP_Delegate = HTTP_Delegate()
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    var id: String!
+    
+    var shouldGetUsers = true
+    
+//    var httpDelegate:HTTP_Delegate = HTTP_Delegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         mapView.myLocationEnabled = true
-        mapView.settings.myLocationButton = true
         
         locHandler.locationHandlerDelegate = self
         locHandler.mapUpdateDelgate = self
@@ -33,11 +39,37 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         
         mapTimerInit()
         
-        httpDelegate.getUsersInProximity("nil", radius: "1000") {
-            (results: String) in
-                println("results: \(results)")
-//                self.jsonCommander.parseJsonString(results)
+        id = appDelegate.currentUser?.getUserID()
+        requestNearbyUsers()
+    }
+    
+    func markUsersOnMap(usersArr: [User]) {
+        println("Marking users")
+        for index in 0..<usersArr.count {
+            
+           var position = CLLocationCoordinate2DMake( usersArr[index].getLocation()["lattitude"]!.doubleValue , usersArr[index].getLocation()["longitude"]!.doubleValue )
+            
+            println("user position: \(position.latitude) \(position.longitude)")
+            
+            var userMarker = GMSMarker(position: position)
+            userMarker.map = self.mapView
         }
+    }
+    
+    func requestNearbyUsers() -> Bool {
+        if id != nil{
+            id = appDelegate.currentUser?.getUserID()
+            BluemixCommunication().getNearbyUsers(id!, completion: { (users) -> Void in
+                println("users:")
+                println("\t\(users)")
+                if !users.isEmpty {
+                    self.markUsersOnMap(users)
+                }
+            })
+        } else {
+            return false
+        }
+        return false
     }
     
     func notifyLocationHandler () -> Void {
@@ -59,13 +91,35 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     
     func mapTimerDidFire() -> Void {
         println("map timer fired")
+        
+        var mapSuccess = false
+//        var idSuccess: Bool!
+        var idSuccess = false
+        
         if !self.mapSetup {
             setMapLocation()
+            if self.mapSetup {
+                mapSuccess = true
+            } else {
+                mapSuccess = false
+            }
         } else {
+            mapSuccess = true
+        }
+        
+        if shouldGetUsers {
+            if requestNearbyUsers() {
+                idSuccess = true
+            } else {
+                idSuccess = false
+            }
+        }
+        
+        if mapSuccess && idSuccess {
             mapTimerKill()
         }
     }
-    
+
     func mapTimerKill() -> Void {
         self.mapTimer.invalidate()
     }

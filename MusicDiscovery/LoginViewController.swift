@@ -118,6 +118,8 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
             if error == nil
             {
+                println("No error SPTRequest.userInformationForUserInSession:")
+                
                 let loggedUser = user as! SPTUser
                 let profilePic = "\(loggedUser.largestImage.imageURL)"
                 let realName = loggedUser.displayName
@@ -132,6 +134,9 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
                 BluemixCommunication().createNewUser(userID, name: realName, lat: "", lon: "", profilePicture: profilePic, completion: { (users) -> Void in
 
                 })
+            } else {
+                println("Error SPTRequest.userInformationForUserInSession:")
+                println("\t\(error)")
             }
         })
         

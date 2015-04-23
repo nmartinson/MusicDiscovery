@@ -18,6 +18,24 @@ class User
     private var artistName:String?
     private var imageURL:String?
     
+    private var lattitude:String!
+    private var longitude:String!
+
+   
+    /************************************************************************************************************************************************
+    * Dillon
+    * Date: 4 - 22 - 2015
+    *************************************************************************************************************************************************/
+    init(userID:String, profilePicture: String, currentSongURL: NSURL, lattitude:String, longitude:String)
+    {
+        self.userID = userID
+        self.imageURL = profilePicture
+        self.currentSongURL = currentSongURL
+        
+        self.lattitude = lattitude
+        self.longitude = longitude
+    }
+    
     init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL)
     {
         self.realName = realName
@@ -83,5 +101,9 @@ class User
     func getImageURL() -> String?
     {
         return imageURL
+    }
+    
+    func getLocation() -> NSDictionary {
+        return ["longitude" : self.lattitude,  "lattitude" : self.longitude]
     }
 }

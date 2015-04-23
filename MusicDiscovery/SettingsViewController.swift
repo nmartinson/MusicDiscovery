@@ -88,7 +88,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, SPTAudioStr
                 }
             }
         }
-        
         return true
     }
     

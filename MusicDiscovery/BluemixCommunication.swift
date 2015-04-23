@@ -53,14 +53,42 @@ class BluemixCommunication
     ******************************************************************************************/
     func getNearbyUsers(userId: String, completion:(users: [User]) -> Void)
     {
-        let radius = "1000"
+        let radius = "1000000000000"
         var details:Dictionary<String,AnyObject>?
         details = ["error": "", "success": false]
         let params = ["action": getNearbyUsersAction, "userId": userId, "radius": radius]
         
         Alamofire.request(.GET, userURL, parameters: params).responseJSON { (_, response, rawJSON, _) -> Void in
             var json = JSON(rawJSON!)
-            completion(users: [])
+            println(response)
+            println("GET NEARBY USER\n\(rawJSON)")
+            
+            var usersArr = [User]()
+            if json.string != self.getNearbyUsersFailure {
+                var jsonArr = json.array!
+                
+                for index in 0..<jsonArr.count {
+
+                    let currentSong = NSURL(string: jsonArr[index]["currentSong"].stringValue)!
+                    let id = jsonArr[index]["id"].stringValue
+                    let lat = jsonArr[index]["lat"].stringValue
+                    let lon = jsonArr[index]["lon"].stringValue
+                    let profilePicURL = jsonArr[index]["profilePictureUrl"].stringValue
+                    let lastSongCSV = jsonArr[index]["lastSongsCSV"].stringValue
+                    
+                    println(currentSong)
+                    println(id)
+                    println(lat)
+                    println(lon)
+                    println(profilePicURL)
+                    println(lastSongCSV)
+
+                    var nearbyUser = User(userID:id, profilePicture: profilePicURL, currentSongURL: currentSong, lattitude: lat, longitude: lon)
+                    
+                    usersArr.append(nearbyUser)
+                }
+            }
+            completion(users: usersArr)
         }
     }
     
