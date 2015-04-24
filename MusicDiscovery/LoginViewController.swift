@@ -128,10 +128,19 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
                 println(lat)
                 println(lon)
                 
+                // check if user exists in database
                 appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
-                BluemixCommunication().createNewUser(userID, name: realName, lat: "", lon: "", profilePicture: profilePic, completion: { (users) -> Void in
-
+                BluemixCommunication().getUserInfo(userID, completion: { (user) -> Void in
+                    if user == nil
+                    {
+                        // if user doesn't exist, create an account
+                        BluemixCommunication().createNewUser(userID, name: realName, lat: "", lon: "", profilePicture: profilePic, completion: { (users) -> Void in
+                            
+                        })
+                    }
                 })
+                
+
             }
         })
         

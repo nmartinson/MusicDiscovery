@@ -30,7 +30,7 @@ class HTTP_Delegate {
     func getUsersInProximity(userId: String, radius: String, completion: (result:String) -> Void) {
         
         Alamofire.request(.GET, usersURL, parameters: ["userId":userId, "radius": radius, "action":"103"]).responseString { ( _, HTTP_Response, results_JSON_string, _)  -> Void in
-            println("getNotesInProximty HTTP response: \(HTTP_Response)")
+//            println("getNotesInProximty HTTP response: \(HTTP_Response)")
             completion(result: results_JSON_string!)
         }
     }

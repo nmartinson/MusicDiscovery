@@ -67,7 +67,7 @@ class BluemixCommunication
     /******************************************************************************************
     *
     ******************************************************************************************/
-    func getUserInfo(userId: String, completion:(users: [User]) -> Void)
+    func getUserInfo(userId: String, completion:(users: User?) -> Void)
     {
         var details:Dictionary<String,AnyObject>?
         details = ["error": "", "success": false]
@@ -85,9 +85,11 @@ class BluemixCommunication
                 let lon = json["lon"].stringValue
                 let profilePicURL = json["profilePictureUrl"].stringValue
                 let lastSongCSV = json["lastSongsCSV"].stringValue
+                let user = User(realName: "", userID: id, profilePicture: profilePicURL, currentSongURL: NSURL(string: currentSong)!)
+                completion(users: user)
             }
             
-            completion(users: [])
+            completion(users: nil)
         }
     }
     
