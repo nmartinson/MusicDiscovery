@@ -431,7 +431,7 @@
 				TargetAttributes = {
 					2B1F0ECC1ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = VFFSBUB24B;
+						DevelopmentTeam = B782ML49FF;
 					};
 					2B1F0EE11ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
@@ -733,7 +733,6 @@
 		2B1F0EF01ACDA5FC00BBCBCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -753,7 +752,6 @@
 		2B1F0EF11ACDA5FC00BBCBCA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

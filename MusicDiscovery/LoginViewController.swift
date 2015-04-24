@@ -60,8 +60,24 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
                     if error == nil
                     {
                         let loggedUser = user as! SPTUser
+                        var profilePic = ""
+                        var realName = ""
+                        var userID = ""
+                        if loggedUser.largestImage != nil
+                        {
+                            profilePic = "\(loggedUser.largestImage.imageURL)"
+                        }
+                        if loggedUser.displayName != nil
+                        {
+                            realName = loggedUser.displayName
+                        }
+                        if loggedUser.canonicalUserName != nil
+                        {
+                            userID = loggedUser.canonicalUserName
+                        }
+
                         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                        appDelegate.currentUser = User(realName: loggedUser.displayName , userID: loggedUser.canonicalUserName, profilePicture: "\(loggedUser.largestImage.imageURL)")
+                        appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
                     }
                 })
 
@@ -119,9 +135,22 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
             if error == nil
             {
                 let loggedUser = user as! SPTUser
-                let profilePic = "\(loggedUser.largestImage.imageURL)"
-                let realName = loggedUser.displayName
-                let userID = loggedUser.canonicalUserName
+                var profilePic = ""
+                var realName = ""
+                var userID = ""
+                if loggedUser.largestImage != nil
+                {
+                    profilePic = "\(loggedUser.largestImage.imageURL)"                    
+                }
+                if loggedUser.displayName != nil
+                {
+                    realName = loggedUser.displayName
+                }
+                if loggedUser.canonicalUserName != nil
+                {
+                    userID = loggedUser.canonicalUserName
+                }
+                
                 println(profilePic)
                 println(realName)
                 println(userID)
