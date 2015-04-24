@@ -13,6 +13,7 @@ import Alamofire
 class CameraViewController: PARViewController, PARControllerDelegate
 {
     var radarThumbnailPosition:PARRadarPosition?
+    var user:User?
     
     /**********************************************************************************************************
     *   Initialize the nib view
@@ -46,6 +47,14 @@ class CameraViewController: PARViewController, PARControllerDelegate
         PARController.deviceSupportsAR(true)
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(true)
+        user = (UIApplication.sharedApplication().delegate as! AppDelegate).currentUser
+        BluemixCommunication().getNearbyUsers(user!.getUserID()) { (users) -> Void in
+            
+        }
+    }
     /**********************************************************************************************************
     *
     *********************************************************************************************************/
@@ -129,14 +138,14 @@ class CameraViewController: PARViewController, PARControllerDelegate
         if AudioPlayer.sharedInstance.player.currentTrackURI != nil
         {
             SpotifyCommunication().getSongInfo(AudioPlayer.sharedInstance.player.currentTrackURI)
-            {
-                (album: SPTPartialAlbum) in
-                Alamofire.request(.GET, album.largestCover.imageURL, parameters: nil).responseImage { (_, _, image, error) -> Void in
-                    if error == nil
-                    {
-                        poiSong.poiTemplate?.image.image = image
+                {
+                    (album: SPTPartialAlbum) in
+                    Alamofire.request(.GET, album.largestCover.imageURL, parameters: nil).responseImage { (_, _, image, error) -> Void in
+                        if error == nil
+                        {
+                            poiSong.poiTemplate?.image.image = image
+                        }
                     }
-                }
             }
         }
         
@@ -151,11 +160,20 @@ class CameraViewController: PARViewController, PARControllerDelegate
         }
         
         
-        
-         
+        let dillonPoi = PoiSongLabel(title: "Tet", theDescription: "", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelSong", atLocation: CLLocation(latitude: 41.659410, longitude:  -91.536166))
+        dillonPoi.poiTemplate?.userName.text = "Dillon McCusker"
+        dillonPoi.poiTemplate?.songLabel.text = "I'm a Barbie Girl"
+        dillonPoi.poiTemplate?.artistLabel.text = "Aqua"
+        Alamofire.request(.GET, "http://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Aquariumcover1.jpg/220px-Aquariumcover1.jpg", parameters: nil).responseImage { (_, _, image, error) -> Void in
+            if error == nil
+            {
+                dillonPoi.poiTemplate?.image.image = image
+            }
+        }
         
         PARController.sharedARController().addObject(poiLabel)
         PARController.sharedARController().addObject(poiSong)
+        PARController.sharedARController().addObject(dillonPoi)
     }
     
     

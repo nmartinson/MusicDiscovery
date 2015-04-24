@@ -35,7 +35,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
         
         httpDelegate.getUsersInProximity("nil", radius: "1000") {
             (results: String) in
-                println("results: \(results)")
+//                println("results: \(results)")
 //                self.jsonCommander.parseJsonString(results)
         }
     }

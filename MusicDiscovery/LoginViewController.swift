@@ -151,9 +151,6 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
                     userID = loggedUser.canonicalUserName
                 }
                 
-                println(profilePic)
-                println(realName)
-                println(userID)
                 println(lat)
                 println(lon)
                 

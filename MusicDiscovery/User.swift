@@ -17,6 +17,16 @@ class User
     private var songName:String?
     private var artistName:String?
     private var imageURL:String?
+    private var location:CLLocation?
+    
+    init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL, location:CLLocation)
+    {
+        self.realName = realName
+        self.userID = userID
+        self.imageURL = profilePicture
+        self.currentSongURL = currentSongURL
+        self.location = location
+    }
     
     init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL)
     {
@@ -83,5 +93,10 @@ class User
     func getImageURL() -> String?
     {
         return imageURL
+    }
+    
+    func getLocation() -> CLLocation?
+    {
+        return location
     }
 }
