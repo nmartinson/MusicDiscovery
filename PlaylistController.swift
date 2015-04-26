@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Alamofire
 
-class MusicPlayer:UIViewController, UITableViewDataSource, UITableViewDelegate
+class PlayListController:UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet weak var playlistTableView: UITableView!
     var session:SPTSession!
@@ -19,9 +19,16 @@ class MusicPlayer:UIViewController, UITableViewDataSource, UITableViewDelegate
     var playlists:SPTPlaylistList = SPTPlaylistList()
     var playlistCount = 0
     var selectedCellIndex = 0
+    let backgroundImage = UIImageView(image: UIImage(named: "audiowave2"))
     
     override func viewDidLoad()
     {
+        backgroundImage.contentMode = .ScaleAspectFill
+        backgroundImage.alpha = 0.5
+        playlistTableView.backgroundView = backgroundImage
+
+
+        
         // gets a hold of the session object
         if let sessionObj:AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession")
         {
@@ -39,10 +46,11 @@ class MusicPlayer:UIViewController, UITableViewDataSource, UITableViewDelegate
             }
             else
             {
-                if playlists != nil
+                // make sure there are items in the playlist
+                if let playlistsItems = (playlists as! SPTPlaylistList).items
                 {
                     self.playlists = (playlists as? SPTPlaylistList)!
-                    self.playlistCount = self.playlists.items.count
+                    self.playlistCount = playlistsItems.count
                     self.playlistTableView.reloadData()
                 }
             }
@@ -60,6 +68,7 @@ class MusicPlayer:UIViewController, UITableViewDataSource, UITableViewDelegate
         {
             let controller = segue.destinationViewController as! PlaylistSongController
             controller.playlistURI = playlists.items[selectedCellIndex].playableUri()
+            controller.playlistName = playlists.items[selectedCellIndex].name
         }
     }
     
@@ -80,6 +89,7 @@ class MusicPlayer:UIViewController, UITableViewDataSource, UITableViewDelegate
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("playlistCell") as! UITableViewCell
         cell.textLabel?.text = playlists.items[indexPath.row].name
+        cell.textLabel?.textColor = UIColor.whiteColor()
         return cell
     }
     
