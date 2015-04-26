@@ -16,10 +16,17 @@ class PlaylistSongController: UIViewController, UITableViewDelegate, UITableView
     var session:SPTSession?
     var songList:[SPTPlaylistTrack] = []
     var audioPlayer = AudioPlayer.sharedInstance
+    var playlistName:String?
+    let backgroundImage = UIImageView(image: UIImage(named: "audiowave2"))
+
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        navigationItem.title = playlistName
+        backgroundImage.contentMode = .ScaleAspectFill
+        backgroundImage.alpha = 0.5
+        songTableView.backgroundView = backgroundImage
         
         // gets a hold of the session object
         if let sessionObj:AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession")
@@ -69,6 +76,9 @@ class PlaylistSongController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("songCell") as! UITableViewCell
         cell.textLabel?.text = songList[indexPath.row].name
         cell.detailTextLabel?.text = songList[indexPath.row].artists.first?.name
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.detailTextLabel?.textColor = UIColor.whiteColor()
+
         return cell
     }
 }

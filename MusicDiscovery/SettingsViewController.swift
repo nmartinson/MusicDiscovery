@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 import MediaPlayer
 
-class SettingsViewController: UIViewController, UITextFieldDelegate, SPTAudioStreamingPlaybackDelegate
+class SettingsViewController: UIViewController, UITextFieldDelegate//, SPTAudioStreamingPlaybackDelegate
 {
     @IBOutlet weak var searchField: UITextField!
     var request:NSURL?
     var session:SPTSession!
     var audioPlayer = AudioPlayer.sharedInstance
     let musicPlayer = MPMusicPlayerController.systemMusicPlayer()
+    var user:User?
     
     override func viewDidLoad()
     {
@@ -39,12 +40,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, SPTAudioStr
         }
 
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let id = appDelegate.currentUser?.getUserID()        
-        BluemixCommunication().getUserInfo(id!, completion: { (users) -> Void in
-            
-        })
-        
-        
+        user = appDelegate.currentUser!
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -106,6 +102,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, SPTAudioStr
     
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!)
     {
+        
         println("changed track to \(trackMetadata)")
     }
     

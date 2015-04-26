@@ -13,6 +13,8 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     let kClientId = "9267f34373fa4cb1bf9ea94246a45566"
     var session:SPTSession?
     var player:SPTAudioStreamingController!
+    var user:User?
+
 
     override init()
     {
@@ -41,10 +43,6 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
             {
                 println("Playback error \(error)")
             }
-            else
-            {
-                println(self.player.isPlaying)
-            }
         })
 
     }
@@ -54,12 +52,16 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     *********************************************************************************************************/
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!)
     {
-        let artist = trackMetadata["SPTAudioStreamingMetadataArtistName"] as! String
-        let track = trackMetadata["SPTAudioStreamingMetadataTrackName"] as! String
-        let trackURI = trackMetadata["SPTAudioStreamingMetadataTrackURI"] as! String
-        println("changed track to \(trackMetadata)")
-        
-        // Update the users current song in the database
+        if trackMetadata != nil
+        {
+            let artist = trackMetadata["SPTAudioStreamingMetadataArtistName"] as! String
+            let track = trackMetadata["SPTAudioStreamingMetadataTrackName"] as! String
+            let trackURI = trackMetadata["SPTAudioStreamingMetadataTrackURI"] as! String
+            println("changed track to \(trackMetadata)")
+            
+            // Update the users current song in the database
+            BluemixCommunication().updateCurrentSong(user!.getUserID(), song: trackURI)
+        }
     }
     
     /**********************************************************************************************************

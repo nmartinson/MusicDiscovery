@@ -50,8 +50,11 @@ class CameraViewController: PARViewController, PARControllerDelegate
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(true)
+        createARPoiObjects()
         user = (UIApplication.sharedApplication().delegate as! AppDelegate).currentUser
-        BluemixCommunication().getNearbyUsers(user!.getUserID()) { (users) -> Void in
+        BluemixCommunication().getNearbyUsers(user!.getUserID())
+        {
+            (users: [User]) in
             
         }
     }
@@ -62,7 +65,6 @@ class CameraViewController: PARViewController, PARControllerDelegate
     {
         super.viewDidLoad()
         self.sensorManager().locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        createARPoiObjects()
     }
  
     /**********************************************************************************************************

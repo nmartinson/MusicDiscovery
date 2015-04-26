@@ -62,8 +62,6 @@ class BluemixCommunication
             println("NEARBY USERS\n\(rawJSON)")
             if rawJSON != nil
             {
-                println("GET USER\n\(rawJSON)")
-
                 var users:[User] = []
                 var json = JSON(rawJSON!)
                 for(var i = 0; i < json.count; i++)
@@ -81,7 +79,10 @@ class BluemixCommunication
                 }
                 completion(users: [])
             }
-            completion(users: [])
+            else
+            {
+                completion(users: [])
+            }
         }
     }
     
@@ -99,7 +100,6 @@ class BluemixCommunication
             if rawJSON != nil
             {
                 var json = JSON(rawJSON!)
-                println("GET USER\n\(rawJSON)")
                 let currentSong = json["currentSong"].stringValue
                 let id = json["id"].stringValue
                 let lat = json["lat"].stringValue
@@ -109,24 +109,31 @@ class BluemixCommunication
                 let user = User(realName: "", userID: id, profilePicture: profilePicURL, currentSongURL: NSURL(string: currentSong)!)
                 completion(user: user)
             }
-            
-            completion(user: nil)
+            else
+            {
+                completion(user: nil)
+            }
         }
     }
     
     /******************************************************************************************
     *
     ******************************************************************************************/
-    func updateCurrentSong(userId: String, song:String, completion:(users: [User]) -> Void)
+    func updateCurrentSong(userId: String, song:String)
     {
         var details:Dictionary<String,AnyObject>?
         details = ["error": "", "success": false]
         let params = ["action": updateCurrentSongAction, "userId": userId, "newSong": song]
         
-        Alamofire.request(.POST, userURL, parameters: params).responseJSON { (_, response, rawJSON, _) -> Void in
-            var json = JSON(rawJSON!)
-            
-            completion(users: [])
+        Alamofire.request(.POST, userURL, parameters: params).responseString { (_, response, string, _) -> Void in
+            if string! == "1000"
+            {
+                println("update song success")
+            }
+            else if string! == "1001"
+            {
+                println("Update song failure")
+            }
         }
     }
     
