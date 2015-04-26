@@ -8,14 +8,70 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, SPTAuthViewDelegate
+class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationNotificationProtocol
 {
     let auth = SPTAuth.defaultInstance()
+    
+    let locHandler = LocationHandler.sharedInstance
+    
+    var userCreated = false
+    
+    var session: SPTSession!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        locHandler.loginLocNotDelegate = self
+        notifyLocationHandler()
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func locationIsReady() {
+        if self.session != nil {
+            self.userCreated = true
+            createUser()
+        }
+    }
+    
+    func notifyLocationHandler () -> Void {
+        locHandler.loginViewLoaded = true
+    }
+    
+    
+    func createUser() {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let lat = LocationHandler.sharedInstance.latitude
+        let lon = LocationHandler.sharedInstance.longitude
+        
+        SPTRequest.userInformationForUserInSession(self.session, callback: { (error, user) -> Void in
+            if error == nil
+            {
+                println("No error SPTRequest.userInformationForUserInSession:")
+                
+                let loggedUser = user as! SPTUser
+                let profilePic = "\(loggedUser.largestImage.imageURL)"
+                let realName = loggedUser.displayName
+                let userID = loggedUser.canonicalUserName
+                println(profilePic)
+                println(realName)
+                println(userID)
+                println(lat)
+                println(lon)
+                
+                appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
+                BluemixCommunication().createNewUser(userID, name: realName, lat: lat, lon: lon, profilePicture: profilePic, completion: { (users) -> Void in
+                    
+                })
+            } else {
+                println("Error SPTRequest.userInformationForUserInSession:")
+                println("\t\(error)")
+            }
+        })
+
+        
     }
     
     /**********************************************************************************************************
@@ -117,55 +173,15 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         let defaults = NSUserDefaults.standardUserDefaults()
         let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session!)
         defaults.setObject(sessionData, forKey: "SpotifySession")
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
-        let lat = LocationHandler.sharedInstance.latitude
-        let lon = LocationHandler.sharedInstance.longitude
-        
-        SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
-            if error == nil
-            {
-                let loggedUser = user as! SPTUser
-                var profilePic = ""
-                var realName = ""
-                var userID = ""
-                if loggedUser.largestImage != nil
-                {
-                    profilePic = "\(loggedUser.largestImage.imageURL)"                    
-                }
-                if loggedUser.displayName != nil
-                {
-                    realName = loggedUser.displayName
-                }
-                if loggedUser.canonicalUserName != nil
-                {
-                    userID = loggedUser.canonicalUserName
-                }
-                
-                // check if user exists in database
-                appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
-                
-                // login with the audio player
-                AudioPlayer.sharedInstance.session = session
-                AudioPlayer.sharedInstance.user = appDelegate.currentUser!
-                AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in })
-                
-                // check if the current user already has an account
-                BluemixCommunication().getUserInfo(userID)
-                {
-                    (user: User?) in
-                    
-                    if user == nil
-                    {
-                        // if user doesn't exist, create an account
-                        BluemixCommunication().createNewUser(userID, name: realName, lat: "", lon: "", profilePicture: profilePic, completion: { (users) -> Void in })
-                    }
-                }
-            }
+        AudioPlayer.sharedInstance.session = session
+        AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in
+            println("player login error \(error)")
         })
         
+        self.session = session
+        
         self.performSegueWithIdentifier("LoggedInSegue", sender: self)
-
+        
     }
     
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!)

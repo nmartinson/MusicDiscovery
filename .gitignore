@@ -26,6 +26,8 @@ DerivedData
 # #
 # # Pods/
 #
+
+#From Dillon
 /MusicDiscovery.xcodeproj/project.xcworkspace/xcshareddata/
 /MusicDiscovery.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/
 /MusicDiscovery.xcodeproj/xcuserdata/*.xcuserdatad/
