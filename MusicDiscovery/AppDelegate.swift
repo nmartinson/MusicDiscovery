@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
         //instantiate location handler, all other classes may now acces its sharedInstance
         locHandler = LocationHandler()
         //Set locationHandlerDelegate variable in LocationHandler so that it may call methods in the LocationAlertProtocol
-        locHandler.locationHandlerDelegate = self
+        locHandler.locationAlertDelegate = self
         
         //Google maps API Key setup
         GMSServices.provideAPIKey(googleMapsAPIKey)

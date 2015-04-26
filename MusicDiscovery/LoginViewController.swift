@@ -8,14 +8,70 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, SPTAuthViewDelegate
+class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationNotificationProtocol
 {
     let auth = SPTAuth.defaultInstance()
+    
+    let locHandler = LocationHandler.sharedInstance
+    
+    var userCreated = false
+    
+    var session: SPTSession!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        locHandler.loginLocNotDelegate = self
+        notifyLocationHandler()
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func locationIsReady() {
+        if self.session != nil {
+            self.userCreated = true
+            createUser()
+        }
+    }
+    
+    func notifyLocationHandler () -> Void {
+        locHandler.loginViewLoaded = true
+    }
+    
+    
+    func createUser() {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let lat = LocationHandler.sharedInstance.latitude
+        let lon = LocationHandler.sharedInstance.longitude
+        
+        SPTRequest.userInformationForUserInSession(self.session, callback: { (error, user) -> Void in
+            if error == nil
+            {
+                println("No error SPTRequest.userInformationForUserInSession:")
+                
+                let loggedUser = user as! SPTUser
+                let profilePic = "\(loggedUser.largestImage.imageURL)"
+                let realName = loggedUser.displayName
+                let userID = loggedUser.canonicalUserName
+                println(profilePic)
+                println(realName)
+                println(userID)
+                println(lat)
+                println(lon)
+                
+                appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
+                BluemixCommunication().createNewUser(userID, name: realName, lat: lat, lon: lon, profilePicture: profilePic, completion: { (users) -> Void in
+                    
+                })
+            } else {
+                println("Error SPTRequest.userInformationForUserInSession:")
+                println("\t\(error)")
+            }
+        })
+
+        
     }
     
     /**********************************************************************************************************
@@ -110,38 +166,11 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate
         AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in
             println("player login error \(error)")
         })
-
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let lat = LocationHandler.sharedInstance.latitude
-        let lon = LocationHandler.sharedInstance.longitude
         
-        SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
-            if error == nil
-            {
-                println("No error SPTRequest.userInformationForUserInSession:")
-                
-                let loggedUser = user as! SPTUser
-                let profilePic = "\(loggedUser.largestImage.imageURL)"
-                let realName = loggedUser.displayName
-                let userID = loggedUser.canonicalUserName
-                println(profilePic)
-                println(realName)
-                println(userID)
-                println(lat)
-                println(lon)
-                
-                appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
-                BluemixCommunication().createNewUser(userID, name: realName, lat: "", lon: "", profilePicture: profilePic, completion: { (users) -> Void in
-
-                })
-            } else {
-                println("Error SPTRequest.userInformationForUserInSession:")
-                println("\t\(error)")
-            }
-        })
+        self.session = session
         
         self.performSegueWithIdentifier("LoggedInSegue", sender: self)
-
+        
     }
     
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!)

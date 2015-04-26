@@ -1,6 +1,6 @@
 import UIKit
 
-class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificationProtocol, LocationAlertProtocol {
+class MapViewController: UIViewController, MapUpdateProtocol, MapLocationNotificationProtocol {
     
     let locHandler = LocationHandler.sharedInstance
 
@@ -26,14 +26,14 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        locHandler.mapLocNotDelegate = self
+        locHandler.mapUpdateDelgate = self
         
     }
     
     override func viewDidAppear(animated: Bool) {
         mapView.myLocationEnabled = true
-        
-        locHandler.locationHandlerDelegate = self
-        locHandler.mapUpdateDelgate = self
         
         notifyLocationHandler()
         
@@ -179,10 +179,6 @@ class MapViewController: UIViewController, MapUpdateProtocol, LocationNotificati
                 self.mapSetup = true
             }
         }
-    }
-    
-    func getAndPushAlert (locationAlert: UIAlertController) -> Void {
-        self.presentViewController(locationAlert, animated: true, completion: nil)
     }
     
     func drawCone() -> Void {
