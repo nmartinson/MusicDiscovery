@@ -59,7 +59,7 @@ class BluemixCommunication
         let params = ["action": getNearbyUsersAction, "userId": userId, "radius": radius]
         
         Alamofire.request(.GET, userURL, parameters: params).responseJSON { (_, response, rawJSON, _) -> Void in
-            println("NEARBY USERS\n\(rawJSON)")
+//            println("NEARBY USERS\n\(rawJSON)")
             if rawJSON != nil
             {
                 var users:[User] = []

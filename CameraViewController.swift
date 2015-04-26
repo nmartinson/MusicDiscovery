@@ -34,7 +34,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
     {
         super.loadView()
         PARController.sharedARController().delegate = self
-        self.arRadarView.setRadarRange(200)
+        self.arRadarView.setRadarRange(100)
         self.cameraCaptureSession
     }
     
@@ -128,8 +128,16 @@ class CameraViewController: PARViewController, PARControllerDelegate
     *********************************************************************************************************/
     func createARPoiObjects()
     {
+        PARPoiLabelTemplate.setAppearanceRange(50, andFarRange: 100)
+        PoiSongLabelTemplate.setAppearanceRange(50, andFarRange: 100)
+        
+        
+        
+        
         let poiLabel = PARPoiLabel(title: "Dom", theDescription: "Regensburger Dom", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelWithImage", atLocation: CLLocation(latitude: 49.019512, longitude:  12.097709))
         poiLabel.image = UIImage(named: "machu")
+        
+        println("DISTANCE:\n\(poiLabel.distanceToUser())")
         
         
         
@@ -166,6 +174,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
         dillonPoi.poiTemplate?.userName.text = "Dillon McCusker"
         dillonPoi.poiTemplate?.songLabel.text = "I'm a Barbie Girl"
         dillonPoi.poiTemplate?.artistLabel.text = "Aqua"
+
         Alamofire.request(.GET, "http://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Aquariumcover1.jpg/220px-Aquariumcover1.jpg", parameters: nil).responseImage { (_, _, image, error) -> Void in
             if error == nil
             {
@@ -176,6 +185,14 @@ class CameraViewController: PARViewController, PARControllerDelegate
         PARController.sharedARController().addObject(poiLabel)
         PARController.sharedARController().addObject(poiSong)
         PARController.sharedARController().addObject(dillonPoi)
+        dillonPoi.updateAppearance()
+        poiSong.updateAppearance()
+        
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(5*Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) { () -> Void in
+            println("Distance to user\n\(poiLabel.distanceToUser())")
+        }
+        
     }
     
     
