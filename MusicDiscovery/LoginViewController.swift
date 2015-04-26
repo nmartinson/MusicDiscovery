@@ -74,9 +74,21 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                 println(lon)
                 
                 appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
-                BluemixCommunication().createNewUser(userID, name: realName, lat: lat, lon: lon, profilePicture: profilePic, completion: { (users) -> Void in
+                // check if the current user already has an account
+                BluemixCommunication().getUserInfo(userID)
+                {
+                    (user: User?) in
                     
-                })
+                    if user == nil
+                    {
+                        // if user doesn't exist, create an account
+                        BluemixCommunication().createNewUser(userID, name: realName, lat: "", lon: "", profilePicture: profilePic, completion: { (users) -> Void in })
+                    }
+                    else
+                    {
+                        println("USER EXISTS")
+                    }
+                }
             } else {
                 println("Error SPTRequest.userInformationForUserInSession:")
                 println("\t\(error)")
