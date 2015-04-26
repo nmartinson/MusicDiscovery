@@ -25,4 +25,8 @@ class PoiSongLabel: PARPoiLabel
             poiTemplate = NSBundle.mainBundle().loadNibNamed("PoiLabelSong", owner: self, options: nil).first as? PoiSongLabelTemplate
             super.labelView = poiTemplate
         }
+    
+    override func stacksInView() -> Bool {
+        return true
+    }
 }
