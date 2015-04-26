@@ -34,7 +34,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
     {
         super.loadView()
         PARController.sharedARController().delegate = self
-        self.arRadarView.setRadarRange(1500)
+        self.arRadarView.setRadarRange(200)
         self.cameraCaptureSession
     }
     
