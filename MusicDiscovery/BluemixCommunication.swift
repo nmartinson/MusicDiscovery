@@ -144,7 +144,7 @@ class BluemixCommunication
     {
         var details:Dictionary<String,AnyObject>?
         details = ["error": "", "success": false]
-        let params = ["action": newUserAction, "id": spotifyId, "name": name, "lat":"92", "lon":"94", "profilePictureUrl":profilePicture]
+        let params = ["action": newUserAction, "id": spotifyId, "name": name, "lat":lat, "lon":lon, "profilePictureUrl":profilePicture]
         
         Alamofire.request(.POST, userURL, parameters: params).responseString { (_, response, rawString, _) -> Void in
 //            var json = JSON(rawJSON!)
