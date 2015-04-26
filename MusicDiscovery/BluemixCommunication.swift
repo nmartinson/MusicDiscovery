@@ -96,7 +96,7 @@ class BluemixCommunication
         let params = ["action": getUserAction, "userId": userId]
         
         Alamofire.request(.GET, userURL, parameters: params).responseJSON { (_, response, rawJSON, _) -> Void in
-            
+            println("USER INFO\n\(rawJSON)")
             if rawJSON != nil
             {
                 var json = JSON(rawJSON!)

@@ -14,6 +14,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
 {
     var radarThumbnailPosition:PARRadarPosition?
     var user:User?
+    var users:[User]?
     
     /**********************************************************************************************************
     *   Initialize the nib view
@@ -55,7 +56,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
         BluemixCommunication().getNearbyUsers(user!.getUserID())
         {
             (users: [User]) in
-            
+            self.users = users
         }
     }
     /**********************************************************************************************************
@@ -122,6 +123,24 @@ class CameraViewController: PARViewController, PARControllerDelegate
     {
         println("Tapped on item")
     }
+    
+    
+    func createPOI()
+    {
+        for user in users!
+        {
+            let poiLabel = PoiSongLabel(title: "", theDescription: "", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelWithImage", atLocation: user.getLocation())
+            if user.getRealName() != ""
+            {
+                poiLabel.poiTemplate?.userName.text = user.getRealName()
+            }
+            else
+            {
+                poiLabel.poiTemplate?.userName.text = user.getUserID()
+            }
+        }
+    }
+    
     
     /**********************************************************************************************************
     *
