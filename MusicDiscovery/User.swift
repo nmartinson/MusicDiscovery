@@ -19,13 +19,20 @@ class User
     private var imageURL:String?
     private var location:CLLocation?
     
+    private var latitude:String!
+    private var longitude:String!
+    
     init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL, location:CLLocation)
     {
         self.realName = realName
         self.userID = userID
         self.imageURL = profilePicture
         self.currentSongURL = currentSongURL
+        
+        
         self.location = location
+        self.latitude = "\(location.coordinate.latitude)"
+        self.longitude = "\(location.coordinate.longitude)"
     }
     
     init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL)
@@ -95,6 +102,9 @@ class User
         return imageURL
     }
     
+    func getLocation2D() -> NSDictionary {
+        return ["longitude" : self.latitude,  "latitude" : self.longitude]
+    }
     func getLocation() -> CLLocation?
     {
         return location

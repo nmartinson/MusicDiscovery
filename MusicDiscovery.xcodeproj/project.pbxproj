@@ -35,15 +35,12 @@
 		2BE7DFDE1AE6CCA10089CF6A /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */; };
 		2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */; };
 		A213765E1ADF6DA300DCD745 /* MapCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A213765D1ADF6DA300DCD745 /* MapCalculator.swift */; };
-		A22D03BC1AE87CA800DE5A73 /* HTTP_Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D03BB1AE87CA800DE5A73 /* HTTP_Delegate.swift */; };
 		A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */; };
 		A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */; };
 		A23B70D01AD66FE000833A6B /* SatteliteMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */; };
 		A23B70D21AD66FFF00833A6B /* NormalMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70D11AD66FFF00833A6B /* NormalMapView.xib */; };
 		A23B70D41AD6784600833A6B /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23B70D31AD6784600833A6B /* MapHandler.swift */; };
 		A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */; };
-		A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */; };
-		A2E7BDE81AD450FF0087094C /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */; };
 		A2E7BDEC1AD451E20087094C /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDEB1AD451E20087094C /* GoogleMaps.framework */; };
 		A2E7BDEF1AD4520A0087094C /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2E7BDEE1AD4520A0087094C /* GoogleMaps.bundle */; };
 		A2E7BDF01AD4520A0087094C /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2E7BDEE1AD4520A0087094C /* GoogleMaps.bundle */; };
@@ -59,8 +56,6 @@
 		A2E7BE061AD452A80087094C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDFA1AD452A80087094C /* OpenGLES.framework */; };
 		A2E7BE071AD452A80087094C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDFB1AD452A80087094C /* QuartzCore.framework */; };
 		A2E7BE081AD452A80087094C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7BDFC1AD452A80087094C /* SystemConfiguration.framework */; };
-		A2E7BE0D1AD458120087094C /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0C1AD458120087094C /* GooglePlace.swift */; };
-		A2E7BE0E1AD458120087094C /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0C1AD458120087094C /* GooglePlace.swift */; };
 		A2E7BE101AD458570087094C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE0F1AD458570087094C /* MapViewController.swift */; };
 		A2E7BE361AD4F0D50087094C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */; };
 		CCC2525A04EF16443698DC13 /* Pods_MusicDiscovery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -123,14 +118,12 @@
 		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = MusicDiscovery/AudioPlayer.swift; sourceTree = "<group>"; };
 		9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicDiscovery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A213765D1ADF6DA300DCD745 /* MapCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCalculator.swift; sourceTree = "<group>"; };
-		A22D03BB1AE87CA800DE5A73 /* HTTP_Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP_Delegate.swift; sourceTree = "<group>"; };
 		A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapsTestStoryboard.storyboard; sourceTree = "<group>"; };
 		A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HybridMapView.xib; sourceTree = "<group>"; };
 		A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SatteliteMapView.xib; sourceTree = "<group>"; };
 		A23B70D11AD66FFF00833A6B /* NormalMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalMapView.xib; sourceTree = "<group>"; };
 		A23B70D31AD6784600833A6B /* MapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
 		A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
-		A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		A2E7BDEB1AD451E20087094C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		A2E7BDEE1AD4520A0087094C /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		A2E7BDF11AD452A80087094C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -145,7 +138,6 @@
 		A2E7BDFA1AD452A80087094C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A2E7BDFB1AD452A80087094C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A2E7BDFC1AD452A80087094C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A2E7BE0C1AD458120087094C /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		A2E7BE0F1AD458570087094C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = MusicDiscovery/MapViewController.swift; sourceTree = "<group>"; };
 		A2E7BE351AD4F0D50087094C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = MusicDiscovery/SettingsViewController.swift; sourceTree = "<group>"; };
 		C9A32B7E36868F0D16F791A2 /* Pods-MusicDiscovery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicDiscovery.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicDiscovery/Pods-MusicDiscovery.release.xcconfig"; sourceTree = "<group>"; };
@@ -324,10 +316,7 @@
 				2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */,
 				2B676D1A1AD8256D0048E09C /* User.swift */,
 				A2BD7BEA1AD365400066A4A3 /* LocationHandler.swift */,
-				A2E7BE0C1AD458120087094C /* GooglePlace.swift */,
-				A2E7BDE61AD450FF0087094C /* GoogleDataProvider.swift */,
 				A213765D1ADF6DA300DCD745 /* MapCalculator.swift */,
-				A22D03BB1AE87CA800DE5A73 /* HTTP_Delegate.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -431,7 +420,7 @@
 				TargetAttributes = {
 					2B1F0ECC1ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = B782ML49FF;
+						DevelopmentTeam = VFFSBUB24B;
 					};
 					2B1F0EE11ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
@@ -542,11 +531,9 @@
 			files = (
 				2BC5881B1ADD66C000F82C76 /* PlaylistController.swift in Sources */,
 				A2BD7BEB1AD365400066A4A3 /* LocationHandler.swift in Sources */,
-				A22D03BC1AE87CA800DE5A73 /* HTTP_Delegate.swift in Sources */,
 				A23B70D41AD6784600833A6B /* MapHandler.swift in Sources */,
 				2B5504251AE6BC2200C7257E /* BluemixCommunication.swift in Sources */,
 				2B19580C1ADEEC9400F55C77 /* CameraViewController.swift in Sources */,
-				A2E7BDE71AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
 				2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */,
 				2B57D37C1ADD6FA000AAE553 /* SwiftyJSON.swift in Sources */,
 				2B4A887C1AE723FA0010F2D4 /* PoiSongLabelTemplate.swift in Sources */,
@@ -560,7 +547,6 @@
 				2B1F0ED31ACDA5FC00BBCBCA /* AppDelegate.swift in Sources */,
 				2B4A88831AE735D90010F2D4 /* SpotifyCommunication.swift in Sources */,
 				2B676D1B1AD8256D0048E09C /* User.swift in Sources */,
-				A2E7BE0D1AD458120087094C /* GooglePlace.swift in Sources */,
 				A2E7BE101AD458570087094C /* MapViewController.swift in Sources */,
 				A2E7BE361AD4F0D50087094C /* SettingsViewController.swift in Sources */,
 			);
@@ -571,8 +557,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1F0EE91ACDA5FC00BBCBCA /* MusicDiscoveryTests.swift in Sources */,
-				A2E7BDE81AD450FF0087094C /* GoogleDataProvider.swift in Sources */,
-				A2E7BE0E1AD458120087094C /* GooglePlace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

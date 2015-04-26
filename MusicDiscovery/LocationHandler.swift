@@ -20,13 +20,18 @@ protocol MapUpdateProtocol{
     func setMapLocation () -> Void
     func updateMapViewToCamera () -> Void
     func updateMapViewToBearing() -> Void
-//    func updateMapViewTarget () -> Void
     func checkMapExistence() -> Bool
     var  mapSetup: Bool {get}
 }
 
-protocol LocationNotificationProtocol{
+protocol MapLocationNotificationProtocol{
     func notifyLocationHandler () -> Void
+}
+
+protocol LoginLocationNotificationProtocol{
+    func notifyLocationHandler () -> Void
+    func locationIsReady() -> Void
+    var  userCreated: Bool {get}
 }
 
 class LocationHandler: NSObject, CLLocationManagerDelegate{
@@ -35,13 +40,13 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         return _LocationHandlerSharedInstance
     }
     
-    var locNotificationDelegate: LocationNotificationProtocol!
-    
+    var mapLocNotDelegate: MapLocationNotificationProtocol!
+    var loginLocNotDelegate: LoginLocationNotificationProtocol!
     var mapUpdateDelgate: MapUpdateProtocol!
+    var locationAlertDelegate: LocationAlertProtocol!
     
-//    var mapSetup: Bool = false
+    var loginViewLoaded = false
     
-    var locationHandlerDelegate: LocationAlertProtocol!
     
     var locationManager: CLLocationManager!
     
@@ -136,6 +141,14 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         self.longitude = "\(coord.longitude)"
         gpsLocatationSet = true
         
+        //Tell LoginVC that the location is ready
+        
+        if loginViewLoaded {
+            if loginLocNotDelegate.userCreated == false {
+                loginLocNotDelegate.locationIsReady()
+            }
+        }
+        
         //setup the mapview and cameraposition for the first time
         if mapViewExists == true {
             if mapUpdateDelgate.mapSetup  == false {
@@ -170,7 +183,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
             println("authorizationSatus is .Denied at initLocationManager()")
             ////Use function in protocol to push the alert about location settings
             var locServicesAlertController: UIAlertController = buildTurnOnLocationAlertController()
-            locationHandlerDelegate.getAndPushAlert(locServicesAlertController)
+            locationAlertDelegate.getAndPushAlert(locServicesAlertController)
         case .AuthorizedAlways:
             println("authorizationSatus is .AuthorizedAlways at initLocationManager()")
         case .AuthorizedWhenInUse:
