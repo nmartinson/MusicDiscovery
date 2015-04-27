@@ -65,12 +65,12 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">PoiLabelWithImage</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="659763010">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="39345519">
 							<int key="type">2</int>
 							<int key="weightCategory">30</int>
 							<double key="pointSize">15</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="83234055">
+						<object class="NSFont" key="IBUIFont" id="978634531">
 							<string key="NSName">HelveticaNeue</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
@@ -81,7 +81,7 @@
 						<int key="NSvFlags">264</int>
 						<string key="NSFrame">{{58, 77}, {140, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="119019558"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="944220421">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -213,8 +213,8 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">play</string>
 						</object>
-						<reference key="IBUIFontDescription" ref="659763010"/>
-						<reference key="IBUIFont" ref="83234055"/>
+						<reference key="IBUIFontDescription" ref="39345519"/>
+						<reference key="IBUIFont" ref="978634531"/>
 					</object>
 				</array>
 				<string key="NSFrameSize">{256, 117}</string>
