@@ -103,7 +103,7 @@ class User
     }
     
     func getLocation2D() -> NSDictionary {
-        return ["longitude" : self.latitude,  "latitude" : self.longitude]
+        return ["latitude" : self.latitude, "longitude" : self.longitude]
     }
     func getLocation() -> CLLocation?
     {
