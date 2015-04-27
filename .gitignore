@@ -34,3 +34,7 @@ DerivedData
 /MusicDiscovery.xcworkspace/xcshareddata/
 /MusicDiscovery.xcworkspace/xcuserdata/*.xcuserdatad/
 /Pods/Pods.xcodeproj/xcuserdata/*.xcuserdatad/
+
+#temporary
+/PoiLabelSong.xib
+
