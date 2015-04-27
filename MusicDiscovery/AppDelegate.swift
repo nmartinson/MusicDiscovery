@@ -26,12 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationAlertProtocol {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-
         UINavigationBar.appearance().barTintColor = UIColor.blackColor()
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UITabBar.appearance().barTintColor = UIColor.blackColor()
-
         UINavigationBar.appearance().backgroundColor = UIColor.blackColor()
 
 

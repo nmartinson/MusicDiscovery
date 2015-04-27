@@ -8,12 +8,18 @@
 
 import Foundation
 
+protocol AudioPlayerDelegate
+{
+    func notAPremiumUser()
+}
+
 class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
 {
     let kClientId = "9267f34373fa4cb1bf9ea94246a45566"
     var session:SPTSession?
     var player:SPTAudioStreamingController!
     var user:User?
+    var delegate:AudioPlayerDelegate?
 
 
     override init()
@@ -38,10 +44,15 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     func playUsingSession(request: NSURL)
     {
         player.playbackDelegate = self
+        if !self.player.loggedIn
+        {
+            self.delegate?.notAPremiumUser()
+        }
         self.player?.playURIs([request], fromIndex: 0, callback: { (error) -> Void in
             if error != nil
             {
                 println("Playback error \(error)")
+
             }
         })
 
@@ -71,4 +82,7 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     {
         println("started playing \(trackUri)")
     }
+    
+
+    
 }

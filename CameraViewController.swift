@@ -14,6 +14,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
 {
     var radarThumbnailPosition:PARRadarPosition?
     var user:User?
+    var users:[User]?
     
     /**********************************************************************************************************
     *   Initialize the nib view
@@ -34,7 +35,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
     {
         super.loadView()
         PARController.sharedARController().delegate = self
-        self.arRadarView.setRadarRange(200)
+        self.arRadarView.setRadarRange(100)
         self.cameraCaptureSession
     }
     
@@ -50,12 +51,14 @@ class CameraViewController: PARViewController, PARControllerDelegate
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(true)
-        createARPoiObjects()
+        PARPoiLabelTemplate.setAppearanceRange(50, andFarRange: 100)
+        PoiSongLabelTemplate.setAppearanceRange(50, andFarRange: 100)
         user = (UIApplication.sharedApplication().delegate as! AppDelegate).currentUser
         BluemixCommunication().getNearbyUsers(user!.getUserID())
         {
             (users: [User]) in
-            
+            self.users = users
+            self.createPOI()
         }
     }
     /**********************************************************************************************************
@@ -123,62 +126,53 @@ class CameraViewController: PARViewController, PARControllerDelegate
         println("Tapped on item")
     }
     
-    /**********************************************************************************************************
-    *
-    *********************************************************************************************************/
-    func createARPoiObjects()
+    
+    func createPOI()
     {
-        let poiLabel = PARPoiLabel(title: "Dom", theDescription: "Regensburger Dom", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelWithImage", atLocation: CLLocation(latitude: 49.019512, longitude:  12.097709))
-        poiLabel.image = UIImage(named: "machu")
-        
-        
-        
-        let user = (UIApplication.sharedApplication().delegate as! AppDelegate).currentUser
-        let poiSong = PoiSongLabel(title: "Test", theDescription: "hello", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelSong", atLocation: CLLocation(latitude: 41.661100, longitude:  -91.536104))
-        poiSong.poiTemplate?.userName.text = user?.getRealName()
-        
-        if AudioPlayer.sharedInstance.player.currentTrackURI != nil
+//        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(5*Double(NSEC_PER_SEC)))
+//        dispatch_after(delayTime, dispatch_get_main_queue()) { () -> Void in
+//        println("Distance to user\n\(poiLabel.distanceToUser())")
+        for user in users!
         {
-            SpotifyCommunication().getSongInfo(AudioPlayer.sharedInstance.player.currentTrackURI)
+            //create the poi label at the users location
+            let poiLabel = PoiSongLabel(title: "", theDescription: "", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelWithImage", atLocation: user.getLocation())
+            // check for real name
+            if user.getRealName() != ""
+            {
+                poiLabel.poiTemplate?.userName.text = user.getRealName()
+            }
+            else
+            {
+                poiLabel.poiTemplate?.userName.text = user.getUserID()
+            }
+            // get profile pic if it exists
+            if user.getImageURL() != nil
+            {
+                Alamofire.request(.GET, user.getImageURL()!, parameters: nil).responseImage { (_, _, image, error) -> Void in
+                    if error == nil
+                    {
+                        poiLabel.poiTemplate?.profilePic.image = image
+                    }
+                }
+            }
+            // get album cover image
+            if user.getCurrentSong() != nil
+            {
+                SpotifyCommunication().getSongInfo(user.getCurrentSong()!)
                 {
                     (album: SPTPartialAlbum) in
                     Alamofire.request(.GET, album.largestCover.imageURL, parameters: nil).responseImage { (_, _, image, error) -> Void in
                         if error == nil
                         {
-                            poiSong.poiTemplate?.image.image = image
+                            poiLabel.poiTemplate?.image.image = image
                         }
                     }
-            }
-        }
-        
-        if user?.getImageURL() != nil
-        {
-            Alamofire.request(.GET, user!.getImageURL()!, parameters: nil).responseImage { (_, _, image, error) -> Void in
-                if error == nil
-                {
-                    poiSong.poiTemplate?.profilePic.image = image
                 }
             }
+            poiLabel.poiTemplate?.songLabel.text = "I'm a Barbie Girl"
+            poiLabel.poiTemplate?.artistLabel.text = "Aqua"
+            PARController.sharedARController().addObject(poiLabel)
         }
-        
-        
-        let dillonPoi = PoiSongLabel(title: "Tet", theDescription: "", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelSong", atLocation: CLLocation(latitude: 41.659410, longitude:  -91.536166))
-        dillonPoi.poiTemplate?.userName.text = "Dillon McCusker"
-        dillonPoi.poiTemplate?.songLabel.text = "I'm a Barbie Girl"
-        dillonPoi.poiTemplate?.artistLabel.text = "Aqua"
-        Alamofire.request(.GET, "http://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Aquariumcover1.jpg/220px-Aquariumcover1.jpg", parameters: nil).responseImage { (_, _, image, error) -> Void in
-            if error == nil
-            {
-                dillonPoi.poiTemplate?.image.image = image
-            }
-        }
-        
-        PARController.sharedARController().addObject(poiLabel)
-        PARController.sharedARController().addObject(poiSong)
-        PARController.sharedARController().addObject(dillonPoi)
     }
-    
-    
-    
     
 }

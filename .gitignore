@@ -27,10 +27,13 @@ DerivedData
 # # Pods/
 #
 
-#From Dillon
+/MusicDiscovery.xcworkspace/xcuserdata/nickmartinson.xcuserdatad/UserInterfaceState.xcuserstate
+
+#/MusicDiscovery.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate/
+
 /MusicDiscovery.xcodeproj/project.xcworkspace/xcshareddata/
 /MusicDiscovery.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/
-/MusicDiscovery.xcodeproj/xcuserdata/*.xcuserdatad/
+#/MusicDiscovery.xcodeproj/xcuserdata/*.xcuserdatad/
 /MusicDiscovery.xcworkspace/xcshareddata/
-/MusicDiscovery.xcworkspace/xcuserdata/*.xcuserdatad/
+#/MusicDiscovery.xcworkspace/xcuserdata/*.xcuserdatad/
 /Pods/Pods.xcodeproj/xcuserdata/*.xcuserdatad/

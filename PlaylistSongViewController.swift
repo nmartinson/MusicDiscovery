@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PlaylistSongController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class PlaylistSongController: UIViewController, UITableViewDelegate, UITableViewDataSource, AudioPlayerDelegate
 {
     @IBOutlet weak var songTableView: UITableView!
     var playlistURI:NSURL?
@@ -23,6 +23,7 @@ class PlaylistSongController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        audioPlayer.delegate = self
         navigationItem.title = playlistName
         backgroundImage.contentMode = .ScaleAspectFill
         backgroundImage.alpha = 0.5
@@ -51,12 +52,25 @@ class PlaylistSongController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
+    func notAPremiumUser()
+    {
+        let alertController = UIAlertController(
+            title: "Sorry!",
+            message: "You must have a Spotify premium account to play music.",
+            preferredStyle: .Alert
+        )
+        let cancelAction = UIAlertAction(title: "Okay", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     /******************************************************************************************************
     *   Plays the selected song
     ******************************************************************************************************/
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let URL = songList[indexPath.row].playableUri
+
         audioPlayer.playUsingSession(URL)
     }
 
