@@ -181,10 +181,11 @@ class MapViewController: UIViewController, MapUpdateProtocol, MapLocationNotific
 //            infoWindow.albumCover = user.
             infoWindow.songLabel.text = user.getSongName()
         }
-        
-
-        
         return infoWindow
+    }
+    
+    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        updateMapViewToLocation()
     }
     
     func updateMapViewToCamera () -> Void {
@@ -207,6 +208,15 @@ class MapViewController: UIViewController, MapUpdateProtocol, MapLocationNotific
             drawCone()
         }
     }
+
+    func updateMapViewToLocation () -> Void {
+        
+        if locHandler.location2D != nil {
+            var updateLocation = locHandler.location2D
+            self.mapView.animateToLocation(updateLocation)
+            drawCone()
+        }
+    }
     
     func setMapLocation () -> Void {
         
@@ -222,6 +232,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, MapLocationNotific
                 mapView.camera = GMSCameraPosition(target: locHandler.location2D, zoom: 15.5, bearing: initBearing, viewingAngle: 0)
                 mapView.mapType = currentMapType
                 mapView.settings.scrollGestures = false
+                mapView.settings.zoomGestures = false
                 
                 //stop the timer now that the map is setup
                 mapTimerKill()

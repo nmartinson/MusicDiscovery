@@ -82,7 +82,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
             //need alertController for this
             println("This device does not have the ability to measure magnetic fields.")
         } else {
-            //            locationManager.headingFilter = ? //The default value of this property is 1 degree
+            locationManager.headingFilter = 2 //The default value of this property is 1 degree
             //            locationManager.headingOrientation = ? // https://developer.apple.com/library/prerelease/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/instp/CLLocationManager/headingOrientation
             locationManager.startUpdatingHeading()
         }
