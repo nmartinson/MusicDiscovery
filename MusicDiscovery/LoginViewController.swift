@@ -86,6 +86,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                     }
                     else
                     {
+                        // UPDATE USER LOCATION
                         println("USER EXISTS")
                     }
                 }
@@ -153,6 +154,8 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                         appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
                         AudioPlayer.sharedInstance.user = appDelegate.currentUser
+                        // UPDATE CURRENT LOCATION
+                        
                     }
                 })
 
