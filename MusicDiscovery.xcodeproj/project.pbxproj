@@ -35,6 +35,8 @@
 		2BE7DFDE1AE6CCA10089CF6A /* PanicARKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B55041D1AE6B3B700C7257E /* PanicARKitResources.bundle */; };
 		2BF313F41AD36CD4004E1C06 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */; };
 		A213765E1ADF6DA300DCD745 /* MapCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A213765D1ADF6DA300DCD745 /* MapCalculator.swift */; };
+		A231CF691AED9DC4004329D8 /* GMSInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A231CF681AED9DC4004329D8 /* GMSInfoWindow.xib */; };
+		A231CF6B1AED9E6A004329D8 /* GMSInfoWindowTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231CF6A1AED9E6A004329D8 /* GMSInfoWindowTemplate.swift */; };
 		A23B70C91AD6671F00833A6B /* MapsTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */; };
 		A23B70CE1AD66FCA00833A6B /* HybridMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */; };
 		A23B70D01AD66FE000833A6B /* SatteliteMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */; };
@@ -118,6 +120,8 @@
 		2BF313F31AD36CD4004E1C06 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = MusicDiscovery/AudioPlayer.swift; sourceTree = "<group>"; };
 		9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicDiscovery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A213765D1ADF6DA300DCD745 /* MapCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCalculator.swift; sourceTree = "<group>"; };
+		A231CF681AED9DC4004329D8 /* GMSInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GMSInfoWindow.xib; sourceTree = "<group>"; };
+		A231CF6A1AED9E6A004329D8 /* GMSInfoWindowTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMSInfoWindowTemplate.swift; sourceTree = "<group>"; };
 		A23B70C81AD6671F00833A6B /* MapsTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapsTestStoryboard.storyboard; sourceTree = "<group>"; };
 		A23B70CD1AD66FCA00833A6B /* HybridMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HybridMapView.xib; sourceTree = "<group>"; };
 		A23B70CF1AD66FE000833A6B /* SatteliteMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SatteliteMapView.xib; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 		2B1F0ECF1ACDA5FC00BBCBCA /* MusicDiscovery */ = {
 			isa = PBXGroup;
 			children = (
+				A231CF671AED9D96004329D8 /* Nibz */,
 				A23B70CC1AD66F9E00833A6B /* SubViews */,
 				2B1F0F071ACE241400BBCBCA /* Music-Discovery-Bridging-Header.h */,
 				A23B70C71AD6670200833A6B /* StoryBoards */,
@@ -288,6 +293,15 @@
 				9CB2A34F5A84520BB9AAE289 /* Pods_MusicDiscovery.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A231CF671AED9D96004329D8 /* Nibz */ = {
+			isa = PBXGroup;
+			children = (
+				A231CF681AED9DC4004329D8 /* GMSInfoWindow.xib */,
+				A231CF6A1AED9E6A004329D8 /* GMSInfoWindowTemplate.swift */,
+			);
+			name = Nibz;
 			sourceTree = "<group>";
 		};
 		A23B70C71AD6670200833A6B /* StoryBoards */ = {
@@ -420,7 +434,7 @@
 				TargetAttributes = {
 					2B1F0ECC1ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = B782ML49FF;
+						DevelopmentTeam = VFFSBUB24B;
 					};
 					2B1F0EE11ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
@@ -452,6 +466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A231CF691AED9DC4004329D8 /* GMSInfoWindow.xib in Resources */,
 				2BE7DFDD1AE6CCA10089CF6A /* PanicARKit.framework in Resources */,
 				2BE7DFDE1AE6CCA10089CF6A /* PanicARKitResources.bundle in Resources */,
 				2B1F0F001ACDA7B600BBCBCA /* Main.storyboard in Resources */,
@@ -537,6 +552,7 @@
 				2B85BF821AD6241D00F62893 /* ProfileViewController.swift in Sources */,
 				2B57D37C1ADD6FA000AAE553 /* SwiftyJSON.swift in Sources */,
 				2B4A887C1AE723FA0010F2D4 /* PoiSongLabelTemplate.swift in Sources */,
+				A231CF6B1AED9E6A004329D8 /* GMSInfoWindowTemplate.swift in Sources */,
 				2B19580A1ADD7F6800F55C77 /* PlaylistSongViewController.swift in Sources */,
 				A213765E1ADF6DA300DCD745 /* MapCalculator.swift in Sources */,
 				2B1F0F041ACE23B900BBCBCA /* LoginViewController.swift in Sources */,

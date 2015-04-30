@@ -53,7 +53,7 @@ class BluemixCommunication
     ******************************************************************************************/
     func getNearbyUsers(userId: String, completion:(users: [User]) -> Void)
     {
-        let radius = "1000000000000"
+        let radius = "1000"
         var details:Dictionary<String,AnyObject>?
         details = ["error": "", "success": false]
         let params = ["action": getNearbyUsersAction, "userId": userId, "radius": radius]
