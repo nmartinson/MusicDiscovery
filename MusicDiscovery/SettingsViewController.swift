@@ -87,7 +87,50 @@ class SettingsViewController: UIViewController, UITextFieldDelegate//, SPTAudioS
         return true
     }
     
+    /*****************************************************************************************************
+    *   Logs out the current user.
+    *   Sets the session object in NSUserDefaults to nil
+    *   Presents the login view controller
+    *****************************************************************************************************/
+    @IBAction func logoutButtonPressed(sender: UIButton)
+    {
+        AudioPlayer.sharedInstance.player.logout { (error) -> Void in
+            if error == nil
+            {
+                let loginView = self.storyboard!.instantiateViewControllerWithIdentifier("LoginView") as! LoginViewController
+                let appDel = UIApplication.sharedApplication().delegate!
+                appDel.window!?.rootViewController = loginView
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(nil, forKey: "SpotifySession")
+            }
+        }
+    }
     
+    /*****************************************************************************************************
+    *
+    *****************************************************************************************************/
+    @IBAction func pauseButtonPressed(sender: UIButton)
+    {
+        if AudioPlayer.sharedInstance.player.isPlaying == true
+        {
+            AudioPlayer.sharedInstance.player.setIsPlaying(false, callback: { (error) -> Void in
+                if error != nil
+                {
+                    println("error pausing")
+                }
+            })
+        }
+        else
+        {
+            AudioPlayer.sharedInstance.player.setIsPlaying(true, callback: { (error) -> Void in
+                if error != nil
+                {
+                    println("error pausing")
+                }
+            })
+        }
+    }
     
     @IBAction func playButtonPressed(sender: UIButton)
     {

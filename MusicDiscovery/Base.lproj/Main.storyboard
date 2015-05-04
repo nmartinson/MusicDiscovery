@@ -8,7 +8,7 @@
         <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="LoginViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="vXZ-lx-hvc" customClass="LoginViewController" customModule="MusicDiscovery" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -80,11 +80,31 @@
                                     <action selector="playButtonPressed:" destination="geI-OU-Hm3" eventType="touchUpInside" id="fQt-m4-Q8j"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZs-tC-3rF">
+                                <rect key="frame" x="293" y="324" width="53" height="30"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="geI-OU-Hm3" eventType="touchUpInside" id="PIx-25-Hdz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qe0-uL-dpY">
+                                <rect key="frame" x="272" y="392" width="88" height="30"/>
+                                <state key="normal" title="Pause Music">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseButtonPressed:" destination="geI-OU-Hm3" eventType="touchUpInside" id="kuP-FC-i2e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AG8-Z6-Ncz" firstAttribute="top" secondItem="5oP-Go-G7l" secondAttribute="bottom" constant="32" id="1ur-w4-6IM"/>
                             <constraint firstAttribute="centerX" secondItem="rQt-4c-YzW" secondAttribute="centerX" id="92H-Yg-PEX"/>
+                            <constraint firstAttribute="centerX" secondItem="Qe0-uL-dpY" secondAttribute="centerX" id="BHU-TC-wo0"/>
+                            <constraint firstAttribute="centerX" secondItem="XZs-tC-3rF" secondAttribute="centerX" id="Pxs-7X-8Kv"/>
                             <constraint firstItem="2Cg-ek-CZm" firstAttribute="top" secondItem="rQt-4c-YzW" secondAttribute="bottom" constant="102" id="aAv-1G-sv4"/>
                             <constraint firstItem="rQt-4c-YzW" firstAttribute="top" secondItem="AG8-Z6-Ncz" secondAttribute="bottom" constant="19" id="eRH-fe-HuS"/>
                             <constraint firstAttribute="centerX" secondItem="AG8-Z6-Ncz" secondAttribute="centerX" id="lbU-ig-CEA"/>

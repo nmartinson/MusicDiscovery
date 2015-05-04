@@ -82,12 +82,17 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                     if user == nil
                     {
                         // if user doesn't exist, create an account
-                        BluemixCommunication().createNewUser(userID, name: realName, lat: "", lon: "", profilePicture: profilePic, completion: { (users) -> Void in })
+                        BluemixCommunication().createNewUser(userID, name: realName, lat: lat, lon: lon, profilePicture: profilePic)
+                        {
+                            // update user location
+                            BluemixCommunication().updateLocation(userID, lat: lat, lon: lon)
+                        }
                     }
                     else
                     {
                         // UPDATE USER LOCATION
                         println("USER EXISTS")
+                        BluemixCommunication().updateLocation(userID, lat: lat, lon: lon)
                     }
                 }
             } else {

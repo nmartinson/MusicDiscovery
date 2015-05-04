@@ -145,6 +145,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
             {
                 poiLabel.poiTemplate?.userName.text = user.getUserID()
             }
+//            if 
             // get profile pic if it exists
             if user.getImageURL() != nil
             {

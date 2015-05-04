@@ -100,8 +100,8 @@ class MapViewController: UIViewController, MapUpdateProtocol, MapLocationNotific
     }
     
     func markerTimerInit() -> Void {
-        self.markerTimer = NSTimer(timeInterval: 10, target: self, selector: Selector("markerTimerDidFire"), userInfo: nil, repeats: true)
-        NSRunLoop.currentRunLoop().addTimer(self.markerTimer, forMode: NSRunLoopCommonModes)
+//        self.markerTimer = NSTimer(timeInterval: 10, target: self, selector: Selector("markerTimerDidFire"), userInfo: nil, repeats: true)
+//        NSRunLoop.currentRunLoop().addTimer(self.markerTimer, forMode: NSRunLoopCommonModes)
     }
     
     func markerTimerDidFire() -> Void {

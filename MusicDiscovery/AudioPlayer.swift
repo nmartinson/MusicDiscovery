@@ -70,8 +70,9 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
             let trackURI = trackMetadata["SPTAudioStreamingMetadataTrackURI"] as! String
             println("changed track to \(trackMetadata)")
             
-            // Update the users current song in the database
+            // Update the users current song and location in the database
             BluemixCommunication().updateCurrentSong(user!.getUserID(), song: trackURI)
+            BluemixCommunication().updateLocation(user!.getUserID(), lat: LocationHandler.sharedInstance.latitude, lon: LocationHandler.sharedInstance.longitude)
         }
     }
     

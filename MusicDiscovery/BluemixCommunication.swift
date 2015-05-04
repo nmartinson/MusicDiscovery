@@ -39,14 +39,35 @@ class BluemixCommunication
     let getUserAction = "101"
     let updateCurrentSongAction = "102"
     let getNearbyUsersAction = "103"
+    let updateLocationAction = "106"
+    
     let newUserCreationSuccess = "1000"
     let newUserCreationFailure = "1001"
     let getUserFailure = "1011"
     let updateCurrentSongSuccess = "1020"
     let updateCurrentSongFailure = "1021"
     let getNearbyUsersFailure = "1031"
+    let updateLocationSuccess = "1060"
+    let updateLocationFailure = "1061"
     
     
+    
+    /******************************************************************************************
+    *
+    ******************************************************************************************/
+    func updateLocation(userId: String, lat:String, lon:String)
+    {
+        var details:Dictionary<String,AnyObject>?
+        let params = ["action": updateLocationAction, "userId":userId, "lat":lat, "lon":lon]
+        
+        Alamofire.request(.POST, userURL, parameters: params).responseString { (_, response, string, _) -> Void in
+            if string! == self.updateLocationFailure
+            {
+                println("Update location failure")
+            }
+        }
+    }
+
     
     /******************************************************************************************
     *
@@ -140,16 +161,15 @@ class BluemixCommunication
     /******************************************************************************************
     *
     ******************************************************************************************/
-    func createNewUser(spotifyId: String, name:String, lat:String, lon:String, profilePicture:String, completion:(users: [User]) -> Void)
+    func createNewUser(spotifyId: String, name:String, lat:String, lon:String, profilePicture:String, completion:() -> Void)
     {
         var details:Dictionary<String,AnyObject>?
         details = ["error": "", "success": false]
         let params = ["action": newUserAction, "id": spotifyId, "name": name, "lat":lat, "lon":lon, "profilePictureUrl":profilePicture]
         
         Alamofire.request(.POST, userURL, parameters: params).responseString { (_, response, rawString, _) -> Void in
-//            var json = JSON(rawJSON!)
             println("CREATE USER \(rawString)")
-//            completion(users: [])
+            completion()
         }
     }
     

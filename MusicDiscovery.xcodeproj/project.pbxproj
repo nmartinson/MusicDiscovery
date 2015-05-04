@@ -222,7 +222,6 @@
 				2B1F0ED01ACDA5FC00BBCBCA /* Supporting Files */,
 				2B57D37B1ADD6FA000AAE553 /* SwiftyJSON.swift */,
 				2B57D37D1ADD776900AAE553 /* SpotifyWebAPI.swift */,
-				2B5504241AE6BC2200C7257E /* BluemixCommunication.swift */,
 			);
 			path = MusicDiscovery;
 			sourceTree = "<group>";
@@ -326,6 +325,7 @@
 		A2E7BDE91AD451080087094C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2B5504241AE6BC2200C7257E /* BluemixCommunication.swift */,
 				A23B70D31AD6784600833A6B /* MapHandler.swift */,
 				2B1F0ED21ACDA5FC00BBCBCA /* AppDelegate.swift */,
 				2B676D1A1AD8256D0048E09C /* User.swift */,
@@ -434,7 +434,7 @@
 				TargetAttributes = {
 					2B1F0ECC1ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = VFFSBUB24B;
+						DevelopmentTeam = B782ML49FF;
 					};
 					2B1F0EE11ACDA5FC00BBCBCA = {
 						CreatedOnToolsVersion = 6.2;
