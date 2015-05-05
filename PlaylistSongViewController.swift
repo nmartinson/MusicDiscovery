@@ -70,8 +70,22 @@ class PlaylistSongController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let URL = songList[indexPath.row].playableUri
-
-        audioPlayer.playUsingSession(URL)
+        var queueURIs:NSMutableArray = []
+        for(var i = indexPath.row; i < songList.count; i++)
+        {
+            queueURIs.addObject(songList[i].playableUri)
+        }
+//        audioPlayer.playUsingSession(URL)
+        audioPlayer.player.queueURIs(queueURIs as [AnyObject], clearQueue: true) { (error) -> Void in
+            if error != nil
+            {
+                println(error)
+            }
+            else
+            {
+                println("queued")
+            }
+        }
     }
 
     /******************************************************************************************************

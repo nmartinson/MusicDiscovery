@@ -207,7 +207,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
         defaults.setObject(sessionData, forKey: "SpotifySession")
         AudioPlayer.sharedInstance.session = session
         AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in
-            println("player login error \(error)")
+            println("\nplayer login error \(error)")
         })
         
         self.session = session

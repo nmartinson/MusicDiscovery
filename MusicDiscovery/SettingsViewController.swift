@@ -10,26 +10,33 @@ import Foundation
 import UIKit
 import MediaPlayer
 
-class SettingsViewController: UIViewController, UITextFieldDelegate//, SPTAudioStreamingPlaybackDelegate
+class SettingsViewController: UIViewController, UITextFieldDelegate
 {
+    @IBOutlet weak var searchRadiusLabel: UILabel!
+    @IBOutlet weak var visibilityLabel: UILabel!
+    @IBOutlet weak var visibilityToggle: UISwitch!
     @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var pauseButton: UIButton!
     var request:NSURL?
     var session:SPTSession!
     var audioPlayer = AudioPlayer.sharedInstance
     let musicPlayer = MPMusicPlayerController.systemMusicPlayer()
     var user:User?
+    var radius:Int!
+    var visible:Bool!
     
+    /*****************************************************************************************************
+    *
+    *****************************************************************************************************/
     override func viewDidLoad()
     {
-        let info = MPNowPlayingInfoCenter.defaultCenter()
-        let nowPlaying = info.nowPlayingInfo
-        println("Now playing \(nowPlaying)")
-        let command = MPRemoteCommandCenter.sharedCommandCenter()
+        radius = UserPreferences().getRadius()
+        searchRadiusLabel.text = "Search radius: \(radius) m"
+        visible = UserPreferences().isVisible()
+        visibilityToggle.setOn(visible, animated: false)
+        let status =  visible == true ? "on" : "off"
+        visibilityLabel.text = "Visibility \(status)"
 
-        let notifications = NSNotificationCenter.defaultCenter()
-        notifications.addObserver(self, selector: "getNot:", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
-        
-        musicPlayer.beginGeneratingPlaybackNotifications()
         
         // gets a hold of the session object
         if let sessionObj:AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("SpotifySession")
@@ -43,49 +50,72 @@ class SettingsViewController: UIViewController, UITextFieldDelegate//, SPTAudioS
         user = appDelegate.currentUser!
     }
     
+    /*****************************************************************************************************
+    *
+    *****************************************************************************************************/
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        let info = MPNowPlayingInfoCenter.defaultCenter()
-        let nowPlaying = info.nowPlayingInfo
-        println("Now playing \(nowPlaying)")
+        println("TRACK LIST SIZE \(audioPlayer.player.trackListSize)")
+        if audioPlayer.player.isPlaying
+        {
+            pauseButton.setTitle("Pause Music", forState: .Normal)
+            pauseButton.hidden = false
+        }
+        else if audioPlayer.player.trackListSize > 0
+        {
+            pauseButton.setTitle("Play Music", forState: .Normal)
+            pauseButton.hidden = false
+        }
+        else
+        {
+            pauseButton.hidden = true
+        }
     }
     
-    
-    func getNot(notification: NSNotification)
+    override func viewDidDisappear(animated: Bool)
     {
-        println(notification)
+        super.viewDidDisappear(true)
+        NSUserDefaults.standardUserDefaults().setInteger(radius, forKey: "searchRadius")
+        
+        //TO DO
+        if visible != UserPreferences().isVisible()
+        {
+            NSUserDefaults.standardUserDefaults().setBool(visible, forKey: "visibility")
+            //turn on or off visibility
+        }
+        
     }
     
     /*****************************************************************************************************
     *   Gets called as characters are typed in the search text field
     *   Searchs spotify for a song
     *****************************************************************************************************/
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        if searchField.text != nil
-        {
-            let text = searchField.text
-            
-            SPTRequest.performSearchWithQuery(text, queryType: SPTSearchQueryType.QueryTypeTrack, offset: 0, session: session) { (error, response) -> Void in
-                
-                // make sure results arent nil
-                if response != nil
-                {
-                    if let items = response.items as? [SPTPartialTrack]
-                    {
-                        if let item = items.first
-                        {
-                            self.request = item.playableUri
-                            println(item.artists.first!.name)
-                            println(item.name!)
-                        }
-                    }
-                    else { println("No results") }
-                }
-            }
-        }
-        return true
-    }
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        
+//        if searchField.text != nil
+//        {
+//            let text = searchField.text
+//            
+//            SPTRequest.performSearchWithQuery(text, queryType: SPTSearchQueryType.QueryTypeTrack, offset: 0, session: session) { (error, response) -> Void in
+//                
+//                // make sure results arent nil
+//                if response != nil
+//                {
+//                    if let items = response.items as? [SPTPartialTrack]
+//                    {
+//                        if let item = items.first
+//                        {
+//                            self.request = item.playableUri
+//                            println(item.artists.first!.name)
+//                            println(item.name!)
+//                        }
+//                    }
+//                    else { println("No results") }
+//                }
+//            }
+//        }
+//        return true
+//    }
     
     /*****************************************************************************************************
     *   Logs out the current user.
@@ -112,45 +142,54 @@ class SettingsViewController: UIViewController, UITextFieldDelegate//, SPTAudioS
     *****************************************************************************************************/
     @IBAction func pauseButtonPressed(sender: UIButton)
     {
-        if AudioPlayer.sharedInstance.player.isPlaying == true
+        if audioPlayer.player.isPlaying == true
         {
-            AudioPlayer.sharedInstance.player.setIsPlaying(false, callback: { (error) -> Void in
-                if error != nil
+            audioPlayer.player.setIsPlaying(false, callback: { (error) -> Void in
+                if error == nil
                 {
-                    println("error pausing")
+                    self.pauseButton.setTitle("Play Music", forState: .Normal)
+                    self.pauseButton.hidden = false
                 }
             })
         }
         else
         {
-            AudioPlayer.sharedInstance.player.setIsPlaying(true, callback: { (error) -> Void in
-                if error != nil
+            audioPlayer.player.setIsPlaying(true, callback: { (error) -> Void in
+                if error == nil
                 {
-                    println("error pausing")
+                    self.pauseButton.setTitle("Pause Music", forState: .Normal)
+                    self.pauseButton.hidden = false
                 }
             })
         }
     }
     
-    @IBAction func playButtonPressed(sender: UIButton)
-    {
-        if request != nil
-        {
-            audioPlayer.playUsingSession(request!)
-            println("play")
-        }
-    }
+    /*****************************************************************************************************
+    *
+    *****************************************************************************************************/
+//    @IBAction func playButtonPressed(sender: UIButton)
+//    {
+//        if request != nil
+//        {
+//            audioPlayer.playUsingSession(request!)
+//            println("play")
+//        }
+//    }
  
-    
-    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!)
+    /*****************************************************************************************************
+    *
+    *****************************************************************************************************/
+    @IBAction func visibilityToggled(sender: UISwitch)
     {
-        
-        println("changed track to \(trackMetadata)")
+        visible = sender.on
+        let status =  visible == true ? "on" : "off"
+        visibilityLabel.text = "Visibility \(status)"
     }
     
-    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: NSURL!) {
-        println("started playing \(trackUri)")
+    @IBAction func searchRadiusChanged(sender: UISlider)
+    {
+        radius = Int(sender.value)
+        searchRadiusLabel.text = "Search radius: \(radius) m"
     }
-    
     
 }

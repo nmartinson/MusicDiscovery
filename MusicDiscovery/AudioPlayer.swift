@@ -24,8 +24,10 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
 
     override init()
     {
+        super.init()
         // if the player is nil, initialize it with the clientID
         player = SPTAudioStreamingController(clientId: kClientId)
+        player.playbackDelegate = self
     }
     
     /**********************************************************************************************************
@@ -43,7 +45,6 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     *****************************************************************************************************/
     func playUsingSession(request: NSURL)
     {
-        player.playbackDelegate = self
         if !self.player.loggedIn
         {
             self.delegate?.notAPremiumUser()

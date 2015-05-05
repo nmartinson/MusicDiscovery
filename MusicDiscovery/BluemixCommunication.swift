@@ -74,10 +74,10 @@ class BluemixCommunication
     ******************************************************************************************/
     func getNearbyUsers(userId: String, completion:(users: [User]) -> Void)
     {
-        let radius = "1000"
+        let radius = UserPreferences().getRadius()
         var details:Dictionary<String,AnyObject>?
         details = ["error": "", "success": false]
-        let params = ["action": getNearbyUsersAction, "userId": userId, "radius": radius]
+        let params:[String : AnyObject] = ["action": getNearbyUsersAction, "userId": userId, "radius": radius]
         
         Alamofire.request(.GET, userURL, parameters: params).responseJSON { (_, response, rawJSON, _) -> Void in
             println("NEARBY USERS\n\(rawJSON)")

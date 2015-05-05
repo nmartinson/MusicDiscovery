@@ -145,7 +145,6 @@ class CameraViewController: PARViewController, PARControllerDelegate
             {
                 poiLabel.poiTemplate?.userName.text = user.getUserID()
             }
-//            if 
             // get profile pic if it exists
             if user.getImageURL() != nil
             {
@@ -159,6 +158,10 @@ class CameraViewController: PARViewController, PARControllerDelegate
             // get album cover image
             if user.getCurrentSong() != nil
             {
+                // place song information on the label
+                poiLabel.poiTemplate?.songLabel.text = user.getSongName()
+                poiLabel.poiTemplate?.artistLabel.text = user.getArtistName()
+                poiLabel.poiTemplate?.songURI = user.getCurrentSong()
                 SpotifyCommunication().getSongInfo(user.getCurrentSong()!)
                 {
                     (album: SPTPartialAlbum) in
@@ -170,8 +173,7 @@ class CameraViewController: PARViewController, PARControllerDelegate
                     }
                 }
             }
-            poiLabel.poiTemplate?.songLabel.text = "I'm a Barbie Girl"
-            poiLabel.poiTemplate?.artistLabel.text = "Aqua"
+
             PARController.sharedARController().addObject(poiLabel)
         }
     }

@@ -15,7 +15,7 @@ class PoiSongLabelTemplate: PARPoiLabelTemplate
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
-    private var songURI:NSURL?
+    var songURI:NSURL?
     
     
     required init(coder aDecoder: NSCoder) {
@@ -24,12 +24,11 @@ class PoiSongLabelTemplate: PARPoiLabelTemplate
     
     @IBAction func labelTapped(sender: UIButton)
     {
-        println("LABEL TOUCHED")
+//        println("LABEL TOUCHED")
     }
     
     @IBAction func playButtonTapped(sender: UIButton)
     {
-//        println("pressed play")
         if songURI != nil
         {
             AudioPlayer.sharedInstance.playUsingSession(songURI!)

@@ -18,7 +18,6 @@ class User
     private var artistName:String?
     private var imageURL:String?
     private var location:CLLocation?
-    
     private var latitude:String!
     private var longitude:String!
     

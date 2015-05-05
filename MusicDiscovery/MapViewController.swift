@@ -73,7 +73,7 @@ class MapViewController: UIViewController, MapUpdateProtocol, MapLocationNotific
     }
     
     func mapTimerDidFire() -> Void {
-        println("map timer fired")
+//        println("map timer fired")
         
         var mapSuccess = false
         
