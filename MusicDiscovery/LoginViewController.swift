@@ -55,6 +55,16 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                 var profilePic = ""
                 var realName = ""
                 var userID = ""
+                let product = (loggedUser.product as SPTProduct).hashValue
+                println("product \(product.hashValue)")
+                if product == 2 || product == 1
+                {
+                    AudioPlayer.sharedInstance.premium = true
+                }
+                else
+                {
+                    AudioPlayer.sharedInstance.premium = false
+                }
                 if loggedUser.largestImage != nil
                 {
                     profilePic = "\(loggedUser.largestImage.imageURL)"
@@ -74,6 +84,8 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                 println(lon)
                 
                 appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
+                AudioPlayer.sharedInstance.user = appDelegate.currentUser
+
                 // check if the current user already has an account
                 BluemixCommunication().getUserInfo(userID)
                 {
@@ -81,6 +93,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                     
                     if user == nil
                     {
+                        println("CREATING USER")
                         // if user doesn't exist, create an account
                         BluemixCommunication().createNewUser(userID, name: realName, lat: lat, lon: lon, profilePicture: profilePic)
                         {
@@ -143,6 +156,16 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                         var profilePic = ""
                         var realName = ""
                         var userID = ""
+                        let product = (loggedUser.product as SPTProduct).hashValue
+                        println("product \(product.hashValue)")
+                        if product == 2 || product == 1
+                        {
+                            AudioPlayer.sharedInstance.premium = true
+                        }
+                        else
+                        {
+                            AudioPlayer.sharedInstance.premium = false
+                        }
                         if loggedUser.largestImage != nil
                         {
                             profilePic = "\(loggedUser.largestImage.imageURL)"
@@ -155,11 +178,12 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                         {
                             userID = loggedUser.canonicalUserName
                         }
-
+                        println("USER ID \(userID), DISPLAY NAME \(realName)")
                         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                         appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
                         AudioPlayer.sharedInstance.user = appDelegate.currentUser
                         // UPDATE CURRENT LOCATION
+                        BluemixCommunication().updateLocation(userID, lat: LocationHandler.sharedInstance.latitude, lon: LocationHandler.sharedInstance.longitude)
                         
                     }
                 })

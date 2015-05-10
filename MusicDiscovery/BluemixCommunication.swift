@@ -58,12 +58,24 @@ class BluemixCommunication
     func updateLocation(userId: String, lat:String, lon:String)
     {
         var details:Dictionary<String,AnyObject>?
-        let params = ["action": updateLocationAction, "userId":userId, "lat":lat, "lon":lon]
-        
+        var params:[String:String]
+        if lat == "" && lon == ""
+        {
+            params = ["action": updateLocationAction, "userId":userId]
+        }
+        else
+        {
+            params = ["action": updateLocationAction, "userId":userId, "lat":lat, "lon":lon]
+        }
+        println("UPDATE LOCATION \(params)")
         Alamofire.request(.POST, userURL, parameters: params).responseString { (_, response, string, _) -> Void in
             if string! == self.updateLocationFailure
             {
                 println("Update location failure")
+            }
+            else
+            {
+                println("Update location success")
             }
         }
     }
@@ -75,8 +87,7 @@ class BluemixCommunication
     func getNearbyUsers(userId: String, completion:(users: [User]) -> Void)
     {
         let radius = UserPreferences().getRadius()
-        var details:Dictionary<String,AnyObject>?
-        details = ["error": "", "success": false]
+        println("SEARCH RADIUS \(radius)")
         let params:[String : AnyObject] = ["action": getNearbyUsersAction, "userId": userId, "radius": radius]
         
         Alamofire.request(.GET, userURL, parameters: params).responseJSON { (_, response, rawJSON, _) -> Void in
@@ -118,7 +129,8 @@ class BluemixCommunication
         
         Alamofire.request(.GET, userURL, parameters: params).responseJSON { (_, response, rawJSON, _) -> Void in
             println("USER INFO\n\(rawJSON)")
-            if rawJSON != nil
+            var json = JSON(rawJSON!)
+            if json.stringValue != self.getUserFailure //rawJSON!.string != self.getUserFailure
             {
                 var json = JSON(rawJSON!)
                 let currentSong = json["currentSong"].stringValue
@@ -140,18 +152,17 @@ class BluemixCommunication
     /******************************************************************************************
     *
     ******************************************************************************************/
-    func updateCurrentSong(userId: String, song:String)
+    func updateCurrentSong(userId: String, track:String, album:String, artist:String, URI:String)
     {
-        var details:Dictionary<String,AnyObject>?
-        details = ["error": "", "success": false]
-        let params = ["action": updateCurrentSongAction, "userId": userId, "newSong": song]
-        
+        let params = ["action": updateCurrentSongAction, "userId": userId, "track": track, "album":album, "artist":artist, "uri":URI]
+
         Alamofire.request(.POST, userURL, parameters: params).responseString { (_, response, string, _) -> Void in
-            if string! == "1000"
+//            println("UPDATE SONG \(string)")
+            if string! == "1020"
             {
                 println("update song success")
             }
-            else if string! == "1001"
+            else if string! == "1021"
             {
                 println("Update song failure")
             }

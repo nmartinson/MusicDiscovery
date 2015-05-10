@@ -75,15 +75,23 @@ class PlaylistSongController: UIViewController, UITableViewDelegate, UITableView
         {
             queueURIs.addObject(songList[i].playableUri)
         }
-//        audioPlayer.playUsingSession(URL)
-        audioPlayer.player.queueURIs(queueURIs as [AnyObject], clearQueue: true) { (error) -> Void in
-            if error != nil
-            {
-                println(error)
-            }
-            else
-            {
-                println("queued")
+        if audioPlayer.isPremium()
+        {
+            audioPlayer.player.stop({ (error) -> Void in
+                if error != nil
+                {
+                    println("Stop player error \(error)")
+                }
+            })
+            audioPlayer.player.queueURIs(queueURIs as [AnyObject], clearQueue: true) { (error) -> Void in
+                if error != nil
+                {
+                    println(error)
+                }
+                else
+                {
+                    println("queued")
+                }
             }
         }
     }

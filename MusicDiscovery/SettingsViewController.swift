@@ -12,6 +12,7 @@ import MediaPlayer
 
 class SettingsViewController: UIViewController, UITextFieldDelegate
 {
+    @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var searchRadiusLabel: UILabel!
     @IBOutlet weak var visibilityLabel: UILabel!
     @IBOutlet weak var visibilityToggle: UISwitch!
@@ -32,6 +33,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     {
         radius = UserPreferences().getRadius()
         searchRadiusLabel.text = "Search radius: \(radius) m"
+        radiusSlider.setValue(Float(radius), animated: false)
         visible = UserPreferences().isVisible()
         visibilityToggle.setOn(visible, animated: false)
         let status =  visible == true ? "on" : "off"
@@ -82,40 +84,18 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
         {
             NSUserDefaults.standardUserDefaults().setBool(visible, forKey: "visibility")
             //turn on or off visibility
+            if visible!
+            {
+                BluemixCommunication().updateLocation(user!.getUserID(), lat: LocationHandler.sharedInstance.latitude, lon: LocationHandler.sharedInstance.longitude)
+            }
+            else
+            {
+                BluemixCommunication().updateLocation(user!.getUserID(), lat: "", lon: "")
+            }
         }
         
     }
     
-    /*****************************************************************************************************
-    *   Gets called as characters are typed in the search text field
-    *   Searchs spotify for a song
-    *****************************************************************************************************/
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        
-//        if searchField.text != nil
-//        {
-//            let text = searchField.text
-//            
-//            SPTRequest.performSearchWithQuery(text, queryType: SPTSearchQueryType.QueryTypeTrack, offset: 0, session: session) { (error, response) -> Void in
-//                
-//                // make sure results arent nil
-//                if response != nil
-//                {
-//                    if let items = response.items as? [SPTPartialTrack]
-//                    {
-//                        if let item = items.first
-//                        {
-//                            self.request = item.playableUri
-//                            println(item.artists.first!.name)
-//                            println(item.name!)
-//                        }
-//                    }
-//                    else { println("No results") }
-//                }
-//            }
-//        }
-//        return true
-//    }
     
     /*****************************************************************************************************
     *   Logs out the current user.
@@ -163,18 +143,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
             })
         }
     }
-    
-    /*****************************************************************************************************
-    *
-    *****************************************************************************************************/
-//    @IBAction func playButtonPressed(sender: UIButton)
-//    {
-//        if request != nil
-//        {
-//            audioPlayer.playUsingSession(request!)
-//            println("play")
-//        }
-//    }
+
  
     /*****************************************************************************************************
     *

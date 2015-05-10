@@ -20,6 +20,7 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     var player:SPTAudioStreamingController!
     var user:User?
     var delegate:AudioPlayerDelegate?
+    var premium:Bool?
 
 
     override init()
@@ -40,23 +41,31 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
         return SharedInstance.instance
     }
     
+    func isPremium() -> Bool
+    {
+        if !self.player.loggedIn || premium == false
+        {
+            self.delegate?.notAPremiumUser()
+            return false
+        }
+        return true
+    }
+    
     /*****************************************************************************************************
     *   Play the request that is passed in
     *****************************************************************************************************/
     func playUsingSession(request: NSURL)
     {
-        if !self.player.loggedIn
+        if isPremium()
         {
-            self.delegate?.notAPremiumUser()
+            self.player?.playURIs([request], fromIndex: 0, callback: { (error) -> Void in
+                if error != nil
+                {
+                    println("Playback error \(error)")
+
+                }
+            })
         }
-        self.player?.playURIs([request], fromIndex: 0, callback: { (error) -> Void in
-            if error != nil
-            {
-                println("Playback error \(error)")
-
-            }
-        })
-
     }
     
     /**********************************************************************************************************
@@ -66,13 +75,15 @@ class AudioPlayer: NSObject, SPTAudioStreamingPlaybackDelegate
     {
         if trackMetadata != nil
         {
+            
             let artist = trackMetadata["SPTAudioStreamingMetadataArtistName"] as! String
             let track = trackMetadata["SPTAudioStreamingMetadataTrackName"] as! String
             let trackURI = trackMetadata["SPTAudioStreamingMetadataTrackURI"] as! String
+            let album = trackMetadata["SPTAudioStreamingMetadataAlbumName"] as! String
             println("changed track to \(trackMetadata)")
             
             // Update the users current song and location in the database
-            BluemixCommunication().updateCurrentSong(user!.getUserID(), song: trackURI)
+            BluemixCommunication().updateCurrentSong(user!.getUserID(), track: track, album: album, artist: artist, URI: trackURI)
             BluemixCommunication().updateLocation(user!.getUserID(), lat: LocationHandler.sharedInstance.latitude, lon: LocationHandler.sharedInstance.longitude)
         }
     }
