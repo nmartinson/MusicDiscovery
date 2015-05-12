@@ -22,7 +22,7 @@ class User
     private var longitude:String!
     private var albumName:String?
     
-    init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL, artist:String, song:String, album:String, location:CLLocation)
+    init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL?, artist:String?, song:String?, album:String?, location:CLLocation)
     {
         self.realName = realName
         self.userID = userID

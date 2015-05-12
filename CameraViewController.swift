@@ -58,30 +58,6 @@ class CameraViewController: PARViewController, PARControllerDelegate
         {
             (users: [User]) in
             self.users = users
-            
-            var i = 0
-            while(i < users.count)
-            {
-                BluemixCommunication().getCurrentSong(users[i].getUserID())
-                {
-                    (songInfo: [String:String]?) in
-                    var song = ""
-                    var artist = ""
-                    var album = ""
-                    
-                    if songInfo != nil
-                    {
-                        song = songInfo!["song"]!
-                        artist = songInfo!["artist"]!
-                        album = songInfo!["album"]!
-                    }
-                    users[i].setAlbumName(album)
-                    users[i].setSongName(song)
-                    users[i].setArtistName(artist)
-                    i++
-                }
-            }
-            
             self.createPOI()
         }
     }

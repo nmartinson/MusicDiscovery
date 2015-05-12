@@ -99,16 +99,27 @@ class BluemixCommunication
                 var json = JSON(rawJSON!)
                 for(var i = 0; i < json.count; i++)
                 {
-                    let currentSong = json[i]["currentSong"].stringValue
+                    var URI:String? = json[i]["currentSong"].stringValue
+                    var song:String? = json[i]["track"].stringValue
+                    var artist:String? = json[i]["artist"].stringValue
+                    var album:String? = json[i]["album"].stringValue
+                    if URI == "null"
+                    {
+                        URI = ""
+                        song = nil
+                        artist = nil
+                        album = nil
+                    }
+                    
                     let id = json[i]["id"].stringValue
                     let lat = json[i]["lat"].stringValue
                     let lon = json[i]["lon"].stringValue
                     let profilePicURL = json[i]["profilePictureUrl"].stringValue
                     let lastSongCSV = json[i]["lastSongsCSV"].stringValue
-                    let realName = json[i][""].stringValue
+                    let realName = json[i]["name"].stringValue
                     let coords = CLLocation(latitude: (lat as NSString).doubleValue, longitude: (lon as NSString).doubleValue)
-//                    let user = User(realName: "", userID: id, profilePicture: profilePicURL, currentSongURL: NSURL(string: currentSong)!, artist: artist, song: song, album: album, location: coords)
-                    let user = User(realName: "", userID: id, profilePicture: profilePicURL, currentSongURL: NSURL(string: currentSong)!, location: coords)
+                    let user = User(realName: realName, userID: id, profilePicture: profilePicURL, currentSongURL: NSURL(string: URI!), artist: artist, song: song, album: album, location: coords)
+//                    let user = User(realName: "", userID: id, profilePicture: profilePicURL, currentSongURL: NSURL(string: URI)!, location: coords)
                         users.append(user)
                 }
                 completion(users: users)
@@ -200,8 +211,6 @@ class BluemixCommunication
     ******************************************************************************************/
     func createNewUser(spotifyId: String, name:String, lat:String, lon:String, profilePicture:String, completion:() -> Void)
     {
-        var details:Dictionary<String,AnyObject>?
-        details = ["error": "", "success": false]
         let params = ["action": newUserAction, "id": spotifyId, "name": name, "lat":lat, "lon":lon, "profilePictureUrl":profilePicture]
         
         Alamofire.request(.POST, userURL, parameters: params).responseString { (_, response, rawString, _) -> Void in
