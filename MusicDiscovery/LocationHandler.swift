@@ -63,6 +63,9 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     
     var seenError = false
     
+    var userID: String!
+    
+    
     /*********************************************************************************************
     * 4/6/2015
     * Author: Dillon McCusker
@@ -75,6 +78,8 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //moved line so that filter is increased once location has been updated at least once
+        locationManager.distanceFilter = 1
     }
     
     func compassInit() -> Void {
@@ -127,13 +132,14 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
     * TODO: Handle new coordinate data here.
     **********************************************************************************************/
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-        //println("locations = \(locations)")
+        println("locations = \(locations)")
+
         
         var locationArray = locations as NSArray
         var locationObj = locationArray.lastObject as! CLLocation
         var coord = locationObj.coordinate
 //        self.bearing = locationObj.course as CLLocationDirection
-        //        println(coord.latitude)
+//        println(coord.latitude)
 //        println(coord.longitude)
         
         self.location2D = coord
@@ -161,6 +167,10 @@ class LocationHandler: NSObject, CLLocationManagerDelegate{
 //                mapUpdateDelgate.updateMapViewTarget()
                 mapUpdateDelgate.updateMapViewToCamera()
             }
+        }
+        if self.userID != nil {
+            println("Location handler updating backend")
+            BluemixCommunication().updateLocation(self.userID, lat: self.latitude, lon: self.longitude)
         }
     }
     

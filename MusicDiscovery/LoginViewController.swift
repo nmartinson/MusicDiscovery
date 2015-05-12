@@ -30,8 +30,8 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
     
     func locationIsReady() {
         if self.session != nil {
-            self.userCreated = true
             createUser()
+            self.userCreated = true
         }
     }
     
@@ -99,6 +99,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                         {
                             // update user location
                             BluemixCommunication().updateLocation(userID, lat: lat, lon: lon)
+                            self.locHandler.userID = userID
                         }
                     }
                     else
@@ -106,6 +107,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                         // UPDATE USER LOCATION
                         println("USER EXISTS")
                         BluemixCommunication().updateLocation(userID, lat: lat, lon: lon)
+                        self.locHandler.userID = userID
                     }
                 }
             } else {
@@ -184,6 +186,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                         AudioPlayer.sharedInstance.user = appDelegate.currentUser
                         // UPDATE CURRENT LOCATION
                         BluemixCommunication().updateLocation(userID, lat: LocationHandler.sharedInstance.latitude, lon: LocationHandler.sharedInstance.longitude)
+                        self.locHandler.userID = userID
                         
                     }
                 })
