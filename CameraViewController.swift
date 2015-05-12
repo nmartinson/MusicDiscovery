@@ -58,6 +58,30 @@ class CameraViewController: PARViewController, PARControllerDelegate
         {
             (users: [User]) in
             self.users = users
+            
+            var i = 0
+            while(i < users.count)
+            {
+                BluemixCommunication().getCurrentSong(users[i].getUserID())
+                {
+                    (songInfo: [String:String]?) in
+                    var song = ""
+                    var artist = ""
+                    var album = ""
+                    
+                    if songInfo != nil
+                    {
+                        song = songInfo!["song"]!
+                        artist = songInfo!["artist"]!
+                        album = songInfo!["album"]!
+                    }
+                    users[i].setAlbumName(album)
+                    users[i].setSongName(song)
+                    users[i].setArtistName(artist)
+                    i++
+                }
+            }
+            
             self.createPOI()
         }
     }
@@ -137,6 +161,9 @@ class CameraViewController: PARViewController, PARControllerDelegate
             //create the poi label at the users location
             let poiLabel = PoiSongLabel(title: "", theDescription: "", theImage: UIImage(named: "Icon@2x~ipad"), fromTemplateXib: "PoiLabelWithImage", atLocation: user.getLocation())
             // check for real name
+            println("CREATE POI")
+            println("REAL NAME = \(user.getRealName())")
+            
             if user.getRealName() != ""
             {
                 poiLabel.poiTemplate?.userName.text = user.getRealName()
@@ -158,6 +185,8 @@ class CameraViewController: PARViewController, PARControllerDelegate
             // get album cover image
             if user.getCurrentSong() != nil
             {
+                println("SONG IS NOT NIL")
+                println("SONG NAME = \(user.getSongName())")
                 // place song information on the label
                 poiLabel.poiTemplate?.songLabel.text = user.getSongName()
                 poiLabel.poiTemplate?.artistLabel.text = user.getArtistName()

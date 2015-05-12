@@ -34,8 +34,8 @@ class SpotifyCommunication
             if error == nil
             {
                 let album = data.album as SPTPartialAlbum
-                println("SONG INFO\n\(album.name)")
-                println(album.smallestCover.imageURL)
+//                println("SONG INFO\n\(album.name)")
+//                println(album.smallestCover.imageURL)
                 completion(album: album)
             }
         }

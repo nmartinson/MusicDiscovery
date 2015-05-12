@@ -88,10 +88,6 @@ class PlaylistSongController: UIViewController, UITableViewDelegate, UITableView
                 {
                     println(error)
                 }
-                else
-                {
-                    println("queued")
-                }
             }
         }
     }

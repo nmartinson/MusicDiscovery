@@ -20,6 +20,22 @@ class User
     private var location:CLLocation?
     private var latitude:String!
     private var longitude:String!
+    private var albumName:String?
+    
+    init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL, artist:String, song:String, album:String, location:CLLocation)
+    {
+        self.realName = realName
+        self.userID = userID
+        self.imageURL = profilePicture
+        self.currentSongURL = currentSongURL
+        self.songName = song
+        self.artistName = artist
+        self.albumName = album
+        
+        self.location = location
+        self.latitude = "\(location.coordinate.latitude)"
+        self.longitude = "\(location.coordinate.longitude)"
+    }
     
     init(realName:String, userID:String, profilePicture: String, currentSongURL: NSURL, location:CLLocation)
     {
@@ -76,6 +92,8 @@ class User
         return realName
     }
     
+    
+    
     func getProfilePicture() -> UIImage?
     {
         return profilePicture
@@ -86,9 +104,19 @@ class User
         return userID
     }
     
+    func setSongName(name:String)
+    {
+        self.songName = name
+    }
+    
     func getSongName() -> String?
     {
         return songName
+    }
+    
+    func setArtistName(name:String)
+    {
+        self.artistName = name
     }
     
     func getArtistName() -> String?
@@ -101,9 +129,20 @@ class User
         return imageURL
     }
     
+    func setAlbumName(name:String)
+    {
+        self.albumName = name
+    }
+    
+    func getAlbumName() -> String?
+    {
+        return albumName
+    }
+    
     func getLocation2D() -> NSDictionary {
         return ["latitude" : self.latitude, "longitude" : self.longitude]
     }
+    
     func getLocation() -> CLLocation?
     {
         return location
