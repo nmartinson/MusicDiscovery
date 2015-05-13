@@ -57,7 +57,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate
     *****************************************************************************************************/
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        println("TRACK LIST SIZE \(audioPlayer.player.trackListSize)")
         if audioPlayer.player.isPlaying
         {
             pauseButton.setTitle("Pause Music", forState: .Normal)

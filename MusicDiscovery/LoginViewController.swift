@@ -49,45 +49,9 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
         SPTRequest.userInformationForUserInSession(self.session, callback: { (error, user) -> Void in
             if error == nil
             {
-                println("No error SPTRequest.userInformationForUserInSession:")
-                
-                let loggedUser = user as! SPTUser
-                var profilePic = ""
-                var realName = ""
-                var userID = ""
-                let product = (loggedUser.product as SPTProduct).hashValue
-                println("product \(product.hashValue)")
-                if product == 2 || product == 1
-                {
-                    AudioPlayer.sharedInstance.premium = true
-                }
-                else
-                {
-                    AudioPlayer.sharedInstance.premium = false
-                }
-                if loggedUser.largestImage != nil
-                {
-                    profilePic = "\(loggedUser.largestImage.imageURL)"
-                }
-                if loggedUser.displayName != nil
-                {
-                    realName = loggedUser.displayName
-                }
-                if loggedUser.canonicalUserName != nil
-                {
-                    userID = loggedUser.canonicalUserName
-                }
-                println(profilePic)
-                println(realName)
-                println(userID)
-                println(lat)
-                println(lon)
-                
-                appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
-                AudioPlayer.sharedInstance.user = appDelegate.currentUser
-
+               let newUser = self.getAndStoreUserInfo(user as! SPTUser)
                 // check if the current user already has an account
-                BluemixCommunication().getUserInfo(userID)
+                BluemixCommunication().getUserInfo(newUser.getUserID())
                 {
                     (user: User?) in
                     
@@ -95,28 +59,67 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                     {
                         println("CREATING USER")
                         // if user doesn't exist, create an account
-                        BluemixCommunication().createNewUser(userID, name: realName, lat: lat, lon: lon, profilePicture: profilePic)
+                        BluemixCommunication().createNewUser(newUser.getUserID(), name: newUser.getRealName(), lat: lat, lon: lon, profilePicture: newUser.getImageURL()!)
                         {
                             // update user location
-                            BluemixCommunication().updateLocation(userID, lat: lat, lon: lon)
-                            self.locHandler.userID = userID
+                            BluemixCommunication().updateLocation(newUser.getUserID(), lat: lat, lon: lon)
+
+                            self.locHandler.userID = newUser.getUserID()
                         }
                     }
                     else
                     {
                         // UPDATE USER LOCATION
                         println("USER EXISTS")
-                        BluemixCommunication().updateLocation(userID, lat: lat, lon: lon)
-                        self.locHandler.userID = userID
+//                        println("LOGIN REAL NAME \(loggedUser.displayName)")
+                        BluemixCommunication().updateLocation(newUser.getUserID(), lat: lat, lon: lon)
+                        self.locHandler.userID = newUser.getUserID()
                     }
                 }
             } else {
-                println("Error SPTRequest.userInformationForUserInSession:")
-                println("\t\(error)")
+                println("Error SPTRequest.userInformationForUserInSession: \(error)")
             }
         })
 
         
+    }
+    
+    func getAndStoreUserInfo(loggedUser:SPTUser) -> User
+    {
+        var profilePic = "http://www.freakingnews.com/style/images/default-avatar.jpg"
+        var realName = ""
+        var userID = ""
+        let product = (loggedUser.product as SPTProduct).hashValue
+        if product == 2 || product == 1
+        {
+            AudioPlayer.sharedInstance.premium = true
+        }
+        else
+        {
+            AudioPlayer.sharedInstance.premium = false
+        }
+        if loggedUser.largestImage != nil
+        {
+            profilePic = "\(loggedUser.largestImage.imageURL)"
+        }
+        if loggedUser.displayName != nil
+        {
+            realName = loggedUser.displayName
+        }
+        else
+        {
+            realName = loggedUser.canonicalUserName
+        }
+        if loggedUser.canonicalUserName != nil
+        {
+            userID = loggedUser.canonicalUserName
+            println(userID)
+        }
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
+        AudioPlayer.sharedInstance.user = appDelegate.currentUser
+        return appDelegate.currentUser!
     }
     
     /**********************************************************************************************************
@@ -154,40 +157,11 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
                 SPTRequest.userInformationForUserInSession(session, callback: { (error, user) -> Void in
                     if error == nil
                     {
-                        let loggedUser = user as! SPTUser
-                        var profilePic = ""
-                        var realName = ""
-                        var userID = ""
-                        let product = (loggedUser.product as SPTProduct).hashValue
-                        println("product \(product.hashValue)")
-                        if product == 2 || product == 1
-                        {
-                            AudioPlayer.sharedInstance.premium = true
-                        }
-                        else
-                        {
-                            AudioPlayer.sharedInstance.premium = false
-                        }
-                        if loggedUser.largestImage != nil
-                        {
-                            profilePic = "\(loggedUser.largestImage.imageURL)"
-                        }
-                        if loggedUser.displayName != nil
-                        {
-                            realName = loggedUser.displayName
-                        }
-                        if loggedUser.canonicalUserName != nil
-                        {
-                            userID = loggedUser.canonicalUserName
-                        }
-                        println("USER ID \(userID), DISPLAY NAME \(realName)")
-                        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                        appDelegate.currentUser = User(realName: realName, userID: userID, profilePicture: profilePic)
-                        AudioPlayer.sharedInstance.user = appDelegate.currentUser
+                        let newUser = self.getAndStoreUserInfo(user as! SPTUser)
+
                         // UPDATE CURRENT LOCATION
-                        BluemixCommunication().updateLocation(userID, lat: LocationHandler.sharedInstance.latitude, lon: LocationHandler.sharedInstance.longitude)
-                        self.locHandler.userID = userID
-                        
+                        BluemixCommunication().updateLocation(newUser.getUserID(), lat: LocationHandler.sharedInstance.latitude, lon: LocationHandler.sharedInstance.longitude)
+                        self.locHandler.userID = newUser.getUserID()
                     }
                 })
 
@@ -233,9 +207,7 @@ class LoginViewController: UIViewController, SPTAuthViewDelegate, LoginLocationN
         let sessionData = NSKeyedArchiver.archivedDataWithRootObject(session!)
         defaults.setObject(sessionData, forKey: "SpotifySession")
         AudioPlayer.sharedInstance.session = session
-        AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in
-            println("\nplayer login error \(error)")
-        })
+        AudioPlayer.sharedInstance.player?.loginWithSession(session, callback: { (error) -> Void in })
         
         self.session = session
         
